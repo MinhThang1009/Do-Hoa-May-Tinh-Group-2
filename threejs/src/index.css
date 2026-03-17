@@ -8,30 +8,374 @@ body,
   height: 100%;
 }
 
-/* Theme tokens (from your palette) */
+/* ---- Bảng màu chủ đạo (tím khoa học + teal hóa học) ---- */
 :root {
-  /* Palette (purple + teal, like your screenshot) */
-  --bg-0: #0a0412;
-  --bg-1: #1a0b2e;
-  --bg-2: #120823;
-  --card: rgba(35, 15, 60, 0.55);
-  --card-2: rgba(28, 12, 52, 0.55);
-  --border: rgba(120, 220, 220, 0.18);
-  --border-strong: rgba(120, 220, 220, 0.32);
-  --accent: #78dcdc;
-  --text: rgba(246, 241, 236, 0.92);
-  --muted: rgba(246, 241, 236, 0.72);
-  --muted-2: rgba(246, 241, 236, 0.55);
+  --bg-0: #060b18;
+  --bg-1: #0c1425;
+  --bg-2: #101d35;
+  --card: rgba(16, 30, 60, 0.65);
+  --card-2: rgba(12, 24, 50, 0.70);
+  --card-glow: rgba(20, 36, 72, 0.80);
+  --border: rgba(100, 210, 255, 0.14);
+  --border-strong: rgba(100, 210, 255, 0.30);
+  --accent: #64d2ff;
+  --accent-2: #5eead4;
+  --accent-purple: #a78bfa;
+  --accent-pink: #f472b6;
+  --accent-amber: #fbbf24;
+  --text: rgba(240, 245, 255, 0.94);
+  --muted: rgba(200, 215, 240, 0.72);
+  --muted-2: rgba(180, 200, 230, 0.50);
 }
 
 body {
-  background-color: var(--bg-1);
+  background-color: var(--bg-0);
+  /* Gradient nền đa lớp: tạo hiệu ứng sâu, khoa học */
   background-image:
-    radial-gradient(1000px 520px at 50% -10%, rgba(120, 220, 220, 0.12) 0%, rgba(120, 220, 220, 0) 65%),
-    linear-gradient(160deg, var(--bg-0) 0%, var(--bg-1) 52%, var(--bg-2) 100%);
+    radial-gradient(ellipse 900px 400px at 20% 10%, rgba(100, 210, 255, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 350px at 80% 20%, rgba(167, 139, 250, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 300px at 50% 90%, rgba(94, 234, 212, 0.05) 0%, transparent 70%),
+    linear-gradient(175deg, var(--bg-0) 0%, var(--bg-1) 40%, var(--bg-2) 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   color: var(--text);
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
+/* ---- Animations (hiệu ứng chuyển động) ---- */
+
+/* Fade in từ dưới lên: dùng khi card/section xuất hiện */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in scale: phóng to nhẹ khi xuất hiện */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Glow pulse: viền sáng nhấp nháy nhẹ cho icon */
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px rgba(100, 210, 255, 0.25));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 18px rgba(100, 210, 255, 0.50));
+  }
+}
+
+/* Float: trôi nổi lên xuống nhẹ */
+@keyframes floatY {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Xoay chậm (cho decorative icon) */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Shimmer: ánh sáng chạy ngang */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Gradient text animation: màu chữ chuyển đổi */
+@keyframes gradientShift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Orbit: xoay quỹ đạo cho icon trang trí */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(36px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(36px) rotate(-360deg);
+  }
+}
+
+/* Ring pulse: vòng tròn phóng to và mờ dần */
+@keyframes ringPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* ---- Utility Classes ---- */
+
+/* Fade in stagger (thứ tự xuất hiện lần lượt) */
+.animate-fade-in-up {
+  animation: fadeInUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stagger-1 {
+  animation-delay: 0.06s;
+}
+
+.stagger-2 {
+  animation-delay: 0.14s;
+}
+
+.stagger-3 {
+  animation-delay: 0.22s;
+}
+
+.stagger-4 {
+  animation-delay: 0.30s;
+}
+
+.stagger-5 {
+  animation-delay: 0.38s;
+}
+
+/* Icon header: glow nhấp nháy + trôi nổi */
+.chem-icon-glow {
+  animation: glowPulse 3s ease-in-out infinite, floatY 4.5s ease-in-out infinite;
+}
+
+/* Xoay chậm cho icon trang trí */
+.chem-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* Shimmer border khi hover: ánh sáng lướt qua viền card */
+.chem-shimmer-border {
+  position: relative;
+}
+
+.chem-shimmer-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(100, 210, 255, 0.06) 40%,
+      rgba(100, 210, 255, 0.14) 50%,
+      rgba(100, 210, 255, 0.06) 60%,
+      transparent 100%);
+  background-size: 200% 100%;
+  transition: opacity 0.4s;
+}
+
+/* Keyframe chung để viền sáng/sóng mờ dần đi sau vài vòng lặp */
+@keyframes fadeOutGlow {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.chem-shimmer-border:hover::after {
+  /* Tạm thời vô hiệu hóa (comment lại) hiệu ứng sóng nước theo yêu cầu */
+  /* Chạy sóng 2 vòng nhanh (1.6s) và fadeOut đồng bộ (1.6s) rồi tàng hình hẳn */
+  /* animation: shimmer 0.8s ease-in-out 2, fadeOutGlow 1.6s forwards; */
+}
+
+/* Page enter: trang mới mờ dần vào */
+.page-enter {
+  animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Card hover: nổi lên nhẹ khi hover */
+.card-hover-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 40px rgba(100, 210, 255, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Gradient text: chữ có màu gradient chuyển động */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-purple), var(--accent));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease-in-out infinite;
+  /* Thêm padding để sửa lỗi dấu tiếng Việt bị cắt trên một số trình duyệt khi dùng background-clip */
+  padding-bottom: 0.15em;
+  padding-top: 0.15em;
+}
+
+/* Ring decorative: vòng tròn phóng to xung quanh icon */
+.ring-pulse::before,
+.ring-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(100, 210, 255, 0.20);
+  animation: ringPulse 3s ease-out infinite;
+}
+
+.ring-pulse::after {
+  animation-delay: 1.5s;
+}
+
+/* Hexagon badge: hình lục giác cho số thứ tự */
+.hex-badge {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Glow card border khi hover */
+.glow-border-hover {
+  transition: box-shadow 0.4s ease;
+}
+
+.glow-border-hover:hover {
+  box-shadow:
+    0 0 0 1px rgba(100, 210, 255, 0.20),
+    0 0 20px rgba(100, 210, 255, 0.06),
+    inset 0 0 20px rgba(100, 210, 255, 0.03);
+}
+
+/* Phương trình hóa học: font mono, nổi bật */
+.chem-equation {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Global Interactive Hover Effects ---- */
+a,
+button,
+[role="button"],
+.animated-border-card {
+  position: relative;
+  transition: filter 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+/* Hiệu ứng sáng thẻ và thêm viền glow khi di chuột qua bất kỳ liên kết/nút nào */
+a:hover,
+button:hover,
+[role="button"]:hover,
+.animated-border-card:hover {
+  filter: brightness(1.15) drop-shadow(0 0 12px rgba(100, 210, 255, 0.4));
+  z-index: 10;
+}
+
+/* Luồng sáng chạy vòng quanh viền (Animated Glowing Border) */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+@keyframes border-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+a::before,
+button::before,
+[role="button"]::before,
+.animated-border-card::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* Không mở rộng ra ngoài để tránh bị cắt bởi overflow: hidden */
+  z-index: 10; /* Nằm trên một chút để thấy rõ */
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 10%,
+    var(--accent) 50%,
+    var(--accent-purple) 90%,
+    transparent 100%
+  );
+  /* Dùng mask để chỉ hiện phần viền, khoét rỗng ở giữa */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px; /* Độ dày của viền sáng */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+a:hover::before,
+button:hover::before,
+[role="button"]:hover::before,
+.animated-border-card:hover::before {
+  /* Chạy 2 vòng tròn nhanh (1.6s tổng cộng) đồng thời fade in/out từ từ */
+  animation: border-spin 0.8s linear 2, fadeOutGlow 1.6s forwards;
+}
+
+/* Phóng to nhẹ các icon (svg) nằm trong liên kết/nút khi hover */
+a:hover svg,
+button:hover svg,
+[role="button"]:hover svg,
+.animated-border-card:hover svg {
+  transform: scale(1.15);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

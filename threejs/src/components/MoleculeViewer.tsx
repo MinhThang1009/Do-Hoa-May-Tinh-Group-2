@@ -11,7 +11,7 @@ type Props = {
 function ionFromObjectName(name: string): string | null {
   const n = name.trim();
 
-  // Prefer exact element symbols first
+  // Ưu tiên khớp chính xác ký hiệu nguyên tố hóa học trước tiên
   if (/cl/i.test(n)) return "Cl⁻";
 
   const first = n[0]?.toUpperCase();
@@ -52,7 +52,7 @@ function frameCameraToObject(
   const maxDim = Math.max(size.x, size.y, size.z);
   const fov = (camera.fov * Math.PI) / 180;
   let dist = maxDim / (2 * Math.tan(fov / 2));
-  // Smaller factor => closer camera => model looks bigger at first render.
+  // Hệ số nhỏ hơn -> camera tiến lại gần hơn -> mô hình trông to hơn ở lần render đầu tiên.
   dist *= 1.45;
 
   camera.position.set(center.x, center.y + maxDim * 0.25, center.z + dist);
@@ -68,8 +68,8 @@ export function MoleculeViewer({ url, className }: Props) {
     const host = hostRef.current;
     if (!host) return;
 
-    // Don't override layout (host can be `absolute inset-0`).
-    // Only ensure a positioning context for the tooltip if it's currently `static`.
+    // Không ghi đè layout (thẻ host có thể đang dùng class `absolute inset-0`).
+    // Chỉ thiết lập thuộc tính relative để tạo không gian chứa cho Tooltip nếu nó đang là `static`.
     if (getComputedStyle(host).position === "static") {
       host.style.position = "relative";
     }
@@ -80,7 +80,7 @@ export function MoleculeViewer({ url, className }: Props) {
     canvas.style.height = "100%";
     host.appendChild(canvas);
 
-    // Tooltip
+    // Cấu hình hiển thị Tooltip (nhãn chú thích khi hover vào phân tử)
     const tooltip = document.createElement("div");
     tooltip.style.position = "absolute";
     tooltip.style.left = "0px";
@@ -88,7 +88,7 @@ export function MoleculeViewer({ url, className }: Props) {
     tooltip.style.transform = "translate(-9999px, -9999px)";
     tooltip.style.padding = "10px 12px";
     tooltip.style.borderRadius = "10px";
-    // ~70% transparency
+    // Thiết lập độ trong suốt khoảng 70%
     tooltip.style.background = "rgba(10, 4, 18, 0.30)";
     tooltip.style.border = "1px solid rgba(120, 220, 220, 0.25)";
     tooltip.style.color = "rgba(246, 241, 236, 0.92)";
@@ -122,8 +122,11 @@ export function MoleculeViewer({ url, className }: Props) {
     controls.enablePan = true;
     controls.minDistance = 2.0;
     controls.maxDistance = 12.0;
+    // Tự động xoay mô hình 3D liên tục
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 2.5;
 
-    // Brighter lights for dark UI.
+    // Đánh sáng mạnh hơn để hiển thị rõ nét trên giao diện Dark Mode (UI tối).
     scene.add(new THREE.AmbientLight(0xffffff, 1.15));
     const key = new THREE.DirectionalLight(0xffffff, 1.05);
     key.position.set(2.5, 4.5, 2);
@@ -162,7 +165,7 @@ export function MoleculeViewer({ url, className }: Props) {
       },
       undefined,
       () => {
-        // keep empty; host still shows background overlay
+        // Giữ trống hàm này; lớp thẻ host vẫn sẽ hiển thị background overlay.
       }
     );
 
@@ -187,7 +190,7 @@ export function MoleculeViewer({ url, className }: Props) {
       }
 
       tooltip.textContent = ion;
-      // Offset from cursor, clamp inside host
+      // Căn chỉnh vị trí nhãn lệch một chút so với con trỏ chuột, giới hạn không vượt quá viền thẻ host
       const ox = 14;
       const oy = 14;
       const tx = Math.min(Math.max(8, x + ox), rect.width - 8);
@@ -216,10 +219,9 @@ export function MoleculeViewer({ url, className }: Props) {
     let raf = 0;
     const tick = () => {
       raf = requestAnimationFrame(tick);
-      if (!dirty) return;
+      // Luôn render liên tục để hỗ trợ auto-rotate
       controls.update();
       renderer.render(scene, camera);
-      dirty = false;
     };
     tick();
 
