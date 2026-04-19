@@ -59,7 +59,7 @@ export function Home() {
           </div>
           <div className="flex items-center justify-center gap-3 mt-6">
             <span className="px-3 py-1.5 rounded-full text-xs font-semibold border border-[rgba(var(--accent-rgb),0.20)] bg-[rgba(var(--accent-rgb),0.06)] text-[var(--accent)]">
-              Interactive Design
+              ✨ Interactive Design
             </span>
             <span className="px-3 py-1.5 rounded-full text-xs font-semibold border border-[rgba(167,139,250,0.20)] bg-[rgba(167,139,250,0.06)] text-[var(--accent-purple)]">
               ⚛ Tương tác
