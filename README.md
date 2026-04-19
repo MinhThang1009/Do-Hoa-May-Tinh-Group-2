@@ -1,4 +1,4 @@
-# 🧪 Interactive Chemistry 3D - Đồ Họa Máy Tính Group 2
+# Interactive Chemistry 3D - Đồ Họa Máy Tính Group 2
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
@@ -8,97 +8,101 @@
   <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
 </p>
 
-## 📜 Mục lục (Table of Contents)
-- [Giới thiệu dự án](#-giới-thiệu-dự-án)
-- [Tính năng nổi bật (Key Features)](#-tính-năng-nổi-bật)
-- [Kiến trúc & Công nghệ (Tech Stack)](#-kiến-trúc--công-nghệ)
-- [Hướng dẫn cài đặt (Installation)](#-hướng-dẫn-cài-đặt)
-- [Cấu trúc thư mục (Folder Structure)](#-cấu-trúc-thư-mục)
-- [Thành viên phát triển (Contributors)](#-thành-viên-phát-triển)
+## Mục lục
+- [Giới thiệu dự án](#giới-thiệu-dự-án)
+- [Tính năng chính](#tính-năng-chính)
+- [Kiến trúc & Công nghệ](#kiến-trúc--công-nghệ)
+- [Hướng dẫn cài đặt](#hướng-dẫn-cài-đặt)
+- [Cấu trúc thư mục](#cấu-trúc-thư-mục)
+- [Thành viên](#thành-viên)
 
 ---
 
-## 🌟 Giới thiệu dự án
+## Giới thiệu dự án
 
-**Interactive Chemistry 3D** là sản phẩm bài tập lớn môn Đồ Họa Máy Tính được thực hiện bởi Nhóm 2. Dự án là một website giáo dục tương tác không gian 3 chiều (3D WebGL), đưa người dùng vào thế giới khám phá Hóa học phân tử cực kỳ trực quan và sống động. 
-Sản phẩm được thiết kế theo định hướng Điện ảnh (Cinematic) kết hợp phong cách Kính Mờ (Glassmorphism), hứa hẹn mang lại trải nghiệm hoàn toàn mới lạ so với các đoạn chữ chết truyền thống. Quá trình phát triển tập trung cực kỳ gay gắt vào việc hoàn thiện mức độ Vi Môn (Micro-interaction) cho mọi Điểm chạm của Người sử dụng! 
+**Interactive Chemistry 3D** là bài tập lớn môn Đồ Họa Máy Tính của Nhóm 2. Kế thừa các kiến thức về WebGL và Three.js, ứng dụng này được xây dựng để trực quan hóa cấu trúc của các hợp chất Hóa học (chủ yếu là Acid) trên nền tảng web. 
 
-## ✨ Tính năng nổi bật
+Ứng dụng giúp người dùng tương tác trực tiếp với các mô hình phân tử 3D trong không gian đa chiều, kết hợp hiệu ứng giao diện hiện đại nhằm nâng cao trải nghiệm học tập và minh họa trực quan.
 
-### 1. 🧬 Trải nghiệm 3D Cinematic (Scrollytelling & Interactive Model)
-- **WebGL Rendering (60FPS):** Quản lý mô hình 3D không gian (GLTF/GLB) bằng bộ Core Three.js kết hợp React Three Fiber để tối ưu Render Loop cực kỳ mượt mà.
-- **Tương tác toàn cảnh (Orbit Controls):** Hỗ trợ Xoay 360 độ, Thu phóng (Zoom), và Fullscreen 3D Modal (Bấm đúp màn hình hoặc phím Maximize) được tích hợp luồng xử lý khóa cứng Thanh cuộn Lenis Smooth Scroll để chống nhiễu loạn (Dual-Scroll Prevention).
-- **Hệ thống Pre-Warm Cảnh Báo Sớm:** Tự động nạp trước Texture 3D song song với Splash Screen khởi động Terminal (Booting Component sinh học 2D Canvas) ấn tượng. Trái nghiệm nhập cảnh mượt mà không Drop Frame.
+## Tính năng chính
 
-### 2. 🌗 Dark/Light Mode Thematic Toàn Diện (Auto-Sync Adaptation)
-Toàn bộ dự án đã đi qua công cuộc **"Thanh tẩy mã màu Cứng"** (Anti Washed-out UI), cho phép Web tự lật trạng thái hoàn mĩ:
-- **Menu Mỏ Neo (Floating Navigation):** Nút Home trang bị **Multi-color Glass Gradient** (Ánh sáng 3 tông màu quang phổ: Cyan - Purple - Teal) tương thích đại diện cho bộ 3 Chương học. Text và Border được hòa vào làm một cực đã mắt. 
-- **SVG & Biểu tượng Đa sắc:** Cấp quyền nhúng mã CSS Variable (`var(--accent)`) và nhúng trực tiếp lớp phủ nạ `<linearGradient>` lên lõi thẻ Component Line/Stroke của các SVG. Biểu tượng lấp lánh (Neon) vào ban đêm và đậm sắc dìm màu vào ban ngày trên Nền trắng.
-- **Canvas Nền Hạt 2D Vận Hành Động:** Thuật toán Bóng Bìa (Shadow/Glow Overlay) cho Bóng bong bóng 2D tự động hắt bóng Đen (đậm) vào ban ngày và viền Trắng (Tỏa sáng) vào ban đêm nhờ nội suy Theme Mode trực tiếp trong Render Loop 60Hz.
+### 1. Tương tác 3D (Interactive 3D View)
+- Tích hợp mô hình phân tử 3D ở định dạng GLTF/GLB vào môi trường web.
+- Hỗ trợ thao tác OrbitControls (Xoay 360 độ, phóng to, thu nhỏ) người dùng tương tác với từng nguyên tử.
+- Render loop 60FPS mượt mà tương thích đa thiết bị. Khóa thanh cuộn màn hình khi đang tương tác mô hình để tránh nhảy trang.
 
-### 3. 🧠 Smart HUD (Giao Diện Nổi Tự Động Ẩn)
-- Trạng thái Ứng dụng cảm biến Phím/Chuột (User Idle Detection Toàn cục): Cho phép các Giao diện hệ thống (Volume thanh trượt nổi, Trạm Menu đáy, Nút Theme Toggle) tự chìm dần biến mất sau 2.5s khi người dùng thong dong nghỉ tay, trả lại sân khấu không giới hạn (Immersive) cho Nội dung 3D tỏa sáng! 
+### 2. Giao diện Light / Dark Mode
+- Chuyển đổi linh hoạt giữa giao diện Sáng và Tối (Theme Toggle).
+- Các thành phần UI như bảng tính, sidebar, menu điều hướng và cấu trúc hạt nền (particle background) cũng được tự động thay đổi màu sắc để ăn khớp với theme của máy ngữ cảnh.
+- Bộ Icon SVG hỗ trợ thay đổi màu nội tuyến dựa vào CSS variables (`var(--accent)`).
 
----
-
-## 🛠 Kiến trúc & Công nghệ
-- **Core Framework:** React 18 (Vite Bundler).
-- **3D Graphics Engine:** Three.js & `@react-three/fiber` & `@react-three/drei`.
-- **Motion & Physics:** `framer-motion` (UI Animation), `lenis` (Mượt thanh cuộn).
-- **Đồ họa Styling:** Tailwind CSS V3, Cấu trúc rễ cấp CSS Global `--accent-rgb`, `--accent-purple-rgb`, `--accent-2-rgb`.
-- **Icons & Assets:** `lucide-react` & Mảng SVG Pathing Đồ hoạ tĩnh.
-- **Biên Dịch Khối:** JS Chunk Size Warning Optimization.
+### 3. Trải nghiệm người dùng (UX)
+- **Idle Detection:** Trình ẩn giao diện (HUD) tự động khi người dùng không tương tác trong vòng 2.5 giây, để tối đa hoá vùng không gian hiển thị 3D.
+- Transition và Animation: Hiệu ứng Fade-in, Scroll-progress bar và Hover transitions xây dựng bằng Tailwind và Framer Motion.
 
 ---
 
-## 🚀 Hướng dẫn cài đặt
+## Kiến trúc & Công nghệ
 
-Để clone và chạy dự án web 3D trên môi trường thiết bị của bạn (Local), vui lòng làm theo các bước tải sau:
+Dự án sử dụng các framework và thư viện sau:
+- **Core Framework:** React 18, Vite.
+- **3D Engine:** Three.js, `@react-three/fiber`, `@react-three/drei`.
+- **Styling:** Tailwind CSS.
+- **Motion:** `framer-motion`, `lenis` (smooth scrolling).
+- **Icons:** `lucide-react`.
+
+---
+
+## Hướng dẫn cài đặt
+
+Để clone và chạy đồ án trên máy tính cá nhân, yêu cầu đã cài đặt **Node.js**:
 
 ```bash
-# 1. Clone nhánh kho chứa mã nguồn
+# 1. Clone repository về máy
 git clone https://github.com/MinhThang1009/Do-Hoa-May-Tinh-Group-2.git
 
-# 2. Xuyên vào thư mục ứng dụng Client
+# 2. Di chuyển vào thư mục threejs
 cd Do-Hoa-May-Tinh-Group-2/threejs
 
-# 3. Yêu cầu tải Gói thư viện nội thất
+# 3. Cài đặt các thư viện phụ thuộc (dependencies)
 npm install
 
-# 4. Kích hoạt môi trường Chạy Thử máy (Tải Trang web tại http://localhost:5173)
+# 4. Khởi chạy server development
 npm run dev
 
-# 5. Xuất Sản phẩm Khung Bọc cuối cùng (Tối ưu hóa)
+# 5. Truy cập tại địa chỉ được cấp (thường là http://localhost:5173)
+```
+
+**Lệnh Build để deploy lên Production:**
+```bash
 npm run build
 ```
 
 ---
 
-## 📂 Tổ chức Cấu trúc rễ
+## Cấu trúc thư mục cốt lõi
 
 ```text
-Do-Hoa-May-Tinh-Group-2/
-├── threejs/
-│   ├── public/              # Kho Phụ thu chứa Data 3D (.glb, .gltf), âm thanh (.mp3)
-│   ├── src/                 # Lõi Cứ điểm Logic
-│   │   ├── components/      # Nhà máy linh kiện (MoleculeViewer 3D, Menu Glass, Boot Screen...)
-│   │   ├── pages/           # Phân trang nội dung Hóa (Khái niệm, Tính chất, Ứng dụng)
-│   │   ├── App.tsx          # Cổng điều hướng Sinh Tồn (Router, Idle Engine, Mode Toggle)
-│   │   └── index.css        # Khối điều khiển Variables Màu Sắc Phổ và Keyframe Gradient
-│   ├── index.html           # Khung sườn Xương Gốc
-│   └── package.json         # Danh sách khai báo Plugin Dependencies
-└── README.md                # Tờ Hướng Dẫn Này
+threejs/
+├── public/                 # Chứa assets tĩnh: mô hình 3D (.glb), file audio.
+├── src/                    
+│   ├── components/         # Các UI component (MoleculeViewer, FloatingMenu, ThemeToggle...)
+│   ├── pages/              # Trang nội dung các chương Hóa học
+│   ├── App.tsx             # Setup React Router, Theme Logic, Idle Detection
+│   └── index.css           # Cấu hình Global variables và Tailwind class
+├── index.html              # HTML DOM entry
+└── package.json            # Cấu hình node modules
 ```
 
 ---
 
-## 👥 Thành viên Phát triển
-*Dự án thuộc Bài Tập Lớn chuyên ngành Đồ Họa Máy Tính - Thực hiện bởi đội ngũ Nhóm 2.*
+## Thành viên
+_Bài Tập Lớn chuyên ngành Đồ Họa Máy Tính - Nhóm 2._
 
-- **Thiết kế Kịch bản Tương tác 3D** (Scrollytelling Flow Control)
-- **Hiệu chỉnh Phân mảnh Mô hình 3D** (Blender / GLTF Loader System Optimization)
-- **Kiến trúc Giao diện UI/UX** (Tailwind Glassmorphism Architecture)
-- **Xử lý Sự kiện Hệ thống** (React Event Loop, Rendering & Bug Fixing)
+Đóng góp của nhóm bao gồm:
+- Kịch bản tương tác và thiết kế nội dung (Scrollytelling).
+- Xuất dữ liệu mô hình GLTF 3D.
+- Thiết kế UI Layout và Component logic.
+- Thiết lập Rendering WebGL và tối ưu hóa hiệu năng.
 
-> "Hoá học không hề khó nhằn khi chúng ta biết cách chiêm ngưỡng vẻ đẹp không gian của nó."  
-> Chân thành cảm ơn các bạn đã ghé thăm dự án! 🌟🚀
+Cảm ơn thầy cô và các bạn đã theo dõi dự án!
