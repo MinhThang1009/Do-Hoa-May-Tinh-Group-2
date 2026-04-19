@@ -27,6 +27,8 @@ threejs/.turbo/
 threejs/.cache/
 threejs/.eslintcache
 threejs/coverage/
+threejs/*.timestamp-*.mjs
+threejs/*.timestamp-*.js
 
 # TypeScript build info
 threejs/*.tsbuildinfo
