@@ -7,5 +7,16 @@ export default defineConfig({
     port: 5173,
     strictPort: false,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          three: ["three"],
+          vendor: ["react", "react-dom", "react-router-dom", "framer-motion", "lucide-react", "howler", "lenis"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 });
 

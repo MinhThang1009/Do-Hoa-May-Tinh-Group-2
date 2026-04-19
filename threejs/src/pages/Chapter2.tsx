@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import { ArrowLeft, FlaskConical, TestTubes, Atom, Droplets, Flame, ShieldAlert, Zap, Scale } from "lucide-react";
 import { AnimatedFlask } from "../components/AnimatedIcons";
-import { useNavigationVisibility } from "../components/useNavigationVisibility";
+import { SplitTextTitle } from "../components/SplitTextTitle";
 
-// Dữ liệu 5 tính chất hóa học quan trọng của Acid
 const properties = [
   {
     title: "Acid làm đổi màu chất chỉ thị",
@@ -16,7 +14,6 @@ const properties = [
           <span className="font-bold" style={{ color: "#ef4444" }}>đỏ</span>.
           Dung dịch acid làm <strong className="text-[var(--text)]">phenolphtalein</strong> không đổi màu.
         </p>
-        {/* Minh họa trực quan */}
         <div className="flex items-center gap-5 mt-2">
           <div className="flex flex-col items-center gap-1.5">
             <div className="w-14 h-14 rounded-xl shadow-lg" style={{ background: "linear-gradient(135deg, #7c3aed, #a855f7)" }} />
@@ -140,31 +137,10 @@ const properties = [
 ];
 
 export function Chapter2() {
-  const { showTopNav, showBottomNav, topMarkerRef, bottomMarkerRef } = useNavigationVisibility();
-
   return (
-    <div className="min-h-screen page-enter relative overflow-hidden">
-      {/* Vị trí neo quan sát phần ĐẦU TRANG */}
-      <div ref={topMarkerRef} className="absolute top-0 left-0 w-full h-[150px] pointer-events-none" />
-
+    <div className="min-h-screen page-enter relative overflow-hidden pb-24">
       <div className="container mx-auto px-4 py-12 relative z-10">
-        {/* Điều hướng Mặc Định ở Đầu Trang */}
-        <div className={`max-w-4xl mx-auto mt-2 mb-8 flex justify-between transition-opacity duration-300 ${showTopNav ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-          <Link
-            to="/phan-1"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[var(--accent)] border border-[var(--border)] bg-[var(--card)] hover:border-[var(--border-strong)] transition-all duration-300 hover:-translate-x-1 glow-border-hover"
-          >
-            ← Phần 1: Khái niệm Acid
-          </Link>
-          <Link
-            to="/phan-3"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[var(--accent)] border border-[var(--border)] bg-[var(--card)] hover:border-[var(--border-strong)] transition-all duration-300 hover:translate-x-1 glow-border-hover"
-          >
-            Phần 3: Một số Acid thông dụng →
-          </Link>
-        </div>
 
-        {/* Header với gradient title */}
         <div className="text-center mb-14">
           <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-full mb-5">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[rgba(167,139,250,0.12)] to-[rgba(244,114,182,0.08)] border border-[rgba(167,139,250,0.25)]" />
@@ -173,24 +149,20 @@ export function Chapter2() {
               <AnimatedFlask color="#a78bfa" />
             </div>
           </div>
-          <h1 className="text-5xl font-extrabold mb-3 gradient-text">
-            Phần 2: Tính chất hóa học
-          </h1>
+          <SplitTextTitle text="Phần 2: Tính chất hóa học" className="text-5xl font-extrabold mb-3 text-[var(--text)]" highlightWords={["hóa", "học"]} highlightColor="var(--accent-purple)" />
           <p className="max-w-3xl mx-auto mt-4 text-lg text-[var(--muted)] leading-relaxed">
             Acid có 5 tính chất hóa học đặc trưng. Nắm vững các tính chất này giúp hiểu rõ
             cách acid phản ứng với các chất khác nhau.
           </p>
         </div>
 
-        {/* Danh sách 5 tính chất */}
         <div className="max-w-4xl mx-auto flex flex-col gap-8">
           {properties.map((prop, index) => (
             <div
               key={index}
-              className={`group rounded-2xl overflow-hidden border bg-[var(--card-2)] backdrop-blur-sm card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-${index + 1}`}
+              className={`group rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-${index + 1}`}
               style={{ borderColor: `rgba(${prop.accentRgb}, 0.18)` }}
             >
-              {/* Card header với icon và tiêu đề */}
               <div
                 className="flex items-center gap-4 px-7 py-5 border-b"
                 style={{
@@ -198,7 +170,6 @@ export function Chapter2() {
                   background: `linear-gradient(135deg, rgba(${prop.accentRgb}, 0.05) 0%, transparent 60%)`,
                 }}
               >
-                {/* Số thứ tự badge */}
                 <div
                   className="flex items-center justify-center w-10 h-10 rounded-xl text-sm font-extrabold transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
                   style={{
@@ -209,7 +180,6 @@ export function Chapter2() {
                 >
                   {index + 1}
                 </div>
-                {/* Icon tính chất */}
                 <div
                   className="flex items-center justify-center w-10 h-10 rounded-xl transition-transform duration-300 group-hover:scale-110"
                   style={{
@@ -220,16 +190,18 @@ export function Chapter2() {
                 >
                   {prop.icon}
                 </div>
-                <h2 className="text-lg font-bold text-[var(--text)]">{prop.title}</h2>
+                <h2 className="text-lg font-bold text-[var(--text)] flex-1">{prop.title}</h2>
+
               </div>
-              {/* Card body */}
               <div className="px-7 py-6">{prop.content}</div>
             </div>
           ))}
         </div>
 
-        {/* Card cảnh báo an toàn */}
-        <div className="max-w-4xl mx-auto mt-14 rounded-2xl p-8 border border-[rgba(251,191,36,0.20)] bg-[rgba(251,191,36,0.03)] backdrop-blur-sm animate-fade-in-up chem-shimmer-border animated-border-card overflow-hidden">
+        <div
+          className="max-w-4xl mx-auto mt-14 rounded-2xl p-8 glass-panel card-hover-lift animate-fade-in-up chem-shimmer-border animated-border-card overflow-hidden"
+          style={{ background: "rgba(251, 191, 36, 0.08)", borderColor: "rgba(251, 191, 36, 0.3)" }}
+        >
           <div className="flex items-start gap-4">
             <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[rgba(251,191,36,0.10)] border border-[rgba(251,191,36,0.20)] shrink-0">
               <ShieldAlert className="w-6 h-6 text-amber-400" />
@@ -245,25 +217,7 @@ export function Chapter2() {
           </div>
         </div>
 
-        {/* Điều hướng Mặc Định ở Đáy Trang */}
-        <div className={`max-w-4xl mx-auto mt-12 flex justify-between transition-opacity duration-300 ${showBottomNav ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-          <Link
-            to="/phan-1"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[var(--accent)] border border-[var(--border)] bg-[var(--card)] hover:border-[var(--border-strong)] transition-all duration-300 hover:-translate-x-1 glow-border-hover"
-          >
-            ← Phần 1: Khái niệm Acid
-          </Link>
-          <Link
-            to="/phan-3"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[var(--accent)] border border-[var(--border)] bg-[var(--card)] hover:border-[var(--border-strong)] transition-all duration-300 hover:translate-x-1 glow-border-hover"
-          >
-            Phần 3: Một số Acid thông dụng →
-          </Link>
-        </div>
       </div>
-
-      {/* Vị trí neo quan sát phần ĐÁY TRANG */}
-      <div ref={bottomMarkerRef} className="w-full h-[100px] pointer-events-none border-t border-[rgba(255,255,255,0.02)] border-dashed border-b-0 -mt-[50px] bg-transparent flex items-end justify-center" />
     </div>
   );
 }

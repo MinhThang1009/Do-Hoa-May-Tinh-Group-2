@@ -2,9 +2,8 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, AlertTriangle, Info, Factory, Microscope } from "lucide-react";
 import { MoleculeViewer } from "../components/MoleculeViewer";
 import { AnimatedBeaker } from "../components/AnimatedIcons";
-import { useNavigationVisibility } from "../components/useNavigationVisibility";
+import { SplitTextTitle } from "../components/SplitTextTitle";
 
-// Dữ liệu chi tiết 3 acid thông dụng
 const acids = [
   {
     name: "HCl",
@@ -74,7 +73,6 @@ const acids = [
   },
 ];
 
-// Dữ liệu bảng so sánh
 const comparisonRows = [
   { label: "Công thức", values: ["HCl", "HNO₃", "H₂SO₄"] },
   { label: "Phân tử khối", values: ["36,5", "63", "98"] },
@@ -85,31 +83,10 @@ const comparisonRows = [
 ];
 
 export function Chapter3() {
-  const { showTopNav, showBottomNav, topMarkerRef, bottomMarkerRef } = useNavigationVisibility();
-
   return (
-    <div className="min-h-screen page-enter relative overflow-hidden">
-      {/* Vị trí neo quan sát phần ĐẦU TRANG */}
-      <div ref={topMarkerRef} className="absolute top-0 left-0 w-full h-[150px] pointer-events-none" />
-
+    <div className="min-h-screen page-enter relative overflow-hidden pb-24">
       <div className="container mx-auto px-4 py-12 relative z-10">
-        {/* Điều hướng */}
-        <div className={`max-w-4xl mx-auto mt-2 mb-8 flex justify-between transition-opacity duration-300 ${showTopNav ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-          <Link
-            to="/phan-2"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[var(--accent)] border border-[var(--border)] bg-[var(--card)] hover:border-[var(--border-strong)] transition-all duration-300 hover:-translate-x-1 glow-border-hover"
-          >
-            ← Phần 2: Tính chất hóa học
-          </Link>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[var(--accent)] border border-[var(--border)] bg-[var(--card)] hover:border-[var(--border-strong)] transition-all duration-300 hover:translate-x-1 glow-border-hover"
-          >
-            Trang chủ →
-          </Link>
-        </div>
 
-        {/* Header gradient title */}
         <div className="text-center mb-14">
           <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-full mb-5">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[rgba(94,234,212,0.12)] to-[rgba(251,191,36,0.08)] border border-[rgba(94,234,212,0.25)]" />
@@ -118,37 +95,39 @@ export function Chapter3() {
               <AnimatedBeaker color="#5eead4" />
             </div>
           </div>
-          <h1 className="text-5xl font-extrabold mb-3 gradient-text">
-            Phần 3: Một số Acid thông dụng
-          </h1>
+          <SplitTextTitle text="Phần 3: Các Acid thông dụng" className="text-5xl font-extrabold mb-3 text-[var(--text)]" highlightWords={["Acid"]} highlightColor="var(--accent-2)" />
           <p className="max-w-3xl mx-auto mt-4 text-lg text-[var(--muted)] leading-relaxed">
             Ba acid phổ biến nhất trong đời sống và công nghiệp: HCl, HNO₃ và H₂SO₄.
             Khám phá mô hình phân tử 3D tương tác của từng acid.
           </p>
         </div>
 
-        {/* Danh sách 3 acid chi tiết với mô hình 3D */}
         <div className="max-w-6xl mx-auto flex flex-col gap-10">
           {acids.map((acid, index) => (
             <div
               key={index}
-              className={`rounded-2xl overflow-hidden border bg-[var(--card-2)] backdrop-blur-sm card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-${index + 1}`}
+              className={`rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-${index + 1}`}
               style={{ borderColor: `rgba(${acid.rgb}, 0.20)` }}
             >
-              {/* Phần trên: Mô hình 3D + Thông tin chính */}
-              <div className={`flex ${index === 1 ? "flex-row-reverse" : "flex-row"}`}>
-                {/* Mô hình phân tử 3D */}
+              <div className={`flex flex-col ${index === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
                 <div
-                  className={`relative w-[55%] h-80 flex items-center justify-center overflow-hidden ${
-                    index === 1 ? "border-l" : "border-r"
-                  }`}
+                  className={`relative w-full lg:w-[55%] h-80 flex items-center justify-center overflow-hidden bg-gradient-to-br from-black/5 to-transparent ${index === 1 ? "lg:border-l border-b lg:border-b-0" : "lg:border-r border-b lg:border-b-0"
+                    }`}
                   style={{
                     background: `radial-gradient(ellipse at center, rgba(${acid.rgb}, 0.06) 0%, transparent 70%)`,
                     borderColor: `rgba(${acid.rgb}, 0.15)`,
                   }}
                 >
-                  <MoleculeViewer url={acid.modelUrl} className="absolute inset-0" />
-                  {/* Lab grid pattern overlay */}
+                  <div className="hud-corner hud-corner-tl" style={{ borderColor: acid.color }} />
+                  <div className="hud-corner hud-corner-tr" style={{ borderColor: acid.color }} />
+                  <div className="hud-corner hud-corner-bl" style={{ borderColor: acid.color }} />
+                  <div className="hud-corner hud-corner-br" style={{ borderColor: acid.color }} />
+
+                  <div className="hud-scanner" />
+
+
+
+                  <MoleculeViewer url={acid.modelUrl} className="absolute inset-0 z-10" />
                   <div
                     className="absolute inset-0 pointer-events-none opacity-[0.02]"
                     style={{
@@ -156,12 +135,9 @@ export function Chapter3() {
                       backgroundSize: "20px 20px",
                     }}
                   />
-                  {/* (Đã bỏ thẻ tooltip Xoay & Zoom) */}
                 </div>
 
-                {/* Thông tin acid */}
-                <div className="w-[45%] p-7 flex flex-col justify-center">
-                  {/* Badge */}
+                <div className="w-full lg:w-[45%] p-7 flex flex-col justify-center">
                   <span
                     className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4 border"
                     style={{
@@ -172,7 +148,6 @@ export function Chapter3() {
                   >
                     ⚗ Mô hình 3D
                   </span>
-                  {/* Tên acid */}
                   <h2 className="text-4xl font-extrabold mb-2" style={{ color: acid.color }}>
                     {acid.name}
                   </h2>
@@ -182,12 +157,10 @@ export function Chapter3() {
                 </div>
               </div>
 
-              {/* Phần dưới: Tính chất + Ứng dụng */}
               <div
                 className="grid md:grid-cols-2 gap-0 border-t"
                 style={{ borderColor: `rgba(${acid.rgb}, 0.12)` }}
               >
-                {/* Cột trái: Tính chất */}
                 <div className="p-6 border-r" style={{ borderColor: `rgba(${acid.rgb}, 0.10)` }}>
                   <h3 className="text-sm font-bold text-[var(--text)] mb-3 flex items-center gap-2 uppercase tracking-wider">
                     <Microscope className="w-4 h-4" style={{ color: acid.color }} />
@@ -202,7 +175,6 @@ export function Chapter3() {
                     ))}
                   </ul>
                 </div>
-                {/* Cột phải: Ứng dụng */}
                 <div className="p-6">
                   <h3 className="text-sm font-bold text-[var(--text)] mb-3 flex items-center gap-2 uppercase tracking-wider">
                     <Factory className="w-4 h-4" style={{ color: acid.color }} />
@@ -222,16 +194,15 @@ export function Chapter3() {
           ))}
         </div>
 
-        {/* Bảng so sánh 3 acid */}
         <div className="max-w-5xl mx-auto mt-16 animate-fade-in-up">
           <h2 className="text-2xl font-extrabold text-[var(--text)] mb-6 text-center flex items-center justify-center gap-3">
             <Info className="w-6 h-6 text-[var(--accent)]" />
             Bảng so sánh ba acid thông dụng
           </h2>
-          <div className="rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--card-2)] backdrop-blur-sm chem-shimmer-border animated-border-card">
-            <table className="w-full text-sm">
+          <div className="rounded-2xl overflow-x-auto glass-panel chem-shimmer-border animated-border-card">
+            <table className="w-full min-w-[500px] text-sm">
               <thead>
-                <tr className="border-b border-[var(--border)]" style={{ background: "rgba(100,210,255,0.04)" }}>
+                <tr className="border-b border-[var(--border)]" style={{ background: "rgba(var(--accent-rgb),0.04)" }}>
                   <th className="text-left px-6 py-4 text-[var(--muted-2)] font-bold uppercase tracking-wider text-xs w-[28%]">
                     Tiêu chí
                   </th>
@@ -246,7 +217,7 @@ export function Chapter3() {
                 {comparisonRows.map((row, ri) => (
                   <tr
                     key={ri}
-                    className="border-b border-[rgba(100,210,255,0.06)] hover:bg-[rgba(100,210,255,0.02)] transition-colors"
+                    className="border-b border-[rgba(var(--accent-rgb),0.06)] hover:bg-[rgba(var(--accent-rgb),0.02)] transition-colors"
                   >
                     <td className="px-6 py-3.5 text-[var(--muted)] font-medium">{row.label}</td>
                     {row.values.map((v, vi) => (
@@ -261,8 +232,10 @@ export function Chapter3() {
           </div>
         </div>
 
-        {/* Card cảnh báo an toàn */}
-        <div className="max-w-4xl mx-auto mt-14 rounded-2xl p-8 border border-[rgba(239,68,68,0.18)] bg-[rgba(239,68,68,0.03)] backdrop-blur-sm animate-fade-in-up chem-shimmer-border animated-border-card overflow-hidden">
+        <div
+          className="max-w-4xl mx-auto mt-14 rounded-2xl p-8 glass-panel card-hover-lift animate-fade-in-up chem-shimmer-border animated-border-card overflow-hidden"
+          style={{ background: "rgba(239, 68, 68, 0.08)", borderColor: "rgba(239, 68, 68, 0.3)" }}
+        >
           <div className="flex items-start gap-4">
             <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[rgba(239,68,68,0.10)] border border-[rgba(239,68,68,0.20)] shrink-0">
               <AlertTriangle className="w-6 h-6 text-red-400" />
@@ -292,25 +265,7 @@ export function Chapter3() {
           </div>
         </div>
 
-        {/* Điều hướng */}
-        <div className={`max-w-4xl mx-auto mt-12 flex justify-between transition-opacity duration-300 ${showBottomNav ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-          <Link
-            to="/phan-2"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[var(--accent)] border border-[var(--border)] bg-[var(--card)] hover:border-[var(--border-strong)] transition-all duration-300 hover:-translate-x-1 glow-border-hover"
-          >
-            ← Phần 2: Tính chất hóa học
-          </Link>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[var(--accent)] border border-[var(--border)] bg-[var(--card)] hover:border-[var(--border-strong)] transition-all duration-300 hover:translate-x-1 glow-border-hover"
-          >
-            Trang chủ →
-          </Link>
-        </div>
       </div>
-
-      {/* Vị trí neo quan sát phần ĐÁY TRANG */}
-      <div ref={bottomMarkerRef} className="w-full h-[100px] pointer-events-none border-t border-[rgba(255,255,255,0.02)] border-dashed border-b-0 -mt-[50px] bg-transparent flex items-end justify-center" />
     </div>
   );
 }

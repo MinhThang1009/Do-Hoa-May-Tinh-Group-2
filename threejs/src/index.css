@@ -5,22 +5,75 @@
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 
-/* ---- Bảng màu chủ đạo (tím khoa học + teal hóa học) ---- */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 116, 139, 0.4);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 116, 139, 0.7);
+}
+
+/* ---- Bảng màu chủ đạo Light Mode (Tiêu chuẩn) ---- */
 :root {
+  --bg-0: #f8fafc;
+  --bg-1: #f1f5f9;
+  --bg-2: #e2e8f0;
+  --card: rgba(255, 255, 255, 0.65);
+  --card-2: rgba(255, 255, 255, 0.75);
+  --card-glow: rgba(255, 255, 255, 0.90);
+  --border: rgba(255, 255, 255, 0.8);
+  --border-strong: rgba(200, 215, 230, 0.9);
+  --accent: #2563eb;
+  --accent-rgb: 37, 99, 235;
+
+  /* Blue cho chế độ sáng */
+  --accent-2: #0d9488;
+  --accent-2-rgb: 13, 148, 136;
+
+  /* Teal đậm hơn */
+  --accent-purple: #7c3aed;
+  --accent-purple-rgb: 124, 58, 237;
+  /* Tím đậm hơn */
+  --accent-pink: #db2777;
+  --accent-amber: #d97706;
+  --text: rgba(15, 23, 42, 0.95);
+  --muted: rgba(71, 85, 105, 0.8);
+  --muted-2: rgba(100, 116, 139, 0.6);
+}
+
+/* ---- Bảng màu chủ đạo Dark Mode ---- */
+.dark {
   --bg-0: #060b18;
   --bg-1: #0c1425;
   --bg-2: #101d35;
-  --card: rgba(16, 30, 60, 0.65);
-  --card-2: rgba(12, 24, 50, 0.70);
+  --card: rgba(16, 30, 60, 0.55);
+  --card-2: rgba(12, 24, 50, 0.65);
   --card-glow: rgba(20, 36, 72, 0.80);
   --border: rgba(100, 210, 255, 0.14);
   --border-strong: rgba(100, 210, 255, 0.30);
   --accent: #64d2ff;
+  --accent-rgb: 100, 210, 255;
   --accent-2: #5eead4;
+  --accent-2-rgb: 94, 234, 212;
   --accent-purple: #a78bfa;
+  --accent-purple-rgb: 167, 139, 250;
   --accent-pink: #f472b6;
   --accent-amber: #fbbf24;
   --text: rgba(240, 245, 255, 0.94);
@@ -32,15 +85,16 @@ body {
   background-color: var(--bg-0);
   /* Gradient nền đa lớp: tạo hiệu ứng sâu, khoa học */
   background-image:
-    radial-gradient(ellipse 900px 400px at 20% 10%, rgba(100, 210, 255, 0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 350px at 80% 20%, rgba(167, 139, 250, 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 800px 300px at 50% 90%, rgba(94, 234, 212, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 900px 400px at 20% 10%, rgba(var(--accent-rgb), 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 350px at 80% 20%, rgba(var(--accent-purple-rgb), 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 300px at 50% 90%, rgba(var(--accent-2-rgb), 0.05) 0%, transparent 70%),
     linear-gradient(175deg, var(--bg-0) 0%, var(--bg-1) 40%, var(--bg-2) 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   color: var(--text);
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* ---- Animations (hiệu ứng chuyển động) ---- */
@@ -76,11 +130,11 @@ body {
 
   0%,
   100% {
-    filter: drop-shadow(0 0 6px rgba(100, 210, 255, 0.25));
+    filter: drop-shadow(0 0 6px rgba(var(--accent-rgb), 0.25));
   }
 
   50% {
-    filter: drop-shadow(0 0 18px rgba(100, 210, 255, 0.50));
+    filter: drop-shadow(0 0 18px rgba(var(--accent-rgb), 0.50));
   }
 }
 
@@ -158,6 +212,24 @@ body {
 
 /* ---- Utility Classes ---- */
 
+/* Premium Glassmorphism Panel */
+.glass-panel {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 8px 32px rgba(15, 23, 42, 0.08);
+  transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
+}
+
+.dark .glass-panel {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
 /* Fade in stagger (thứ tự xuất hiện lần lượt) */
 .animate-fade-in-up {
   animation: fadeInUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -221,15 +293,25 @@ body {
 
 /* Keyframe chung để viền sáng/sóng mờ dần đi sau vài vòng lặp */
 @keyframes fadeOutGlow {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .chem-shimmer-border:hover::after {
-  /* Tạm thời vô hiệu hóa (comment lại) hiệu ứng sóng nước theo yêu cầu */
-  /* Chạy sóng 2 vòng nhanh (1.6s) và fadeOut đồng bộ (1.6s) rồi tàng hình hẳn */
+  /* Requires hardware acceleration check, disabled by default */
   /* animation: shimmer 0.8s ease-in-out 2, fadeOutGlow 1.6s forwards; */
 }
 
@@ -249,8 +331,116 @@ body {
 .card-hover-lift:hover {
   transform: translateY(-6px);
   box-shadow:
+    0 12px 40px rgba(15, 23, 42, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dark .card-hover-lift:hover {
+  box-shadow:
     0 12px 40px rgba(100, 210, 255, 0.08),
     0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* ---- Scientific Lab UI HUD ---- */
+.hud-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 10;
+  border-color: rgba(100, 210, 255, 0.3);
+  transition: border-color 0.4s ease;
+  opacity: 0.6;
+}
+
+.hud-corner-tl {
+  top: 12px;
+  left: 12px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.hud-corner-tr {
+  top: 12px;
+  right: 12px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+
+.hud-corner-bl {
+  bottom: 12px;
+  left: 12px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+}
+
+.hud-corner-br {
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+.hud-scanner {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(100, 210, 255, 0.08) 50%, rgba(100, 210, 255, 0.25) 100%);
+  border-bottom: 1.5px solid rgba(100, 210, 255, 0.4);
+  animation: hudScan 5s linear infinite;
+  pointer-events: none;
+  z-index: 5;
+  mix-blend-mode: screen;
+}
+
+.dark .hud-scanner {
+  background: linear-gradient(to bottom, transparent 0%, rgba(100, 210, 255, 0.15) 50%, rgba(100, 210, 255, 0.4) 100%);
+}
+
+@keyframes hudScan {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(320px);
+    opacity: 0;
+  }
+}
+
+.hud-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  /* green-500 */
+  box-shadow: 0 0 8px #10b981;
+  animation: pulse-op 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse-op {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 10px #10b981;
+  }
+
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 2px #10b981;
+  }
 }
 
 /* Gradient text: chữ có màu gradient chuyển động */
@@ -341,23 +531,24 @@ button::before,
 .animated-border-card::before {
   content: "";
   position: absolute;
-  inset: 0; /* Không mở rộng ra ngoài để tránh bị cắt bởi overflow: hidden */
-  z-index: 10; /* Nằm trên một chút để thấy rõ */
+  inset: 0;
+  /* Không mở rộng ra ngoài để tránh bị cắt bởi overflow: hidden */
+  z-index: 10;
+  /* Nằm trên một chút để thấy rõ */
   border-radius: inherit;
-  background: conic-gradient(
-    from var(--border-angle),
-    transparent 10%,
-    var(--accent) 50%,
-    var(--accent-purple) 90%,
-    transparent 100%
-  );
+  background: conic-gradient(from var(--border-angle),
+      transparent 10%,
+      var(--accent) 50%,
+      var(--accent-purple) 90%,
+      transparent 100%);
   /* Dùng mask để chỉ hiện phần viền, khoét rỗng ở giữa */
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  padding: 1.5px; /* Độ dày của viền sáng */
+  padding: 1.5px;
+  /* Độ dày của viền sáng */
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
