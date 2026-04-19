@@ -106,7 +106,7 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
               to={item.path}
               className={`relative flex items-center justify-center gap-2.5 px-5 py-3 rounded-full outline-none transition-all duration-300 ease-out group ${isActive
                 ? item.bgClass + " shadow-md border " + item.borderClass
-                : "hover:-translate-y-1 hover:shadow-lg hover:bg-black/5 dark:hover:bg-white/5 active:scale-95 border border-transparent"
+                : "hover:scale-[1.02] hover:shadow-lg hover:bg-black/5 dark:hover:bg-white/5 active:scale-95 border border-transparent"
                 }`}
               title={item.name}
             >

@@ -8,7 +8,7 @@ export function ThemeToggle({ isAppReady = true, isIdle = false }: { isAppReady?
       if (stored === "dark") return true;
       if (stored === "light") return false;
     }
-    return false; // Mặc định web giáo dục thường dùng nền sáng
+    return false; // Mặc định sử dụng nền sáng nếu không có cấu hình lưu trữ
   });
 
   useEffect(() => {
@@ -19,25 +19,69 @@ export function ThemeToggle({ isAppReady = true, isIdle = false }: { isAppReady?
     }
   }, [isDark]);
 
-  const toggleTheme = () => {
+  const toggleTheme = (event: React.MouseEvent) => {
     const metaTheme = document.querySelector('meta[name="theme-color"]');
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      if (metaTheme) metaTheme.setAttribute("content", "#f8fafc");
-      setIsDark(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      if (metaTheme) metaTheme.setAttribute("content", "#060b18");
-      setIsDark(true);
+    const isDarkNext = !isDark;
+
+    const performChange = () => {
+      if (isDarkNext) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        if (metaTheme) metaTheme.setAttribute("content", "#060b18");
+        setIsDark(true);
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        if (metaTheme) metaTheme.setAttribute("content", "#f8fafc");
+        setIsDark(false);
+      }
+    };
+
+    // Xử lý dự phòng nếu trình duyệt không hỗ trợ View Transitions API
+    if (!document.startViewTransition) {
+      performChange();
+      return;
     }
+
+    // Lấy tọa độ trục X, Y của chuột tại thời điểm click
+    const x = event.clientX;
+    const y = event.clientY;
+
+    // Tính toán bán kính tối đa từ điểm click tới các góc màn hình
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    // Khởi tạo tiến trình View Transition
+    const transition = document.startViewTransition(() => {
+      performChange();
+    });
+
+    // Thực thi hiệu ứng mặt nạ lan tỏa (clip-path) sau khi DOM đã cập nhật
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+
+      document.documentElement.animate(
+        {
+          clipPath: clipPath,
+        },
+        {
+          duration: 700,
+          easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    });
   };
 
   return (
     <button
       onClick={toggleTheme}
-      className={`ui-control fixed top-4 right-4 md:top-8 md:right-8 z-[100] w-20 h-10 rounded-full glass-panel shadow-[0_8px_32px_rgba(30,40,60,0.15)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(100,210,255,0.25)] flex items-center p-1 cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group ${isAppReady && !isIdle ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-12 scale-90 pointer-events-none"
+      className={`ui-control fixed top-4 right-4 md:top-8 md:right-8 z-[100] w-20 h-10 rounded-full glass-panel shadow-[0_8px_32px_rgba(30,40,60,0.15)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_40px_rgba(var(--accent-rgb),0.25)] hover:scale-[1.02] flex items-center p-1 cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group ${isAppReady && !isIdle ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-12 scale-90 pointer-events-none"
         }`}
       aria-label="Toggle Theme"
     >
