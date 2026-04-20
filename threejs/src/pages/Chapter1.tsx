@@ -103,7 +103,7 @@ export function Chapter1() {
                     background: acid.bgGlow,
                   }}
                 >
-                  Mô hình 3D
+                  ⚗ Mô hình 3D
                 </span>
                 <h2 className="text-5xl font-extrabold mb-3" style={{ color: acid.color }}>
                   {acid.name}
@@ -116,13 +116,13 @@ export function Chapter1() {
           ))}
         </div>
 
-        <div className="max-w-4xl mx-auto mt-14 rounded-2xl p-8 glass-panel animate-fade-in-up stagger-5 chem-shimmer-border animated-border-card overflow-hidden">
+        <div className="max-w-4xl mx-auto mt-14 rounded-2xl p-8 glass-panel card-hover-lift animate-fade-in-up stagger-5 chem-shimmer-border animated-border-card overflow-hidden">
           <div className="flex items-start gap-4">
             <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-[rgba(var(--accent-rgb),0.15)] to-[rgba(var(--accent-purple-rgb),0.10)] border border-[rgba(var(--accent-rgb),0.20)] shrink-0">
               <BookOpen className="w-6 h-6 text-[var(--accent)]" />
             </div>
             <div>
-              <h3 className="text-2xl font-extrabold text-[var(--text)] mb-3">Định nghĩa Acid</h3>
+              <h3 className="text-2xl font-extrabold text-[var(--text)] mb-3">📖 Định nghĩa Acid</h3>
               <p className="text-lg text-[var(--muted)] leading-relaxed">
                 Acid là những hợp chất trong phân tử có nguyên tử <strong className="text-[var(--accent)]">hydrogen</strong> liên kết
                 với <strong className="text-[var(--accent)]">gốc acid</strong>. Khi tan trong nước, acid tạo ra ion{" "}

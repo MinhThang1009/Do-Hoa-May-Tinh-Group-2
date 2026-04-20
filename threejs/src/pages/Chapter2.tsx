@@ -42,7 +42,7 @@ const properties = [
           <strong className="text-[var(--text)]">muối</strong> và giải phóng{" "}
           <strong className="text-[var(--text)]">H₂↑</strong>.
         </p>
-        <div className="space-y-2">
+        <div className="flex flex-col items-start gap-2">
           <div className="rounded-xl px-4 py-3 border border-[rgba(59,130,246,0.20)] bg-[rgba(59,130,246,0.04)]">
             <p className="chem-equation text-base font-bold text-[var(--text)]">
               Zn + 2HCl → ZnCl₂ + H₂<span className="text-blue-400">↑</span>
@@ -68,7 +68,7 @@ const properties = [
           <strong className="text-[var(--text)]">nước</strong>. Đây là phản ứng{" "}
           <em className="text-[var(--accent-2)] font-semibold">trung hòa</em>.
         </p>
-        <div className="space-y-2">
+        <div className="flex flex-col items-start gap-2">
           <div className="rounded-xl px-4 py-3 border border-[rgba(16,185,129,0.20)] bg-[rgba(16,185,129,0.04)]">
             <p className="chem-equation text-base font-bold text-[var(--text)]">
               HCl + NaOH → NaCl + H₂O
@@ -93,7 +93,7 @@ const properties = [
           Acid + oxide base → <strong className="text-[var(--text)]">muối</strong> +{" "}
           <strong className="text-[var(--text)]">nước</strong>.
         </p>
-        <div className="space-y-2">
+        <div className="flex flex-col items-start gap-2">
           <div className="rounded-xl px-4 py-3 border border-[rgba(168,85,247,0.20)] bg-[rgba(168,85,247,0.04)]">
             <p className="chem-equation text-base font-bold text-[var(--text)]">
               CuO + H₂SO₄ → CuSO₄ + H₂O
@@ -119,7 +119,7 @@ const properties = [
           <strong className="text-[var(--text)]">acid mới</strong>. Điều kiện: có kết tủa, khí thoát ra,
           hoặc chất điện li yếu.
         </p>
-        <div className="space-y-2">
+        <div className="flex flex-col items-start gap-2">
           <div className="rounded-xl px-4 py-3 border border-[rgba(245,158,11,0.20)] bg-[rgba(245,158,11,0.04)]">
             <p className="chem-equation text-base font-bold text-[var(--text)]">
               H₂SO₄ + BaCl₂ → BaSO₄<span className="text-amber-400">↓</span> + 2HCl

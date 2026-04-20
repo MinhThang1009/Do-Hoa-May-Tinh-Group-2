@@ -97,7 +97,7 @@ threejs/
 ---
 
 ## Thành viên
-_Bài Tập Lớn chuyên ngành Đồ Họa Máy Tính - Nhóm 2._
+_Bài Tập Lớn môn Đồ Họa Máy Tính - Nhóm 2._
 
 Đóng góp của nhóm bao gồm:
 - Kịch bản tương tác và thiết kế nội dung (Scrollytelling).

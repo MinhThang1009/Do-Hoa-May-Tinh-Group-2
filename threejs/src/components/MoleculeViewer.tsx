@@ -188,7 +188,9 @@ export function MoleculeViewer({ url, className }: Props) {
         frameCameraToObject(camera, controls, model);
       },
       undefined,
-      () => {
+      (error) => {
+        console.error("Failed to load model:", error);
+        if (!disposed) setIsLoading(false);
       }
     );
 
@@ -307,6 +309,7 @@ export function MoleculeViewer({ url, className }: Props) {
         }
       });
       controls.dispose();
+      renderer.forceContextLoss();
       renderer.dispose();
       host.innerHTML = "";
     };
