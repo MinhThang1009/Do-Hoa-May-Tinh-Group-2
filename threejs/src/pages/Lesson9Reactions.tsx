@@ -56,22 +56,60 @@ const moleculeCards = [
 
 const molecularReactionVideos = [
   {
-    title: "NaOH + quỳ tím",
-    videoUrl: "/videos/2_NaOH_quytim.mp4",
-    equation: "NaOH → Na+ + OH-",
-    description: "Dung dịch NaOH tạo môi trường kiềm, làm quỳ tím chuyển xanh.",
+    order: "1",
+    title: "Phản ứng phân tử 1",
+    videoUrl: "/videos/molecular/1_phantu.mp4",
     color: "#38bdf8",
     rgb: "56, 189, 248",
-    molecules: ["NaOH", "OH-"],
   },
   {
-    title: "NaOH + HCl",
-    videoUrl: "/videos/3_NaOH_HCl.mp4",
-    equation: "NaOH + HCl → NaCl + H2O",
-    description: "Phản ứng trung hòa giữa base và acid tạo muối NaCl cùng nước.",
+    order: "3",
+    title: "Phản ứng phân tử 3",
+    videoUrl: "/videos/molecular/3_phantu.mp4",
     color: "#22c55e",
     rgb: "34, 197, 94",
-    molecules: ["NaOH", "HCl", "NaCl"],
+  },
+  {
+    order: "4",
+    title: "Phản ứng phân tử 4",
+    videoUrl: "/videos/molecular/4_phantu.mp4",
+    color: "#f59e0b",
+    rgb: "245, 158, 11",
+  },
+  {
+    order: "5",
+    title: "Phản ứng phân tử 5",
+    videoUrl: "/videos/molecular/5_phantu.mp4",
+    color: "#a78bfa",
+    rgb: "167, 139, 250",
+  },
+  {
+    order: "6",
+    title: "Phản ứng phân tử 6",
+    videoUrl: "/videos/molecular/6_phantu.mp4",
+    color: "#ef4444",
+    rgb: "239, 68, 68",
+  },
+  {
+    order: "7",
+    title: "Phản ứng phân tử 7",
+    videoUrl: "/videos/molecular/7_phantu.mp4",
+    color: "#5eead4",
+    rgb: "94, 234, 212",
+  },
+  {
+    order: "8",
+    title: "Phản ứng phân tử 8",
+    videoUrl: "/videos/molecular/8_phantu.mp4",
+    color: "#fb7185",
+    rgb: "251, 113, 133",
+  },
+  {
+    order: "9",
+    title: "Phản ứng phân tử 9",
+    videoUrl: "/videos/molecular/9_phantu.mp4",
+    color: "#84cc16",
+    rgb: "132, 204, 22",
   },
 ];
 
@@ -201,14 +239,18 @@ export function Chapter2() {
               Video phản ứng phân tử
             </p>
             <h2 className="text-3xl font-extrabold text-[var(--text)]">
-              Quan sát phản ứng và mô hình liên quan
+              Quan sát chuyển động phân tử trong phản ứng
             </h2>
+            <p className="max-w-3xl mx-auto mt-3 text-[var(--muted)] leading-relaxed">
+              Các video dưới đây minh họa quá trình tương tác ở mức phân tử, giúp liên hệ mô hình 3D
+              với hiện tượng trong thí nghiệm.
+            </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-7">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {molecularReactionVideos.map((reaction) => (
               <div
-                key={reaction.title}
+                key={reaction.videoUrl}
                 className="rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card"
                 style={{ borderColor: `rgba(${reaction.rgb}, 0.24)` }}
               >
@@ -220,38 +262,16 @@ export function Chapter2() {
                     playsInline
                     src={reaction.videoUrl}
                   />
-                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-white/15">
+                  <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-white/15">
                     <PlayCircle className="w-4 h-4" />
-                    <span className="text-xs font-bold uppercase tracking-wider">Molecular reaction</span>
+                    <span className="text-xs font-bold uppercase tracking-wider">#{reaction.order}</span>
                   </div>
                 </div>
-                <div className="p-6" style={{ background: `linear-gradient(135deg, rgba(${reaction.rgb}, 0.06), transparent 65%)` }}>
-                  <h3 className="text-2xl font-extrabold text-[var(--text)] mb-3">{reaction.title}</h3>
-                  <div
-                    className="inline-block rounded-xl px-4 py-3 mb-4 border"
-                    style={{
-                      borderColor: `rgba(${reaction.rgb}, 0.22)`,
-                      background: `rgba(${reaction.rgb}, 0.06)`,
-                    }}
-                  >
-                    <p className="chem-equation text-base font-bold text-[var(--text)]">{reaction.equation}</p>
-                  </div>
-                  <p className="text-sm text-[var(--muted)] leading-relaxed mb-4">{reaction.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {reaction.molecules.map((molecule) => (
-                      <span
-                        key={molecule}
-                        className="chem-equation rounded-full px-3 py-1.5 text-xs font-bold border"
-                        style={{
-                          color: reaction.color,
-                          borderColor: `rgba(${reaction.rgb}, 0.26)`,
-                          background: `rgba(${reaction.rgb}, 0.08)`,
-                        }}
-                      >
-                        {molecule}
-                      </span>
-                    ))}
-                  </div>
+                <div className="p-5" style={{ background: `linear-gradient(135deg, rgba(${reaction.rgb}, 0.06), transparent 70%)` }}>
+                  <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: reaction.color }}>
+                    Molecular reaction
+                  </p>
+                  <h3 className="text-lg font-extrabold text-[var(--text)]">{reaction.title}</h3>
                 </div>
               </div>
             ))}
