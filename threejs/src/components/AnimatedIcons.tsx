@@ -180,3 +180,51 @@ export function AnimatedBeaker({ className = "", color = "#5eead4" }: { classNam
     </svg>
   );
 }
+
+export function AnimatedOxideIcon({ className = "", color = "#f97316" }: { className?: string, color?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={`w-full h-full ${className}`}>
+      <defs>
+        <radialGradient id={`oxideCore-${color.replace('#', '')}`} cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#fff" stopOpacity="1" />
+          <stop offset="30%" stopColor={color} stopOpacity="0.9" />
+          <stop offset="100%" stopColor={color} stopOpacity="0.2" />
+        </radialGradient>
+        <radialGradient id="oxideOxy" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#fff" stopOpacity="0.9" />
+          <stop offset="40%" stopColor="#ef4444" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#991b1b" stopOpacity="0.4" />
+        </radialGradient>
+        <filter id="oxideGlow">
+          <feGaussianBlur stdDeviation="2" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
+
+      {/* Rotating bonds */}
+      <g stroke="rgba(255,255,255,0.3)" strokeWidth="3" strokeLinecap="round">
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="10s" repeatCount="indefinite" />
+          <line x1="50" y1="50" x2="50" y2="20" />
+          <line x1="50" y1="50" x2="24" y2="65" />
+          <line x1="50" y1="50" x2="76" y2="65" />
+          
+          {/* Oxygen atoms */}
+          <circle cx="50" cy="20" r="8" fill="url(#oxideOxy)" filter="url(#oxideGlow)" />
+          <circle cx="24" cy="65" r="8" fill="url(#oxideOxy)" filter="url(#oxideGlow)" />
+          <circle cx="76" cy="65" r="8" fill="url(#oxideOxy)" filter="url(#oxideGlow)" />
+        </g>
+      </g>
+
+      {/* Core Metal/Non-metal Atom */}
+      <circle cx="50" cy="50" r="14" fill={`url(#oxideCore-${color.replace('#', '')})`} filter="url(#oxideGlow)">
+        <animate attributeName="r" values="12; 15; 12" dur="3s" repeatCount="indefinite" />
+      </circle>
+      
+      {/* Core highlight */}
+      <circle cx="46" cy="46" r="4" fill="#fff" opacity="0.6">
+        <animate attributeName="opacity" values="0.4; 0.8; 0.4" dur="3s" repeatCount="indefinite" />
+      </circle>
+    </svg>
+  );
+}

@@ -7,6 +7,10 @@ import { Home } from "./pages/Home";
 import { Chapter1 } from "./pages/Chapter1";
 import { Chapter2 } from "./pages/Chapter2";
 import { Chapter3 } from "./pages/Chapter3";
+import { Bai10Home } from "./pages/bai10/Bai10Home";
+import { KhaiNiem } from "./pages/bai10/KhaiNiem";
+import { TinhChat } from "./pages/bai10/TinhChat";
+import { ThongDung } from "./pages/bai10/ThongDung";
 import { ChemistryBackground } from "./components/ChemistryBackground";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeToggle } from "./components/ThemeToggle";
@@ -137,6 +141,12 @@ export default function App() {
               <Route path="/phan-1" element={<PageWrapper><Chapter1 /></PageWrapper>} />
               <Route path="/phan-2" element={<PageWrapper><Chapter2 /></PageWrapper>} />
               <Route path="/phan-3" element={<PageWrapper><Chapter3 /></PageWrapper>} />
+              
+              <Route path="/bai-10" element={<PageWrapper><Bai10Home /></PageWrapper>} />
+              <Route path="/bai-10/khai-niem" element={<PageWrapper><KhaiNiem /></PageWrapper>} />
+              <Route path="/bai-10/tinh-chat" element={<PageWrapper><TinhChat /></PageWrapper>} />
+              <Route path="/bai-10/thong-dung" element={<PageWrapper><ThongDung /></PageWrapper>} />
+
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           )}
