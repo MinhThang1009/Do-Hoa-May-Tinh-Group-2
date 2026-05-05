@@ -61,3 +61,6 @@ threejs/coverage/
 *.blend@
 __pycache__/
 *.pyc
+
+# ── Blender render frames (PNG sequences) ─────────────
+blend/**/*.png
