@@ -1,7 +1,11 @@
+<div align="center">
+
 # Chương II
 ## MỘT SỐ HỢP CHẤT THÔNG DỤNG
 
 ### **Bài 8: ACID**
+
+</div>
 
 ---
 
