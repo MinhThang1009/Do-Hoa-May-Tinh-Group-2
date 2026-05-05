@@ -64,3 +64,6 @@ __pycache__/
 
 # ── Blender render frames (PNG sequences) ─────────────
 blend/**/*.png
+
+# ── Planning / Internal docs ──────────────────────────
+PLAN.md
