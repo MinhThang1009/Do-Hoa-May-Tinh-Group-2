@@ -85,7 +85,7 @@ export function Home() {
               className={`group rounded-2xl transition-all duration-400 p-7 glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-${index + 1}`}
               style={{ borderColor: chapter.borderColor }}
             >
-              <div className="flex flex-col h-full">
+              <div className="flex flex-col h-full items-center text-center">
                 <div
                   className="flex items-center justify-center w-14 h-14 rounded-2xl mb-5 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
                   style={{
