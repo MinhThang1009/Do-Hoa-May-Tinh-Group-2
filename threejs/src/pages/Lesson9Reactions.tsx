@@ -54,6 +54,27 @@ const moleculeCards = [
   },
 ];
 
+const molecularReactionVideos = [
+  {
+    title: "NaOH + quỳ tím",
+    videoUrl: "/videos/2_NaOH_quytim.mp4",
+    equation: "NaOH → Na+ + OH-",
+    description: "Dung dịch NaOH tạo môi trường kiềm, làm quỳ tím chuyển xanh.",
+    color: "#38bdf8",
+    rgb: "56, 189, 248",
+    molecules: ["NaOH", "OH-"],
+  },
+  {
+    title: "NaOH + HCl",
+    videoUrl: "/videos/3_NaOH_HCl.mp4",
+    equation: "NaOH + HCl → NaCl + H2O",
+    description: "Phản ứng trung hòa giữa base và acid tạo muối NaCl cùng nước.",
+    color: "#22c55e",
+    rgb: "34, 197, 94",
+    molecules: ["NaOH", "HCl", "NaCl"],
+  },
+];
+
 export function Chapter2() {
   return (
     <div className="min-h-screen page-enter relative overflow-hidden pb-24">
@@ -172,6 +193,69 @@ export function Chapter2() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="max-w-6xl mx-auto mt-14 animate-fade-in-up stagger-4">
+          <div className="text-center mb-8">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-sky-400 mb-2">
+              Video phản ứng phân tử
+            </p>
+            <h2 className="text-3xl font-extrabold text-[var(--text)]">
+              Quan sát phản ứng và mô hình liên quan
+            </h2>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-7">
+            {molecularReactionVideos.map((reaction) => (
+              <div
+                key={reaction.title}
+                className="rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card"
+                style={{ borderColor: `rgba(${reaction.rgb}, 0.24)` }}
+              >
+                <div className="relative aspect-video bg-black/20 overflow-hidden border-b" style={{ borderColor: `rgba(${reaction.rgb}, 0.16)` }}>
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    preload="metadata"
+                    playsInline
+                    src={reaction.videoUrl}
+                  />
+                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-white/15">
+                    <PlayCircle className="w-4 h-4" />
+                    <span className="text-xs font-bold uppercase tracking-wider">Molecular reaction</span>
+                  </div>
+                </div>
+                <div className="p-6" style={{ background: `linear-gradient(135deg, rgba(${reaction.rgb}, 0.06), transparent 65%)` }}>
+                  <h3 className="text-2xl font-extrabold text-[var(--text)] mb-3">{reaction.title}</h3>
+                  <div
+                    className="inline-block rounded-xl px-4 py-3 mb-4 border"
+                    style={{
+                      borderColor: `rgba(${reaction.rgb}, 0.22)`,
+                      background: `rgba(${reaction.rgb}, 0.06)`,
+                    }}
+                  >
+                    <p className="chem-equation text-base font-bold text-[var(--text)]">{reaction.equation}</p>
+                  </div>
+                  <p className="text-sm text-[var(--muted)] leading-relaxed mb-4">{reaction.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {reaction.molecules.map((molecule) => (
+                      <span
+                        key={molecule}
+                        className="chem-equation rounded-full px-3 py-1.5 text-xs font-bold border"
+                        style={{
+                          color: reaction.color,
+                          borderColor: `rgba(${reaction.rgb}, 0.26)`,
+                          background: `rgba(${reaction.rgb}, 0.08)`,
+                        }}
+                      >
+                        {molecule}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div
