@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Atom, FlaskConical, Beaker } from "lucide-react";
+import { Atom, FlaskConical, Beaker, BookOpen } from "lucide-react";
 
 export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady?: boolean, isIdle?: boolean }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,17 +36,20 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, isAppReady]);
 
-  const navItems = [
+  const isLesson8 = location.pathname.startsWith("/bai-8") || location.pathname.startsWith("/phan-");
+  const isLesson9 = location.pathname.startsWith("/bai-9");
+
+  const lesson8NavItems = [
     {
-      name: "Trang chủ", path: "/", icon: Home,
-      textClass: "text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-purple-500 to-teal-500 dark:from-[#64d2ff] dark:via-[#a78bfa] dark:to-[#5eead4]",
-      iconClass: "",
-      bgClass: "bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-teal-500/10 dark:from-[#64d2ff]/10 dark:via-[#a78bfa]/10 dark:to-[#5eead4]/10",
-      borderClass: "border-sky-500/30 dark:border-white/30",
-      indicatorClass: "bg-gradient-to-r from-sky-500 via-purple-500 to-teal-500 dark:from-[#64d2ff] dark:via-[#a78bfa] dark:to-[#5eead4]"
+      name: "Bài 8", path: "/bai-8", icon: BookOpen,
+      textClass: "text-sky-600 dark:text-sky-300",
+      iconClass: "text-sky-600 dark:text-sky-300",
+      bgClass: "bg-sky-500/10 dark:bg-sky-300/10",
+      borderClass: "border-sky-500/30 dark:border-sky-300/30",
+      indicatorClass: "bg-gradient-to-t from-sky-500 to-sky-500/20 dark:from-sky-300 dark:to-sky-300/20"
     },
     {
-      name: "Phần 1", path: "/phan-1", icon: Atom,
+      name: "Khái niệm", path: "/bai-8/phan-1", icon: Atom,
       textClass: "text-blue-600 dark:text-[#64d2ff]",
       iconClass: "text-blue-600 dark:text-[#64d2ff]",
       bgClass: "bg-blue-500/10 dark:bg-[#64d2ff]/10",
@@ -54,7 +57,7 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
       indicatorClass: "bg-gradient-to-t from-blue-500 to-blue-500/20 dark:from-[#64d2ff] dark:to-[#64d2ff]/20"
     },
     {
-      name: "Phần 2", path: "/phan-2", icon: FlaskConical,
+      name: "Tính chất", path: "/bai-8/phan-2", icon: FlaskConical,
       textClass: "text-purple-600 dark:text-[#a78bfa]",
       iconClass: "text-purple-600 dark:text-[#a78bfa]",
       bgClass: "bg-purple-500/10 dark:bg-[#a78bfa]/10",
@@ -62,7 +65,7 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
       indicatorClass: "bg-gradient-to-t from-purple-500 to-purple-500/20 dark:from-[#a78bfa] dark:to-[#a78bfa]/20"
     },
     {
-      name: "Phần 3", path: "/phan-3", icon: Beaker,
+      name: "Acid", path: "/bai-8/phan-3", icon: Beaker,
       textClass: "text-teal-600 dark:text-[#5eead4]",
       iconClass: "text-teal-600 dark:text-[#5eead4]",
       bgClass: "bg-teal-500/10 dark:bg-[#5eead4]/10",
@@ -70,6 +73,45 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
       indicatorClass: "bg-gradient-to-t from-teal-500 to-teal-500/20 dark:from-[#5eead4] dark:to-[#5eead4]/20"
     },
   ];
+
+  const lesson9NavItems = [
+    {
+      name: "Bài 9", path: "/bai-9", icon: BookOpen,
+      textClass: "text-emerald-600 dark:text-emerald-300",
+      iconClass: "text-emerald-600 dark:text-emerald-300",
+      bgClass: "bg-emerald-500/10 dark:bg-emerald-300/10",
+      borderClass: "border-emerald-500/30 dark:border-emerald-300/30",
+      indicatorClass: "bg-gradient-to-t from-emerald-500 to-emerald-500/20 dark:from-emerald-300 dark:to-emerald-300/20"
+    },
+    {
+      name: "Base", path: "/bai-9/phan-1", icon: Atom,
+      textClass: "text-emerald-600 dark:text-emerald-300",
+      iconClass: "text-emerald-600 dark:text-emerald-300",
+      bgClass: "bg-emerald-500/10 dark:bg-emerald-300/10",
+      borderClass: "border-emerald-500/30 dark:border-emerald-300/30",
+      indicatorClass: "bg-gradient-to-t from-emerald-500 to-emerald-500/20 dark:from-emerald-300 dark:to-emerald-300/20"
+    },
+    {
+      name: "Phản ứng", path: "/bai-9/phan-2", icon: FlaskConical,
+      textClass: "text-sky-600 dark:text-sky-300",
+      iconClass: "text-sky-600 dark:text-sky-300",
+      bgClass: "bg-sky-500/10 dark:bg-sky-300/10",
+      borderClass: "border-sky-500/30 dark:border-sky-300/30",
+      indicatorClass: "bg-gradient-to-t from-sky-500 to-sky-500/20 dark:from-sky-300 dark:to-sky-300/20"
+    },
+    {
+      name: "Thang pH", path: "/bai-9/phan-3", icon: Beaker,
+      textClass: "text-amber-600 dark:text-amber-300",
+      iconClass: "text-amber-600 dark:text-amber-300",
+      bgClass: "bg-amber-500/10 dark:bg-amber-300/10",
+      borderClass: "border-amber-500/30 dark:border-amber-300/30",
+      indicatorClass: "bg-gradient-to-t from-amber-500 to-amber-500/20 dark:from-amber-300 dark:to-amber-300/20"
+    },
+  ];
+
+  const navItems = isLesson9 ? lesson9NavItems : isLesson8 ? lesson8NavItems : [];
+
+  if (navItems.length === 0) return null;
 
   return (
     <div
@@ -115,7 +157,6 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
                   ? "scale-110 " + item.iconClass
                   : "text-slate-500 dark:text-white/60 group-hover:scale-110 opacity-70 group-hover:opacity-100 group-hover:text-slate-800 dark:group-hover:text-white"
                   }`}
-                style={isActive && item.name === "Trang chủ" ? { stroke: "url(#multi-grad)" } : {}}
               />
               <span
                 className={`text-[15px] font-bold whitespace-nowrap tracking-wide transition-all duration-300 max-sm:hidden ${isActive ? "opacity-100 " + item.textClass : "opacity-70 group-hover:opacity-100 text-slate-500 dark:text-[var(--text)] group-hover:text-slate-800 dark:group-hover:text-white"
