@@ -22,17 +22,17 @@
 
 ## 📑 Mục lục
 
-- [🔬 Giới thiệu](#-giới-thiệu)
-- [✨ Tính năng](#-tính-năng)
-- [🏗️ Kiến trúc & Công nghệ](#️-kiến-trúc--công-nghệ)
-- [📂 Cấu trúc thư mục](#-cấu-trúc-thư-mục)
-- [🚀 Hướng dẫn cài đặt](#-hướng-dẫn-cài-đặt)
-- [📦 Build Production](#-build-production)
-- [👥 Thành viên nhóm](#-thành-viên-nhóm)
+1. [🔬 Giới thiệu](#-1-giới-thiệu)
+2. [✨ Tính năng](#-2-tính-năng)
+3. [🏗️ Kiến trúc & Công nghệ](#%EF%B8%8F-3-kiến-trúc--công-nghệ)
+4. [📂 Cấu trúc thư mục](#-4-cấu-trúc-thư-mục)
+5. [🚀 Hướng dẫn cài đặt](#-5-hướng-dẫn-cài-đặt)
+6. [📦 Build Production](#-6-build-production)
+7. [👥 Thành viên nhóm](#-7-thành-viên-nhóm)
 
 ---
 
-## 🔬 Giới thiệu
+## 🔬 1. Giới thiệu
 
 **Interactive Chemistry 3D** là ứng dụng web trực quan hóa cấu trúc phân tử các hợp chất Acid thông dụng (**HCl**, **HNO₃**, **H₂SO₄**) bằng mô hình 3D tương tác.
 
@@ -42,7 +42,7 @@ Dự án được xây dựng trong khuôn khổ Bài tập lớn môn **Đồ H
 
 ---
 
-## ✨ Tính năng
+## ✨ 2. Tính năng
 
 | Tính năng | Mô tả |
 |---|---|
@@ -57,7 +57,7 @@ Dự án được xây dựng trong khuôn khổ Bài tập lớn môn **Đồ H
 
 ---
 
-## 🏗️ Kiến trúc & Công nghệ
+## 🏗️ 3. Kiến trúc & Công nghệ
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -83,7 +83,7 @@ Dự án được xây dựng trong khuôn khổ Bài tập lớn môn **Đồ H
 
 ---
 
-## 📂 Cấu trúc thư mục
+## 📂 4. Cấu trúc thư mục
 
 ```
 Bai-8/
@@ -129,7 +129,7 @@ Bai-8/
 
 ---
 
-## 🚀 Hướng dẫn cài đặt
+## 🚀 5. Hướng dẫn cài đặt
 
 > **Yêu cầu:** [Node.js](https://nodejs.org/) ≥ 18
 
@@ -151,7 +151,7 @@ npm run dev
 
 ---
 
-## 📦 Build Production
+## 📦 6. Build Production
 
 ```bash
 npm run build
@@ -161,7 +161,7 @@ Output sẽ được tạo trong thư mục `threejs/dist/`.
 
 ---
 
-## 👥 Thành viên nhóm
+## 👥 7. Thành viên nhóm
 
 <p align="center">
   <strong>Bài Tập Lớn môn Đồ Họa Máy Tính — Nhóm 2</strong>
