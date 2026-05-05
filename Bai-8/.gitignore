@@ -1,0 +1,63 @@
+# ╔══════════════════════════════════════════════════════╗
+# ║  .gitignore — Interactive Chemistry 3D (Bài 8)     ║
+# ╚══════════════════════════════════════════════════════╝
+
+# ── OS Generated ──────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ── Editor / IDE ──────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ── Logs ──────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ── Script nội bộ ─────────────────────────────────────
+rebuilder.js
+
+# ── Env / Secrets ─────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Node / npm ────────────────────────────────────────
+threejs/node_modules/
+
+# ── Vite / Build Output ──────────────────────────────
+threejs/dist/
+threejs/.vite/
+threejs/.turbo/
+threejs/.cache/
+threejs/*.timestamp-*.mjs
+threejs/*.timestamp-*.js
+
+# ── TypeScript ────────────────────────────────────────
+threejs/*.tsbuildinfo
+
+# ── Linting / Testing ────────────────────────────────
+threejs/.eslintcache
+threejs/coverage/
+
+# ── Blender ───────────────────────────────────────────
+*.blend1
+*.blend2
+*.blend@
+__pycache__/
+*.pyc
