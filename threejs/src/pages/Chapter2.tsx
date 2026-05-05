@@ -156,6 +156,39 @@ export function Chapter2() {
           </p>
         </div>
 
+        <div
+          className="max-w-5xl mx-auto mb-10 rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up"
+          style={{ borderColor: "rgba(239, 68, 68, 0.24)" }}
+        >
+          <div className="grid lg:grid-cols-[1.35fr_1fr]">
+            <div className="relative border-b lg:border-b-0 lg:border-r border-[rgba(239,68,68,0.16)]">
+              <div className="aspect-video bg-black/20 overflow-hidden">
+                <video
+                  className="w-full h-full object-cover"
+                  controls
+                  preload="metadata"
+                  playsInline
+                  src="/videos/0_HCl_quytim.mp4"
+                />
+              </div>
+              <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-white/15">
+                <span className="text-xs font-bold uppercase tracking-wider">Video phản ứng phân tử</span>
+              </div>
+            </div>
+            <div className="p-7 flex flex-col justify-center" style={{ background: "linear-gradient(135deg, rgba(239,68,68,0.07), transparent 65%)" }}>
+              <p className="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">HCl + quỳ tím</p>
+              <h2 className="text-2xl font-extrabold text-[var(--text)] mb-4">Acid làm quỳ tím chuyển đỏ</h2>
+              <p className="text-sm text-[var(--muted)] leading-relaxed mb-4">
+                Video minh họa phân tử acid HCl trong thí nghiệm với quỳ tím. Đây là phản ứng chỉ thị màu
+                giúp nhận biết môi trường acid.
+              </p>
+              <div className="inline-block self-start rounded-xl px-4 py-3 border border-[rgba(239,68,68,0.22)] bg-[rgba(239,68,68,0.06)]">
+                <p className="chem-equation text-base font-bold text-[var(--text)]">HCl → H+ + Cl-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="max-w-4xl mx-auto flex flex-col gap-8">
           {properties.map((prop, index) => (
             <div

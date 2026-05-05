@@ -1,9 +1,11 @@
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Lenis from "lenis";
+import { ArrowLeft, ListChecks } from "lucide-react";
 
 import { Home } from "./pages/Home";
+import { Appendix } from "./pages/Appendix";
 import { Chapter1 } from "./pages/Chapter1";
 import { Chapter2 } from "./pages/Chapter2";
 import { Chapter3 } from "./pages/Chapter3";
@@ -11,6 +13,11 @@ import { Bai10Home } from "./pages/bai10/Bai10Home";
 import { KhaiNiem } from "./pages/bai10/KhaiNiem";
 import { TinhChat } from "./pages/bai10/TinhChat";
 import { ThongDung } from "./pages/bai10/ThongDung";
+import { Home as Lesson9Home } from "./pages/Lesson9Home";
+import { Chapter1 as Lesson9Base } from "./pages/Lesson9Base";
+import { Chapter2 as Lesson9Reactions } from "./pages/Lesson9Reactions";
+import { Chapter3 as Lesson9PhScale } from "./pages/Lesson9PhScale";
+import { ComingSoonLesson } from "./pages/ComingSoonLesson";
 import { ChemistryBackground } from "./components/ChemistryBackground";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeToggle } from "./components/ThemeToggle";
@@ -30,12 +37,30 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
+const BackToAppendixButton = ({ isVisible }: { isVisible: boolean }) => {
+  if (!isVisible) return null;
+
+  return (
+    <Link
+      to="/"
+      className="ui-control fixed top-5 left-5 md:top-7 md:left-7 z-[110] inline-flex items-center gap-2 rounded-full px-4 py-2.5 border border-white/40 dark:border-white/10 bg-white/35 dark:bg-[rgba(10,15,30,0.55)] backdrop-blur-2xl shadow-[0_10px_30px_-14px_rgba(0,0,0,0.35)] text-sm font-bold text-slate-700 dark:text-white/85 hover:text-slate-950 dark:hover:text-white hover:bg-white/55 dark:hover:bg-[rgba(10,15,30,0.75)] transition-all duration-300"
+      title="Về phụ lục"
+    >
+      <ArrowLeft className="w-4 h-4" />
+      <ListChecks className="w-4 h-4 text-[var(--accent)]" />
+      <span>Phụ lục</span>
+    </Link>
+  );
+};
+
 export default function App() {
   const [appReady, setAppReady] = useState(false);
   const [bgReady, setBgReady] = useState(false);
   const location = useLocation();
 
   const [isIdle, setIsIdle] = useState(false);
+  const showAppendixBack =
+    location.pathname.startsWith("/bai-8") || location.pathname.startsWith("/bai-9");
 
   const handleSplashComplete = useCallback(() => {
     setAppReady(true);
@@ -129,6 +154,7 @@ export default function App() {
           Hiệu ứng giật lag sẽ bị tiêu diệt hoàn toàn. */}
       <SoundController isAppReady={appReady} isIdle={isIdle} />
       <ThemeToggle isAppReady={appReady} isIdle={isIdle} />
+      {appReady && <BackToAppendixButton isVisible={showAppendixBack} />}
       <FloatingMenu isAppReady={appReady} isIdle={isIdle} />
 
       <div style={{ position: "relative", zIndex: 1, pointerEvents: appReady ? "auto" : "none" }}>
@@ -137,16 +163,30 @@ export default function App() {
         <AnimatePresence mode="wait">
           {appReady && (
             <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-              <Route path="/phan-1" element={<PageWrapper><Chapter1 /></PageWrapper>} />
-              <Route path="/phan-2" element={<PageWrapper><Chapter2 /></PageWrapper>} />
-              <Route path="/phan-3" element={<PageWrapper><Chapter3 /></PageWrapper>} />
-              
+              <Route path="/" element={<PageWrapper><Appendix /></PageWrapper>} />
+
+              <Route path="/bai-8" element={<PageWrapper><Home /></PageWrapper>} />
+              <Route path="/bai-8/phan-1" element={<PageWrapper><Chapter1 /></PageWrapper>} />
+              <Route path="/bai-8/phan-2" element={<PageWrapper><Chapter2 /></PageWrapper>} />
+              <Route path="/bai-8/phan-3" element={<PageWrapper><Chapter3 /></PageWrapper>} />
+
+              <Route path="/bai-9" element={<PageWrapper><Lesson9Home /></PageWrapper>} />
+              <Route path="/bai-9/phan-1" element={<PageWrapper><Lesson9Base /></PageWrapper>} />
+              <Route path="/bai-9/phan-2" element={<PageWrapper><Lesson9Reactions /></PageWrapper>} />
+              <Route path="/bai-9/phan-3" element={<PageWrapper><Lesson9PhScale /></PageWrapper>} />
+
+              {/* Bài 10: Oxide */}
               <Route path="/bai-10" element={<PageWrapper><Bai10Home /></PageWrapper>} />
               <Route path="/bai-10/khai-niem" element={<PageWrapper><KhaiNiem /></PageWrapper>} />
               <Route path="/bai-10/tinh-chat" element={<PageWrapper><TinhChat /></PageWrapper>} />
               <Route path="/bai-10/thong-dung" element={<PageWrapper><ThongDung /></PageWrapper>} />
 
+              {/* Bài 11: Muối */}
+              <Route path="/bai-11" element={<PageWrapper><ComingSoonLesson lessonNumber="Bài 11" title="Muối" color="#f59e0b" /></PageWrapper>} />
+
+              <Route path="/phan-1" element={<Navigate to="/bai-8/phan-1" replace />} />
+              <Route path="/phan-2" element={<Navigate to="/bai-8/phan-2" replace />} />
+              <Route path="/phan-3" element={<Navigate to="/bai-8/phan-3" replace />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           )}
@@ -155,4 +195,3 @@ export default function App() {
     </>
   );
 }
-

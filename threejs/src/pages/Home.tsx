@@ -5,7 +5,7 @@ import { AnimatedAtom3D, AnimatedFlask, AnimatedBeaker } from "../components/Ani
 const acidChapters = [
   {
     title: "Phần 1: Khái niệm Acid",
-    path: "/phan-1",
+    path: "/bai-8/phan-1",
     description: "Tìm hiểu định nghĩa, phân loại và cấu tạo phân tử của các Acid thông dụng.",
     icon: <AnimatedAtom3D color="#64d2ff" />,
     gradient: "from-cyan-400/20 to-blue-500/20",
@@ -14,7 +14,7 @@ const acidChapters = [
   },
   {
     title: "Phần 2: Tính chất hóa học",
-    path: "/phan-2",
+    path: "/bai-8/phan-2",
     description: "Nghiên cứu các tính chất hóa học đặc trưng và phản ứng quan trọng của Acid.",
     icon: <AnimatedFlask color="#a78bfa" />,
     gradient: "from-purple-400/20 to-pink-500/20",
@@ -23,7 +23,7 @@ const acidChapters = [
   },
   {
     title: "Phần 3: Một số Acid thông dụng",
-    path: "/phan-3",
+    path: "/bai-8/phan-3",
     description: "Tìm hiểu chi tiết về HCl, HNO₃ và H₂SO₄ cùng mô hình phân tử 3D tương tác.",
     icon: <AnimatedBeaker color="#5eead4" />,
     gradient: "from-emerald-400/20 to-teal-500/20",
