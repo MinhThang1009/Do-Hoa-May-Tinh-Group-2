@@ -4,11 +4,11 @@ import { Hexagon } from "lucide-react";
 import { SoundEngine } from "../utils/SoundEngine";
 
 const bootLogs = [
-    "[SYS] Kernel Booting...",
+    "[SYS] Khởi động hệ thống...",
     "[GL] Khởi tạo WebGL Renderer...",
     "[AST] Đang nạp mô hình phân tử 3D...",
-    "[PHX] Tính toán thuật toán Không gian...",
-    "[RDY] Kết nối thành công. Mở khóa Phòng Lab."
+    "[PHX] Khởi tạo hiệu ứng hóa học...",
+    "[RDY] Kết nối thành công. Mở khóa Phòng Thí Nghiệm."
 ];
 
 export function SplashScreen({ onComplete }: { onComplete: () => void }) {

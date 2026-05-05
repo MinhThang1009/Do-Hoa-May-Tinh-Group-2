@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { BookOpen, FlaskConical, Beaker } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { AnimatedAtom3D, AnimatedFlask, AnimatedBeaker } from "../components/AnimatedIcons";
 
 const chapters = [
   {
     title: "Phần 1: Khái niệm Acid",
     path: "/phan-1",
-    description: "Tìm hiểu định nghĩa, phân loại và cấu tạo phân tử của các Acid thông dụng.",
+    description: "Tìm hiểu khái niệm acid, gốc acid và nhận biết qua công thức hoá học của HCl, HNO₃, H₂SO₄.",
     icon: <AnimatedAtom3D color="#64d2ff" />,
     gradient: "from-cyan-400/20 to-blue-500/20",
     accentColor: "rgba(100, 210, 255, 0.85)",
@@ -24,7 +24,7 @@ const chapters = [
   {
     title: "Phần 3: Một số Acid thông dụng",
     path: "/phan-3",
-    description: "Tìm hiểu chi tiết về HCl, HNO₃ và H₂SO₄ cùng mô hình phân tử 3D tương tác.",
+    description: "Tìm hiểu tính chất và ứng dụng thực tế của H₂SO₄, HCl và CH₃COOH trong đời sống và công nghiệp.",
     icon: <AnimatedBeaker color="#5eead4" />,
     gradient: "from-emerald-400/20 to-teal-500/20",
     accentColor: "rgba(94, 234, 212, 0.85)",
@@ -59,10 +59,10 @@ export function Home() {
           </div>
           <div className="flex items-center justify-center gap-3 mt-6">
             <span className="px-3 py-1.5 rounded-full text-xs font-semibold border border-[rgba(var(--accent-rgb),0.20)] bg-[rgba(var(--accent-rgb),0.06)] text-[var(--accent)]">
-              ✨ Interactive Design
+              ✨ Thiết kế tương tác
             </span>
             <span className="px-3 py-1.5 rounded-full text-xs font-semibold border border-[rgba(167,139,250,0.20)] bg-[rgba(167,139,250,0.06)] text-[var(--accent-purple)]">
-              ⚛ Tương tác
+              ⚛ Mô hình phân tử 3D
             </span>
             <span className="px-3 py-1.5 rounded-full text-xs font-semibold border border-[rgba(94,234,212,0.20)] bg-[rgba(94,234,212,0.06)] text-[var(--accent-2)]">
               🧪 Thí nghiệm ảo

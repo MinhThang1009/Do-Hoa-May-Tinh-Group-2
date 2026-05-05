@@ -7,7 +7,7 @@ const acids = [
   {
     name: "HCl",
     fullName: "Hydrochloric Acid",
-    vietnameseName: "Axit Clohidric",
+    vietnameseName: "Acid Clohidric",
     modelUrl: "/models/HCl.glb",
     color: "#22c55e",
     borderColor: "rgba(34,197,94,0.25)",
@@ -17,7 +17,7 @@ const acids = [
   {
     name: "HNO₃",
     fullName: "Nitric Acid",
-    vietnameseName: "Axit Nitric",
+    vietnameseName: "Acid Nitric",
     modelUrl: "/models/HNO3.glb",
     color: "#3b82f6",
     borderColor: "rgba(59,130,246,0.25)",
@@ -27,7 +27,7 @@ const acids = [
   {
     name: "H₂SO₄",
     fullName: "Sulfuric Acid",
-    vietnameseName: "Axit Sulfuric",
+    vietnameseName: "Acid Sulfuric",
     modelUrl: "/models/H2SO4.glb",
     color: "#f59e0b",
     borderColor: "rgba(245,158,11,0.25)",

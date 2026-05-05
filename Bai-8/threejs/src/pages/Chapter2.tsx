@@ -1,6 +1,29 @@
-import { FlaskConical, TestTubes, Droplets, Flame, ShieldAlert, Zap, Scale } from "lucide-react";
+import { Droplets, ShieldAlert, Zap } from "lucide-react";
 import { AnimatedFlask } from "../components/AnimatedIcons";
 import { SplitTextTitle } from "../components/SplitTextTitle";
+
+function VideoBox({ src, label }: { src: string; label: string }) {
+  return (
+    <div className="flex flex-col w-full">
+      <video
+        src={src}
+        controls
+        muted
+        loop
+        playsInline
+        className="rounded-xl w-[80%] max-w-[800px] mx-auto shadow-md"
+        style={{ aspectRatio: "16/9", display: "block" }}
+      />
+      <div className="mt-3 flex items-center gap-3 w-[80%] max-w-[800px] mx-auto">
+        <div className="flex-1 h-px bg-[var(--border)]" />
+        <span className="text-xs font-bold uppercase tracking-widest text-[var(--muted)] shrink-0">
+          {label}
+        </span>
+        <div className="flex-1 h-px bg-[var(--border)]" />
+      </div>
+    </div>
+  );
+}
 
 const properties = [
   {
@@ -14,7 +37,7 @@ const properties = [
           <span className="font-bold" style={{ color: "#ef4444" }}>đỏ</span>.
           Dung dịch acid làm <strong className="text-[var(--text)]">phenolphtalein</strong> không đổi màu.
         </p>
-        <div className="flex items-center gap-5 mt-2">
+        <div className="flex items-center justify-center gap-5 mt-2">
           <div className="flex flex-col items-center gap-1.5">
             <div className="w-14 h-14 rounded-xl shadow-lg" style={{ background: "linear-gradient(135deg, #7c3aed, #a855f7)" }} />
             <span className="text-xs text-[var(--muted-2)] font-medium">Quỳ tím</span>
@@ -28,6 +51,9 @@ const properties = [
             <span className="text-xs text-[var(--muted-2)] font-medium">Chuyển đỏ</span>
           </div>
         </div>
+        <div className="mt-5">
+          <VideoBox src="/videos/0_HCl_quytim.mp4" label="Phòng thí nghiệm ảo" />
+        </div>
       </>
     ),
   },
@@ -38,98 +64,31 @@ const properties = [
     content: (
       <>
         <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Acid tác dụng với nhiều kim loại (trước H trong dãy hoạt động) tạo{" "}
-          <strong className="text-[var(--text)]">muối</strong> và giải phóng{" "}
+          Dung dịch acid phản ứng với nhiều kim loại như{" "}
+          <strong className="text-[var(--text)]">Mg, Zn, Fe,...</strong> — nguyên tử H trong acid bị thay thế, tạo{" "}
+          <strong className="text-[var(--text)]">muối</strong> và giải phóng khí{" "}
           <strong className="text-[var(--text)]">H₂↑</strong>.
         </p>
-        <div className="flex flex-col items-start gap-2">
-          <div className="rounded-xl px-4 py-3 border border-[rgba(59,130,246,0.20)] bg-[rgba(59,130,246,0.04)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
+        <div className="w-[80%] max-w-[800px] mx-auto rounded-xl border border-[rgba(59,130,246,0.18)] overflow-hidden">
+          <div className="px-5 py-2.5 bg-[rgba(59,130,246,0.05)] border-b border-[rgba(59,130,246,0.10)]">
+            <p className="chem-equation text-base font-bold text-[var(--text)] text-center">
+              Mg + H₂SO₄ → MgSO₄ + H₂<span className="text-blue-400">↑</span>
+            </p>
+          </div>
+          <div className="px-5 py-2.5 bg-[rgba(59,130,246,0.03)] border-b border-[rgba(59,130,246,0.08)]">
+            <p className="chem-equation text-base font-bold text-[var(--text)] text-center">
               Zn + 2HCl → ZnCl₂ + H₂<span className="text-blue-400">↑</span>
             </p>
           </div>
-          <div className="rounded-xl px-4 py-3 border border-[rgba(59,130,246,0.15)] bg-[rgba(59,130,246,0.03)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              Fe + H₂SO₄(loãng) → FeSO₄ + H₂<span className="text-blue-400">↑</span>
+          <div className="px-5 py-2.5 bg-[rgba(59,130,246,0.01)]">
+            <p className="chem-equation text-base font-bold text-[var(--text)] text-center">
+              Fe + 2HCl → FeCl₂ + H₂<span className="text-blue-400">↑</span>
             </p>
           </div>
         </div>
-      </>
-    ),
-  },
-  {
-    title: "Acid tác dụng với base (Trung hòa)",
-    icon: <Scale className="w-6 h-6" />,
-    accentRgb: "16, 185, 129",
-    content: (
-      <>
-        <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Acid + base → <strong className="text-[var(--text)]">muối</strong> +{" "}
-          <strong className="text-[var(--text)]">nước</strong>. Đây là phản ứng{" "}
-          <em className="text-[var(--accent-2)] font-semibold">trung hòa</em>.
-        </p>
-        <div className="flex flex-col items-start gap-2">
-          <div className="rounded-xl px-4 py-3 border border-[rgba(16,185,129,0.20)] bg-[rgba(16,185,129,0.04)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              HCl + NaOH → NaCl + H₂O
-            </p>
-          </div>
-          <div className="rounded-xl px-4 py-3 border border-[rgba(16,185,129,0.15)] bg-[rgba(16,185,129,0.03)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O
-            </p>
-          </div>
-        </div>
-      </>
-    ),
-  },
-  {
-    title: "Acid tác dụng với oxide base",
-    icon: <TestTubes className="w-6 h-6" />,
-    accentRgb: "168, 85, 247",
-    content: (
-      <>
-        <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Acid + oxide base → <strong className="text-[var(--text)]">muối</strong> +{" "}
-          <strong className="text-[var(--text)]">nước</strong>.
-        </p>
-        <div className="flex flex-col items-start gap-2">
-          <div className="rounded-xl px-4 py-3 border border-[rgba(168,85,247,0.20)] bg-[rgba(168,85,247,0.04)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              CuO + H₂SO₄ → CuSO₄ + H₂O
-            </p>
-          </div>
-          <div className="rounded-xl px-4 py-3 border border-[rgba(168,85,247,0.15)] bg-[rgba(168,85,247,0.03)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              Fe₂O₃ + 6HCl → 2FeCl₃ + 3H₂O
-            </p>
-          </div>
-        </div>
-      </>
-    ),
-  },
-  {
-    title: "Acid tác dụng với muối",
-    icon: <Flame className="w-6 h-6" />,
-    accentRgb: "245, 158, 11",
-    content: (
-      <>
-        <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Acid + muối → <strong className="text-[var(--text)]">muối mới</strong> +{" "}
-          <strong className="text-[var(--text)]">acid mới</strong>. Điều kiện: có kết tủa, khí thoát ra,
-          hoặc chất điện li yếu.
-        </p>
-        <div className="flex flex-col items-start gap-2">
-          <div className="rounded-xl px-4 py-3 border border-[rgba(245,158,11,0.20)] bg-[rgba(245,158,11,0.04)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              H₂SO₄ + BaCl₂ → BaSO₄<span className="text-amber-400">↓</span> + 2HCl
-            </p>
-          </div>
-          <div className="rounded-xl px-4 py-3 border border-[rgba(245,158,11,0.15)] bg-[rgba(245,158,11,0.03)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              2HCl + Na₂CO₃ → 2NaCl + H₂O + CO₂<span className="text-amber-400">↑</span>
-            </p>
-          </div>
+        <div className="mt-5 flex flex-col gap-5">
+          <VideoBox src="/videos/thi-nghiem-4.mp4" label="Phòng thí nghiệm ảo" />
+          <VideoBox src="/videos/1_phantu.mp4" label="Phản ứng phân tử" />
         </div>
       </>
     ),
@@ -149,10 +108,15 @@ export function Chapter2() {
               <AnimatedFlask color="#a78bfa" />
             </div>
           </div>
-          <SplitTextTitle text="Phần 2: Tính chất hóa học" className="text-5xl font-extrabold mb-3 text-[var(--text)]" highlightWords={["hóa", "học"]} highlightColor="var(--accent-purple)" />
+          <SplitTextTitle
+            text="Phần 2: Tính chất hóa học"
+            className="text-5xl font-extrabold mb-3 text-[var(--text)]"
+            highlightWords={["hóa", "học"]}
+            highlightColor="var(--accent-purple)"
+          />
           <p className="max-w-3xl mx-auto mt-4 text-lg text-[var(--muted)] leading-relaxed">
-            Acid có 5 tính chất hóa học đặc trưng. Nắm vững các tính chất này giúp hiểu rõ
-            cách acid phản ứng với các chất khác nhau.
+            Acid thường tan được trong nước. Dung dịch acid làm đổi màu quỳ tím và phản ứng với
+            kim loại (Mg, Zn,...) để tạo thành muối và giải phóng khí hydrogen.
           </p>
         </div>
 
@@ -191,7 +155,6 @@ export function Chapter2() {
                   {prop.icon}
                 </div>
                 <h2 className="text-lg font-bold text-[var(--text)] flex-1">{prop.title}</h2>
-
               </div>
               <div className="px-7 py-6">{prop.content}</div>
             </div>
