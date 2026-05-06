@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { Atom, FlaskConical, Beaker, BookOpen, Home, Factory, Droplets, Layers, Repeat } from "lucide-react";
+import { Atom, FlaskConical, Beaker, BookOpen, Home, Factory, Droplets, Layers, Repeat, Leaf, Package, ShieldCheck } from "lucide-react";
 
 export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady?: boolean, isIdle?: boolean }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,6 +41,7 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
   const isLesson9 = location.pathname.startsWith("/bai-9");
   const isBai10 = location.pathname.startsWith("/bai-10");
   const isBai11 = location.pathname.startsWith("/bai-11");
+  const isBai12 = location.pathname.startsWith("/bai-12");
 
   const lesson8NavItems = [
     {
@@ -198,7 +199,42 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
     },
   ];
 
-  const navItems = isBai11 ? bai11NavItems : isBai10 ? bai10NavItems : isLesson9 ? lesson9NavItems : isLesson8 ? lesson8NavItems : [];
+  const bai12NavItems = [
+    {
+      name: "Trang chủ", path: "/bai-12", icon: Home,
+      textClass: "text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500 dark:from-[#f97316] dark:to-[#f59e0b]",
+      iconClass: "",
+      bgClass: "bg-gradient-to-r from-orange-500/10 to-amber-500/10 dark:from-[#f97316]/10 dark:to-[#f59e0b]/10",
+      borderClass: "border-orange-500/30 dark:border-orange-500/30",
+      indicatorClass: "bg-gradient-to-r from-orange-500 to-amber-500 dark:from-[#f97316] dark:to-[#f59e0b]"
+    },
+    {
+      name: "Vai trò", path: "/bai-12/vai-tro", icon: Leaf,
+      textClass: "text-emerald-600 dark:text-[#10b981]",
+      iconClass: "text-emerald-600 dark:text-[#10b981]",
+      bgClass: "bg-emerald-500/10 dark:bg-[#10b981]/10",
+      borderClass: "border-emerald-500/30 dark:border-[#10b981]/30",
+      indicatorClass: "bg-gradient-to-t from-emerald-500 to-emerald-500/20 dark:from-[#10b981] dark:to-[#10b981]/20"
+    },
+    {
+      name: "Phân bón", path: "/bai-12/phan-bon", icon: Package,
+      textClass: "text-blue-600 dark:text-[#3b82f6]",
+      iconClass: "text-blue-600 dark:text-[#3b82f6]",
+      bgClass: "bg-blue-500/10 dark:bg-[#3b82f6]/10",
+      borderClass: "border-blue-500/30 dark:border-[#3b82f6]/30",
+      indicatorClass: "bg-gradient-to-t from-blue-500 to-blue-500/20 dark:from-[#3b82f6] dark:to-[#3b82f6]/20"
+    },
+    {
+      name: "Cách dùng", path: "/bai-12/cach-su-dung", icon: ShieldCheck,
+      textClass: "text-purple-600 dark:text-[#8b5cf6]",
+      iconClass: "text-purple-600 dark:text-[#8b5cf6]",
+      bgClass: "bg-purple-500/10 dark:bg-[#8b5cf6]/10",
+      borderClass: "border-purple-500/30 dark:border-[#8b5cf6]/30",
+      indicatorClass: "bg-gradient-to-t from-purple-500 to-purple-500/20 dark:from-[#8b5cf6] dark:to-[#8b5cf6]/20"
+    },
+  ];
+
+  const navItems = isBai12 ? bai12NavItems : isBai11 ? bai11NavItems : isBai10 ? bai10NavItems : isLesson9 ? lesson9NavItems : isLesson8 ? lesson8NavItems : [];
 
   if (navItems.length === 0) return null;
 

@@ -9,7 +9,7 @@ const properties = [
     description: "Dung dịch muối có thể tác dụng với một số kim loại tạo thành muối mới và kim loại mới.",
     equation: "Fe + CuSO₄ → FeSO₄ + Cu↓",
     videoUrl: "/videos/6_CuSO4+Fe.mkv",
-    molecularVideoUrl: "/videos/molecular/6_phantu.mp4",
+    molecularVideoUrl: "/videos/molecular/6_CuSO4+Fe.mp4",
     color: "#3b82f6", // Blue
     rgb: "59, 130, 246"
   },
@@ -19,7 +19,7 @@ const properties = [
     description: "Muối có thể tác dụng với một số dung dịch acid tạo thành muối mới và acid mới. Sản phẩm tạo thành có ít nhất một chất khí, chất ít tan hoặc không tan.",
     equation: "BaCl₂ + H₂SO₄ → BaSO₄↓ + 2HCl",
     videoUrl: "/videos/7_BaCl2+H2SO4.mp4",
-    molecularVideoUrl: "/videos/molecular/7_phantu.mp4",
+    molecularVideoUrl: "/videos/molecular/7_BaCl2+H2SO4.mp4",
     color: "#10b981", // Emerald
     rgb: "16, 185, 129"
   },
@@ -29,7 +29,7 @@ const properties = [
     description: "Dung dịch muối tác dụng với dung dịch base tạo thành muối mới và base mới, trong đó có ít nhất một sản phẩm là chất khí, ít tan hoặc không tan.",
     equation: "CuSO₄ + 2NaOH → Cu(OH)₂↓ + Na₂SO₄",
     videoUrl: "/videos/molecular/9_CuSO4+NaOH.mp4",
-    molecularVideoUrl: "/videos/molecular/9_phantu.mp4",
+    molecularVideoUrl: "/videos/molecular/9_CuSO4+NaOH.mp4",
     color: "#f59e0b", // Amber
     rgb: "245, 158, 11"
   },
@@ -39,7 +39,7 @@ const properties = [
     description: "Hai dung dịch muối tác dụng với nhau tạo thành hai muối mới, trong đó ít nhất có một muối không tan hoặc ít tan.",
     equation: "Na₂SO₄ + BaCl₂ → BaSO₄↓ + 2NaCl",
     videoUrl: "/videos/molecular/8_Na2SO4+BaCl2.mp4",
-    molecularVideoUrl: "/videos/molecular/8_phantu.mp4",
+    molecularVideoUrl: "/videos/molecular/8_Na2SO4+BaCl2.mp4",
     color: "#8b5cf6", // Violet
     rgb: "139, 92, 246"
   }
