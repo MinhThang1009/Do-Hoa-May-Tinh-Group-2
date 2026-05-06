@@ -18,9 +18,11 @@ import { KhaiNiem } from "./pages/bai10/KhaiNiem";
 import { TinhChat } from "./pages/bai10/TinhChat";
 import { ThongDung } from "./pages/bai10/ThongDung";
 import { ComingSoonLesson } from "./pages/ComingSoonLesson";
-import { ClassificationGame } from "./pages/ClassificationGame";
-import { ReactionMatchGame } from "./pages/ReactionMatchGame";
-import { QuickQuizGame } from "./pages/QuickQuizGame";
+import { GamesHome } from "./pages/games/GamesHome";
+import { ClassificationGame } from "./pages/games/ClassificationGame";
+import { ReactionMatchGame } from "./pages/games/ReactionMatchGame";
+import { QuickQuizGame } from "./pages/games/QuickQuizGame";
+import { MiniLabGame } from "./pages/games/MiniLabGame";
 
 // Bài 11
 import { Bai11Home } from "./pages/bai11/Bai11Home";
@@ -48,18 +50,28 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
-const BackToAppendixButton = ({ isVisible }: { isVisible: boolean }) => {
+const BackToAppendixButton = ({
+  isVisible,
+  label,
+  title,
+  to,
+}: {
+  isVisible: boolean;
+  label: string;
+  title: string;
+  to: string;
+}) => {
   if (!isVisible) return null;
 
   return (
     <Link
-      to="/"
+      to={to}
       className="ui-control fixed top-5 left-5 md:top-7 md:left-7 z-[110] inline-flex items-center gap-2 rounded-full px-4 py-2.5 border border-white/40 dark:border-white/10 bg-white/35 dark:bg-[rgba(10,15,30,0.55)] backdrop-blur-2xl shadow-[0_10px_30px_-14px_rgba(0,0,0,0.35)] text-sm font-bold text-slate-700 dark:text-white/85 hover:text-slate-950 dark:hover:text-white hover:bg-white/55 dark:hover:bg-[rgba(10,15,30,0.75)] transition-all duration-300"
-      title="Về phụ lục"
+      title={title}
     >
       <ArrowLeft className="w-4 h-4" />
       <ListChecks className="w-4 h-4 text-[var(--accent)]" />
-      <span>Phụ lục</span>
+      <span>{label}</span>
     </Link>
   );
 };
@@ -70,14 +82,22 @@ export default function App() {
   const location = useLocation();
 
   const [isIdle, setIsIdle] = useState(false);
+  const isLegacyGameRoute =
+    location.pathname === "/game" ||
+    location.pathname === "/reaction-game" ||
+    location.pathname === "/quick-quiz" ||
+    location.pathname === "/mini-lab";
   const showAppendixBack =
     location.pathname.startsWith("/bai-8") ||
     location.pathname.startsWith("/bai-9") ||
     location.pathname.startsWith("/bai-10") ||
     location.pathname.startsWith("/bai-11") ||
-    location.pathname.startsWith("/game") ||
-    location.pathname.startsWith("/reaction-game") ||
-    location.pathname.startsWith("/quick-quiz");
+    location.pathname.startsWith("/games") ||
+    isLegacyGameRoute;
+  const isGameDetailPage = location.pathname.startsWith("/games/") || isLegacyGameRoute;
+  const backButtonTarget = isGameDetailPage ? "/games" : "/";
+  const backButtonLabel = isGameDetailPage ? "Game" : "Phụ lục";
+  const backButtonTitle = isGameDetailPage ? "Về khu trò chơi" : "Về phụ lục";
 
   const handleSplashComplete = useCallback(() => {
     setAppReady(true);
@@ -171,7 +191,14 @@ export default function App() {
           Hiệu ứng giật lag sẽ bị tiêu diệt hoàn toàn. */}
       <SoundController isAppReady={appReady} isIdle={isIdle} />
       <ThemeToggle isAppReady={appReady} isIdle={isIdle} />
-      {appReady && <BackToAppendixButton isVisible={showAppendixBack} />}
+      {appReady && (
+        <BackToAppendixButton
+          isVisible={showAppendixBack}
+          label={backButtonLabel}
+          title={backButtonTitle}
+          to={backButtonTarget}
+        />
+      )}
       <FloatingMenu isAppReady={appReady} isIdle={isIdle} />
 
       <div
@@ -195,7 +222,15 @@ export default function App() {
                 }
               />
               <Route
-                path="/game"
+                path="/games"
+                element={
+                  <PageWrapper>
+                    <GamesHome />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/games/classification"
                 element={
                   <PageWrapper>
                     <ClassificationGame />
@@ -203,7 +238,7 @@ export default function App() {
                 }
               />
               <Route
-                path="/reaction-game"
+                path="/games/reaction-match"
                 element={
                   <PageWrapper>
                     <ReactionMatchGame />
@@ -211,13 +246,25 @@ export default function App() {
                 }
               />
               <Route
-                path="/quick-quiz"
+                path="/games/quick-quiz"
                 element={
                   <PageWrapper>
                     <QuickQuizGame />
                   </PageWrapper>
                 }
               />
+              <Route
+                path="/games/mini-lab"
+                element={
+                  <PageWrapper>
+                    <MiniLabGame />
+                  </PageWrapper>
+                }
+              />
+              <Route path="/game" element={<Navigate to="/games/classification" replace />} />
+              <Route path="/reaction-game" element={<Navigate to="/games/reaction-match" replace />} />
+              <Route path="/quick-quiz" element={<Navigate to="/games/quick-quiz" replace />} />
+              <Route path="/mini-lab" element={<Navigate to="/games/mini-lab" replace />} />
 
               <Route
                 path="/bai-8"

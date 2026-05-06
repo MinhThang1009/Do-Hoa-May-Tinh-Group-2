@@ -15,7 +15,7 @@ const chapters = [
   {
     title: "Phần 2: Tính chất hóa học",
     path: "/bai-10/tinh-chat",
-    description: "Nghiên cứu tính chất hóa học của Oxide acid, Oxide base, lưỡng tính và trung tính.",
+    description: "Nghiên cứu tính chất hóa học của Oxide acid, oxide bazơ, lưỡng tính và trung tính.",
     icon: <AnimatedBeaker color="#8b5cf6" />,
     gradient: "from-purple-400/20 to-pink-500/20",
     accentColor: "rgba(139, 92, 246, 0.85)",

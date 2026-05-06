@@ -13,7 +13,7 @@ const reactions = [
     anion: "Cl⁻"
   },
   {
-    type: "Acid + Base → Muối + Nước",
+    type: "Acid + Bazơ → Muối + Nước",
     equation: "H₂SO₄ + Cu(OH)₂ → CuSO₄ + 2H₂O",
     molecularFormula: "CuSO₄",
     name: "Copper(II) sulfate",
@@ -21,7 +21,7 @@ const reactions = [
     anion: "SO₄²⁻"
   },
   {
-    type: "Acid + Oxide base → Muối + Nước",
+    type: "Acid + Oxide bazơ → Muối + Nước",
     equation: "H₂SO₄ + FeO → FeSO₄ + H₂O",
     molecularFormula: "FeSO₄",
     name: "Iron(II) sulfate",

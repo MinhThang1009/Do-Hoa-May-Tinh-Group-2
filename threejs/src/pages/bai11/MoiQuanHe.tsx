@@ -14,7 +14,7 @@ export function MoiQuanHe() {
           </div>
           <SplitTextTitle text="Mối Quan Hệ Vô Cơ" className="text-5xl md:text-6xl font-extrabold mb-4" />
           <p className="text-lg text-[var(--muted)] max-w-2xl mx-auto leading-relaxed">
-            Sơ đồ biểu diễn sự chuyển đổi qua lại giữa Oxide, Acid, Base và Muối.
+            Sơ đồ biểu diễn sự chuyển đổi qua lại giữa Oxide, Acid, Bazơ và Muối.
           </p>
         </header>
 
@@ -67,7 +67,7 @@ export function MoiQuanHe() {
                   </marker>
                 </defs>
 
-                {/* Oxide Base -> Muối */}
+                {/* Oxide Bazơ -> Muối */}
                 <g className="text-slate-600 dark:text-slate-400">
                   <line x1="20%" y1="12%" x2="40%" y2="40%" stroke="currentColor" strokeWidth="1.5" markerEnd="url(#arrowhead)" />
                   <text x="25%" y="24%" fill="currentColor" fontSize="14" transform="rotate(35 200 120)" className="font-serif italic">+ Acid</text>
@@ -76,16 +76,16 @@ export function MoiQuanHe() {
                 {/* Oxide Acid -> Muối */}
                 <g className="text-slate-600 dark:text-slate-400">
                   <line x1="80%" y1="12%" x2="60%" y2="40%" stroke="currentColor" strokeWidth="1.5" markerEnd="url(#arrowhead)" />
-                  <text x="65%" y="22%" fill="currentColor" fontSize="14" transform="rotate(-35 550 120)" className="font-serif italic">+ Base</text>
+                  <text x="65%" y="22%" fill="currentColor" fontSize="14" transform="rotate(-35 550 120)" className="font-serif italic">+ Bazơ</text>
                 </g>
 
-                {/* Base <-> Muối */}
+                {/* Bazơ <-> Muối */}
                 <g className="text-slate-600 dark:text-slate-400">
-                  {/* Muối -> Base */}
+                  {/* Muối -> Bazơ */}
                   <line x1="45%" y1="58%" x2="15%" y2="82%" stroke="currentColor" strokeWidth="1.5" markerEnd="url(#arrowhead)" />
-                  <text x="25%" y="68%" fill="currentColor" fontSize="14" transform="rotate(38 220 340)" className="font-serif italic">+ Base</text>
+                  <text x="25%" y="68%" fill="currentColor" fontSize="14" transform="rotate(38 220 340)" className="font-serif italic">+ Bazơ</text>
                   
-                  {/* Base -> Muối */}
+                  {/* Bazơ -> Muối */}
                   <line x1="18%" y1="88%" x2="48%" y2="62%" stroke="currentColor" strokeWidth="1.5" markerEnd="url(#arrowhead)" />
                   <text x="32%" y="82%" fill="currentColor" fontSize="14" className="font-serif italic">+ Acid</text>
                   <text x="32%" y="90%" fill="currentColor" fontSize="14" className="font-serif italic">+ Oxide acid</text>
@@ -101,8 +101,8 @@ export function MoiQuanHe() {
                   {/* Acid -> Muối */}
                   <line x1="82%" y1="88%" x2="52%" y2="62%" stroke="currentColor" strokeWidth="1.5" markerEnd="url(#arrowhead)" />
                   <text x="60%" y="78%" fill="currentColor" fontSize="14" className="font-serif italic">+ Kim loại</text>
-                  <text x="60%" y="86%" fill="currentColor" fontSize="14" className="font-serif italic">+ Base</text>
-                  <text x="60%" y="94%" fill="currentColor" fontSize="14" className="font-serif italic">+ Oxide base</text>
+                  <text x="60%" y="86%" fill="currentColor" fontSize="14" className="font-serif italic">+ Bazơ</text>
+                  <text x="60%" y="94%" fill="currentColor" fontSize="14" className="font-serif italic">+ Oxide bazơ</text>
                   <text x="60%" y="102%" fill="currentColor" fontSize="14" className="font-serif italic">+ Muối</text>
                 </g>
               </svg>

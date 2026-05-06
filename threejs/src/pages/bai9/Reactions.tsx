@@ -8,13 +8,13 @@ const experiments = [
   {
     order: "2",
     title: "NaOH + quỳ tím",
-    subtitle: "Base làm đổi màu chất chỉ thị",
+    subtitle: "Bazơ làm đổi màu chất chỉ thị",
     videoUrl: "/videos/2_NaOH_quytim.mp4",
     color: "#38bdf8",
     rgb: "56, 189, 248",
     equation: "NaOH → Na+ + OH-",
     observation: "Nhỏ dung dịch NaOH vào giấy quỳ tím, giấy quỳ chuyển từ tím sang xanh.",
-    conclusion: "Dung dịch base làm quỳ tím chuyển xanh do có môi trường kiềm.",
+    conclusion: "Dung dịch bazơ làm quỳ tím chuyển xanh do có môi trường kiềm.",
     icon: <Droplets className="w-6 h-6" />,
   },
   {
@@ -25,8 +25,8 @@ const experiments = [
     color: "#22c55e",
     rgb: "34, 197, 94",
     equation: "NaOH + HCl → NaCl + H2O",
-    observation: "Dung dịch base phản ứng với dung dịch acid, tạo thành dung dịch muối và nước.",
-    conclusion: "Base tác dụng với acid tạo muối và nước. Phản ứng này gọi là phản ứng trung hòa.",
+    observation: "Dung dịch bazơ phản ứng với dung dịch acid, tạo thành dung dịch muối và nước.",
+    conclusion: "Bazơ tác dụng với acid tạo muối và nước. Phản ứng này gọi là phản ứng trung hòa.",
     icon: <Scale className="w-6 h-6" />,
   },
 ];
@@ -35,7 +35,7 @@ const reactionMolecules = [
   {
     name: "NaOH",
     label: "Chất tham gia",
-    role: "Base mạnh cung cấp ion OH-",
+    role: "Bazơ mạnh cung cấp ion OH-",
     modelUrl: "/models/NaOH.glb",
     color: "#38bdf8",
     rgb: "56, 189, 248",
@@ -259,7 +259,7 @@ export function Reactions() {
             <div>
               <h3 className="text-xl font-extrabold text-[var(--text)] mb-3">Lưu ý an toàn</h3>
               <p className="text-[var(--muted)] leading-relaxed">
-                NaOH là base mạnh, có thể gây bỏng da. Khi thí nghiệm cần dùng lượng loãng, đeo kính bảo hộ,
+                NaOH là bazơ mạnh, có thể gây bỏng da. Khi thí nghiệm cần dùng lượng loãng, đeo kính bảo hộ,
                 găng tay và không nếm trực tiếp hóa chất.
               </p>
             </div>

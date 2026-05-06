@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, CheckCircle2, FlaskConical, Gamepad2, RotateCcw, Trophy, XCircle } from "lucide-react";
-import { SplitTextTitle } from "../components/SplitTextTitle";
+import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 type CategoryId = "acid" | "base" | "oxide" | "salt";
 
@@ -29,7 +29,7 @@ const categories: Category[] = [
   },
   {
     id: "base",
-    title: "Base",
+    title: "Bazơ",
     hint: "Thường có nhóm OH liên kết với kim loại",
     color: "#22c55e",
     rgb: "34, 197, 94",
@@ -126,7 +126,7 @@ export function ClassificationGame() {
             highlightColor="#38bdf8"
           />
           <p className="max-w-3xl mx-auto text-lg text-[var(--muted)] leading-relaxed">
-            Kéo công thức vào đúng nhóm Acid, Base, Oxide hoặc Muối. Trên thiết bị cảm ứng, bấm chọn
+            Kéo công thức vào đúng nhóm Acid, Bazơ, Oxide hoặc Muối. Trên thiết bị cảm ứng, bấm chọn
             công thức rồi bấm vào nhóm cần đặt.
           </p>
         </header>
@@ -303,7 +303,7 @@ export function ClassificationGame() {
                   {score === compounds.length ? "Hoàn thành chính xác" : "Xem lại các ô màu đỏ"}
                 </h3>
                 <p className="text-sm text-[var(--muted)] leading-relaxed">
-                  Mẹo nhớ nhanh: acid thường bắt đầu bằng H; base thường có nhóm OH; oxide có oxygen
+                  Mẹo nhớ nhanh: acid thường bắt đầu bằng H; bazơ thường có nhóm OH; oxide có oxygen
                   kết hợp với một nguyên tố khác; muối thường gồm kim loại và gốc acid.
                 </p>
               </div>
