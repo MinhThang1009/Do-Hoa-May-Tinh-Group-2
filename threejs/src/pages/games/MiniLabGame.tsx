@@ -1,10 +1,32 @@
 import { useMemo, useState } from "react";
 import { Beaker, CheckCircle2, Droplets, FlaskConical, PlayCircle, RotateCcw, TestTube2 } from "lucide-react";
+import { AutoPlayVideo } from "../../components/AutoPlayVideo";
 import { MoleculeViewer } from "../../components/MoleculeViewer";
 import { SplitTextTitle } from "../../components/SplitTextTitle";
 
-type ChemicalId = "naoh" | "hcl" | "litmus";
-type ReactionId = "base-litmus" | "acid-litmus" | "neutralization" | "mixed";
+type ChemicalId =
+  | "naoh"
+  | "hcl"
+  | "litmus"
+  | "mg"
+  | "co2"
+  | "caoh2"
+  | "cuso4"
+  | "fe"
+  | "bacl2"
+  | "h2so4"
+  | "na2so4";
+type ReactionId =
+  | "base-litmus"
+  | "acid-litmus"
+  | "neutralization"
+  | "mg-hcl"
+  | "co2-caoh2"
+  | "fe-cuso4"
+  | "bacl2-h2so4"
+  | "cuso4-naoh"
+  | "na2so4-bacl2"
+  | "mixed";
 
 type Chemical = {
   id: ChemicalId;
@@ -57,6 +79,82 @@ const chemicals: Chemical[] = [
     rgb: "168, 85, 247",
     description: "Đổi màu trong môi trường acid/bazơ.",
   },
+  {
+    id: "mg",
+    name: "Magnesium",
+    formula: "Mg",
+    color: "#94a3b8",
+    rgb: "148, 163, 184",
+    description: "Kim loại phản ứng với acid giải phóng khí H2.",
+  },
+  {
+    id: "co2",
+    name: "Khí carbon dioxide",
+    formula: "CO2",
+    color: "#38bdf8",
+    rgb: "56, 189, 248",
+    description: "Oxide acid, làm nước vôi trong vẩn đục.",
+  },
+  {
+    id: "caoh2",
+    name: "Nước vôi trong",
+    formula: "Ca(OH)2",
+    color: "#14b8a6",
+    rgb: "20, 184, 166",
+    description: "Dung dịch bazơ dùng nhận biết CO2.",
+  },
+  {
+    id: "cuso4",
+    name: "Dung dịch copper(II) sulfate",
+    formula: "CuSO4",
+    color: "#2563eb",
+    rgb: "37, 99, 235",
+    description: "Muối màu xanh, tham gia phản ứng trao đổi.",
+  },
+  {
+    id: "fe",
+    name: "Sắt",
+    formula: "Fe",
+    color: "#64748b",
+    rgb: "100, 116, 139",
+    description: "Kim loại đẩy Cu ra khỏi dung dịch muối CuSO4.",
+  },
+  {
+    id: "bacl2",
+    name: "Dung dịch barium chloride",
+    formula: "BaCl2",
+    color: "#f59e0b",
+    rgb: "245, 158, 11",
+    description: "Muối tạo kết tủa trắng BaSO4 với sulfate.",
+  },
+  {
+    id: "h2so4",
+    name: "Dung dịch sulfuric acid",
+    formula: "H2SO4",
+    color: "#fb7185",
+    rgb: "251, 113, 133",
+    description: "Acid mạnh, tạo kết tủa với BaCl2.",
+  },
+  {
+    id: "na2so4",
+    name: "Dung dịch sodium sulfate",
+    formula: "Na2SO4",
+    color: "#06b6d4",
+    rgb: "6, 182, 212",
+    description: "Muối sulfate tạo kết tủa với BaCl2.",
+  },
+];
+
+const reactionHints = [
+  "NaOH + quỳ tím",
+  "HCl + quỳ tím",
+  "NaOH + HCl",
+  "Mg + HCl",
+  "CO2 + Ca(OH)2",
+  "Fe + CuSO4",
+  "BaCl2 + H2SO4",
+  "CuSO4 + NaOH",
+  "Na2SO4 + BaCl2",
 ];
 
 const defaultLiquidClass = "from-slate-400/20 via-purple-400/15 to-slate-400/20";
@@ -100,12 +198,87 @@ const reactionResults: Record<ReactionId, ReactionResult> = {
       { label: "Muối", formula: "NaCl", url: "/models/NaCl.glb", color: "#38bdf8", rgb: "56, 189, 248" },
     ],
   },
+  "mg-hcl": {
+    id: "mg-hcl",
+    title: "Mg tác dụng với HCl",
+    equation: "Mg + 2HCl → MgCl2 + H2↑",
+    observation: "Có bọt khí thoát ra quanh mẩu kim loại, dung dịch tạo muối magnesium chloride.",
+    explanation: "Kim loại Mg đứng trước H nên đẩy H ra khỏi acid, tạo khí hydrogen.",
+    liquidClass: "from-slate-300/45 via-sky-300/35 to-blue-400/35",
+    videoUrl: "/videos/molecular/1_Mg+HCl.mp4",
+    models: [
+      { label: "Acid", formula: "HCl", url: "/models/HCl.glb", color: "#ef4444", rgb: "239, 68, 68" },
+    ],
+  },
+  "co2-caoh2": {
+    id: "co2-caoh2",
+    title: "CO2 làm đục nước vôi trong",
+    equation: "CO2 + Ca(OH)2 → CaCO3↓ + H2O",
+    observation: "Dung dịch xuất hiện vẩn đục trắng do tạo kết tủa calcium carbonate.",
+    explanation: "CO2 là oxide acid, tác dụng với dung dịch bazơ Ca(OH)2 tạo muối carbonate và nước.",
+    liquidClass: "from-white/55 via-cyan-200/40 to-slate-300/45",
+    videoUrl: "/videos/4_tCa(OH)2+CO2.mp4",
+    models: [
+      { label: "Oxide acid", formula: "CO2", url: "/models/CO2.glb", color: "#38bdf8", rgb: "56, 189, 248" },
+    ],
+  },
+  "fe-cuso4": {
+    id: "fe-cuso4",
+    title: "Fe đẩy Cu khỏi CuSO4",
+    equation: "Fe + CuSO4 → FeSO4 + Cu↓",
+    observation: "Sắt phản ứng với dung dịch CuSO4, tạo muối FeSO4 và copper bám màu đỏ nâu.",
+    explanation: "Fe hoạt động hóa học mạnh hơn Cu nên đẩy Cu ra khỏi dung dịch muối.",
+    liquidClass: "from-blue-400/50 via-emerald-300/35 to-orange-300/35",
+    videoUrl: "/videos/molecular/6_CuSO4+Fe.mp4",
+    models: [
+      { label: "Muối ban đầu", formula: "CuSO4", url: "/models/CuSO4.glb", color: "#2563eb", rgb: "37, 99, 235" },
+      { label: "Muối mới", formula: "FeSO4", url: "/models/FeSO4.glb", color: "#22c55e", rgb: "34, 197, 94" },
+    ],
+  },
+  "bacl2-h2so4": {
+    id: "bacl2-h2so4",
+    title: "BaCl2 tạo kết tủa với H2SO4",
+    equation: "BaCl2 + H2SO4 → BaSO4↓ + 2HCl",
+    observation: "Xuất hiện kết tủa trắng BaSO4 không tan.",
+    explanation: "Phản ứng giữa muối và acid xảy ra vì tạo chất không tan là BaSO4.",
+    liquidClass: "from-white/60 via-amber-100/35 to-slate-300/35",
+    videoUrl: "/videos/7_BaCl2+H2SO4.mp4",
+    models: [
+      { label: "Acid", formula: "H2SO4", url: "/models/H2SO4.glb", color: "#fb7185", rgb: "251, 113, 133" },
+      { label: "Acid mới", formula: "HCl", url: "/models/HCl.glb", color: "#ef4444", rgb: "239, 68, 68" },
+    ],
+  },
+  "cuso4-naoh": {
+    id: "cuso4-naoh",
+    title: "CuSO4 tác dụng với NaOH",
+    equation: "CuSO4 + 2NaOH → Cu(OH)2↓ + Na2SO4",
+    observation: "Tạo kết tủa xanh Cu(OH)2 trong dung dịch.",
+    explanation: "Dung dịch muối tác dụng với bazơ tạo muối mới và bazơ không tan.",
+    liquidClass: "from-blue-500/55 via-cyan-300/40 to-emerald-300/35",
+    videoUrl: "/videos/molecular/9_CuSO4+NaOH.mp4",
+    models: [
+      { label: "Muối", formula: "CuSO4", url: "/models/CuSO4.glb", color: "#2563eb", rgb: "37, 99, 235" },
+      { label: "Bazơ", formula: "NaOH", url: "/models/NaOH.glb", color: "#22c55e", rgb: "34, 197, 94" },
+    ],
+  },
+  "na2so4-bacl2": {
+    id: "na2so4-bacl2",
+    title: "Hai dung dịch muối tạo kết tủa",
+    equation: "Na2SO4 + BaCl2 → BaSO4↓ + 2NaCl",
+    observation: "Có kết tủa trắng BaSO4 xuất hiện sau khi trộn hai dung dịch muối.",
+    explanation: "Hai muối trao đổi ion với nhau, phản ứng xảy ra vì tạo muối không tan BaSO4.",
+    liquidClass: "from-white/60 via-cyan-100/35 to-blue-200/35",
+    videoUrl: "/videos/molecular/8_Na2SO4+BaCl2.mp4",
+    models: [
+      { label: "Muối sản phẩm", formula: "NaCl", url: "/models/NaCl.glb", color: "#38bdf8", rgb: "56, 189, 248" },
+    ],
+  },
   mixed: {
     id: "mixed",
     title: "Hỗn hợp chưa rõ hiện tượng chính",
     equation: "Chọn đúng cặp chất để quan sát phản ứng",
     observation: "Ống nghiệm có nhiều chất nhưng chưa tạo đúng thí nghiệm trọng tâm.",
-    explanation: "Hãy làm lại và thử các cặp: NaOH + quỳ tím, HCl + quỳ tím hoặc NaOH + HCl.",
+    explanation: "Hãy làm lại và thử các cặp có trong Bài 8-11 như NaOH + HCl, CO2 + Ca(OH)2, Fe + CuSO4 hoặc BaCl2 + H2SO4.",
     liquidClass: "from-purple-400/45 via-slate-400/30 to-amber-300/30",
     models: [],
   },
@@ -116,11 +289,19 @@ function getReactionResult(addedChemicalIds: ChemicalId[]): ReactionResult | nul
   const hasNaoh = uniqueIds.includes("naoh");
   const hasHcl = uniqueIds.includes("hcl");
   const hasLitmus = uniqueIds.includes("litmus");
+  const hasOnly = (...ids: ChemicalId[]) =>
+    uniqueIds.length === ids.length && ids.every((id) => uniqueIds.includes(id));
 
   if (uniqueIds.length < 2) return null;
-  if (hasNaoh && hasHcl && !hasLitmus) return reactionResults.neutralization;
-  if (hasNaoh && hasLitmus && !hasHcl) return reactionResults["base-litmus"];
-  if (hasHcl && hasLitmus && !hasNaoh) return reactionResults["acid-litmus"];
+  if (hasOnly("naoh", "hcl")) return reactionResults.neutralization;
+  if (hasOnly("naoh", "litmus")) return reactionResults["base-litmus"];
+  if (hasOnly("hcl", "litmus")) return reactionResults["acid-litmus"];
+  if (hasOnly("mg", "hcl")) return reactionResults["mg-hcl"];
+  if (hasOnly("co2", "caoh2")) return reactionResults["co2-caoh2"];
+  if (hasOnly("fe", "cuso4")) return reactionResults["fe-cuso4"];
+  if (hasOnly("bacl2", "h2so4")) return reactionResults["bacl2-h2so4"];
+  if (hasOnly("cuso4", "naoh")) return reactionResults["cuso4-naoh"];
+  if (hasOnly("na2so4", "bacl2")) return reactionResults["na2so4-bacl2"];
 
   return reactionResults.mixed;
 }
@@ -165,7 +346,7 @@ export function MiniLabGame() {
             Phòng thí nghiệm mini
           </p>
           <SplitTextTitle
-            text="Thử phản ứng Bài 9"
+            text="Thử phản ứng Bài 8-11"
             className="text-4xl md:text-6xl font-extrabold mb-5 text-[var(--text)]"
             highlightWords={["phản", "ứng"]}
             highlightColor="#38bdf8"
@@ -174,6 +355,14 @@ export function MiniLabGame() {
             Chọn hóa chất, nhỏ vào ống nghiệm và quan sát hiện tượng. Các phản ứng đúng sẽ mở video
             và mô hình 3D liên quan.
           </p>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+            <span className="rounded-full border border-sky-400/25 bg-sky-500/10 px-4 py-2 text-sm font-bold text-sky-300">
+              {chemicals.length} hóa chất
+            </span>
+            <span className="rounded-full border border-emerald-400/25 bg-emerald-500/10 px-4 py-2 text-sm font-bold text-emerald-300">
+              {reactionHints.length} phản ứng
+            </span>
+          </div>
         </header>
 
         <section className="max-w-6xl mx-auto grid xl:grid-cols-[0.85fr_1.15fr] gap-6">
@@ -184,7 +373,7 @@ export function MiniLabGame() {
                 <h2 className="text-2xl font-extrabold text-[var(--text)]">Chọn chất cần nhỏ</h2>
               </div>
 
-              <div className="p-5 space-y-3">
+              <div className="max-h-[620px] overflow-y-auto p-5 space-y-3 pr-3">
                 {chemicals.map((chemical) => {
                   const isSelected = selectedChemicalId === chemical.id;
 
@@ -240,6 +429,22 @@ export function MiniLabGame() {
                 <RotateCcw className="w-4 h-4" />
                 Làm lại
               </button>
+            </div>
+
+            <div className="rounded-2xl glass-panel p-5">
+              <p className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3">
+                Cặp phản ứng có thể thử
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {reactionHints.map((hint) => (
+                  <span
+                    key={hint}
+                    className="chem-equation rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-bold text-[var(--muted)]"
+                  >
+                    {hint}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -298,7 +503,7 @@ export function MiniLabGame() {
                     <FlaskConical className="w-14 h-14 text-[var(--muted)] mb-4 opacity-70" />
                     <h2 className="text-2xl font-extrabold text-[var(--text)] mb-3">Bắt đầu thí nghiệm</h2>
                     <p className="max-w-md text-[var(--muted)] leading-relaxed">
-                      Hãy nhỏ ít nhất hai chất vào ống nghiệm. Thử `NaOH + quỳ tím` hoặc `NaOH + HCl`.
+                      Hãy nhỏ ít nhất hai chất vào ống nghiệm. Thử `NaOH + quỳ tím`, `CO2 + Ca(OH)2` hoặc `Fe + CuSO4`.
                     </p>
                   </div>
                 )}
@@ -320,11 +525,10 @@ export function MiniLabGame() {
 
                     {reactionResult.videoUrl && (
                       <div className="relative aspect-video bg-black/20 rounded-2xl border border-white/10 overflow-hidden mb-6">
-                        <video
+                        <AutoPlayVideo
                           className="w-full h-full object-cover"
                           controls
                           preload="metadata"
-                          playsInline
                           src={reactionResult.videoUrl}
                         />
                         <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-white/15">

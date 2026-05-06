@@ -1,5 +1,6 @@
 import { ArrowLeft, FlaskConical, PlayCircle, Lightbulb, Beaker } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AutoPlayVideo } from "../../components/AutoPlayVideo";
 import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 const properties = [
@@ -75,11 +76,11 @@ export function TinhChat() {
                   {/* Real Video */}
                   <div className="relative w-full lg:w-1/2 border-b lg:border-b-0 lg:border-r" style={{ borderColor: `rgba(${prop.rgb}, 0.16)` }}>
                     <div className="aspect-video bg-black/20 overflow-hidden">
-                      <video
+                      <AutoPlayVideo
                         className="w-full h-full object-cover"
+                        playMode="hover"
                         controls
                         preload="metadata"
-                        playsInline
                         src={prop.videoUrl}
                       />
                     </div>
@@ -92,11 +93,11 @@ export function TinhChat() {
                   {/* Molecular Video */}
                   <div className="relative w-full lg:w-1/2">
                     <div className="aspect-video bg-black/20 overflow-hidden">
-                      <video
+                      <AutoPlayVideo
                         className="w-full h-full object-cover"
+                        playMode="hover"
                         controls
                         preload="metadata"
-                        playsInline
                         src={prop.molecularVideoUrl}
                       />
                     </div>

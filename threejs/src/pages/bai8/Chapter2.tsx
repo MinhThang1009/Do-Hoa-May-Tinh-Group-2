@@ -1,16 +1,17 @@
 import { ArrowLeft, FlaskConical, TestTubes, Atom, Droplets, Flame, ShieldAlert, Zap, Scale } from "lucide-react";
+import { AutoPlayVideo } from "../../components/AutoPlayVideo";
 import { AnimatedFlask } from "../../components/AnimatedIcons";
 import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 function VideoBox({ src, label }: { src: string; label: string }) {
   return (
     <div className="flex flex-col w-full">
-      <video
+      <AutoPlayVideo
         src={src}
+        playMode="hover"
         controls
         muted
         loop
-        playsInline
         className="rounded-xl w-full max-w-[800px] mx-auto shadow-md border border-[var(--border)] bg-black/20"
         style={{ aspectRatio: "16/9", display: "block" }}
       />
@@ -199,11 +200,11 @@ export function Chapter2() {
           <div className="grid lg:grid-cols-[1.35fr_1fr]">
             <div className="relative border-b lg:border-b-0 lg:border-r border-[rgba(239,68,68,0.16)]">
               <div className="aspect-video bg-black/20 overflow-hidden">
-                <video
+                <AutoPlayVideo
                   className="w-full h-full object-cover"
+                  playMode="hover"
                   controls
                   preload="metadata"
-                  playsInline
                   src="/videos/0_HCl_quytim.mp4"
                 />
               </div>

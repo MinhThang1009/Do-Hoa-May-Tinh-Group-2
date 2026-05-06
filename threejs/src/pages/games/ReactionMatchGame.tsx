@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, CheckCircle2, FlaskConical, PlayCircle, RotateCcw, Trophy, XCircle } from "lucide-react";
+import { AutoPlayVideo } from "../../components/AutoPlayVideo";
 import { MoleculeViewer } from "../../components/MoleculeViewer";
 import { SplitTextTitle } from "../../components/SplitTextTitle";
 
@@ -431,11 +432,10 @@ export function ReactionMatchGame() {
               <div>
                 {activeChallenge.videoUrl && (
                   <div className="relative aspect-video bg-black/20 border-b border-white/10 overflow-hidden">
-                    <video
+                    <AutoPlayVideo
                       className="w-full h-full object-cover"
                       controls
                       preload="metadata"
-                      playsInline
                       src={activeChallenge.videoUrl}
                     />
                     <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-white/15">

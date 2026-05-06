@@ -1,4 +1,5 @@
 import { CheckCircle2, Droplets, FlaskConical, PlayCircle, Scale, ShieldAlert, Sparkles, TestTubes } from "lucide-react";
+import { AutoPlayVideo } from "../../components/AutoPlayVideo";
 import { AnimatedBeaker } from "../../components/AnimatedIcons";
 import { SplitTextTitle } from "../../components/SplitTextTitle";
 
@@ -122,11 +123,11 @@ export function TinhChat() {
                     style={{ borderColor: `rgba(${experiment.rgb}, 0.16)` }}
                   >
                     <div className="aspect-video bg-black/20 overflow-hidden">
-                      <video
+                      <AutoPlayVideo
                         className="w-full h-full object-cover"
+                        playMode="hover"
                         controls
                         preload="metadata"
-                        playsInline
                         src={experiment.videoUrl}
                       />
                     </div>
@@ -139,11 +140,11 @@ export function TinhChat() {
                   {/* Molecular Video */}
                   <div className="relative w-full lg:w-1/2">
                     <div className="aspect-video bg-black/20 overflow-hidden">
-                      <video
+                      <AutoPlayVideo
                         className="w-full h-full object-cover"
+                        playMode="hover"
                         controls
                         preload="metadata"
-                        playsInline
                         src={experiment.molecularVideoUrl}
                       />
                     </div>

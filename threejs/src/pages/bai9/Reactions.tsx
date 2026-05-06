@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CheckCircle2, Droplets, FlaskConical, PlayCircle, Scale, ShieldAlert, TestTubes } from "lucide-react";
+import { AutoPlayVideo } from "../../components/AutoPlayVideo";
 import { AnimatedFlask } from "../../components/AnimatedIcons";
 import { MoleculeViewer } from "../../components/MoleculeViewer";
 import { SplitTextTitle } from "../../components/SplitTextTitle";
@@ -101,11 +102,11 @@ export function Reactions() {
                   style={{ borderColor: `rgba(${experiment.rgb}, 0.16)` }}
                 >
                   <div className="aspect-video bg-black/20 overflow-hidden">
-                    <video
+                    <AutoPlayVideo
                       className="w-full h-full object-cover"
+                      playMode="hover"
                       controls
                       preload="metadata"
-                      playsInline
                       src={experiment.videoUrl}
                     />
                   </div>
@@ -173,11 +174,11 @@ export function Reactions() {
             <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
               <div className="border-b lg:border-b-0 lg:border-r border-[rgba(34,197,94,0.16)]">
                 <div className="relative aspect-video bg-black/20 overflow-hidden">
-                  <video
+                  <AutoPlayVideo
                     className="w-full h-full object-cover"
+                    playMode="hover"
                     controls
                     preload="metadata"
-                    playsInline
                     src="/videos/molecular/3_NaOH_HCl.mp4"
                   />
                   <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-white/15">
