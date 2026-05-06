@@ -18,6 +18,9 @@ import { KhaiNiem } from "./pages/bai10/KhaiNiem";
 import { TinhChat } from "./pages/bai10/TinhChat";
 import { ThongDung } from "./pages/bai10/ThongDung";
 import { ComingSoonLesson } from "./pages/ComingSoonLesson";
+import { ClassificationGame } from "./pages/ClassificationGame";
+import { ReactionMatchGame } from "./pages/ReactionMatchGame";
+import { QuickQuizGame } from "./pages/QuickQuizGame";
 import { ChemistryBackground } from "./components/ChemistryBackground";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeToggle } from "./components/ThemeToggle";
@@ -62,7 +65,10 @@ export default function App() {
   const showAppendixBack =
     location.pathname.startsWith("/bai-8") ||
     location.pathname.startsWith("/bai-9") ||
-    location.pathname.startsWith("/bai-10");
+    location.pathname.startsWith("/bai-10") ||
+    location.pathname.startsWith("/game") ||
+    location.pathname.startsWith("/reaction-game") ||
+    location.pathname.startsWith("/quick-quiz");
 
   const handleSplashComplete = useCallback(() => {
     setAppReady(true);
@@ -166,6 +172,9 @@ export default function App() {
           {appReady && (
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<PageWrapper><Appendix /></PageWrapper>} />
+              <Route path="/game" element={<PageWrapper><ClassificationGame /></PageWrapper>} />
+              <Route path="/reaction-game" element={<PageWrapper><ReactionMatchGame /></PageWrapper>} />
+              <Route path="/quick-quiz" element={<PageWrapper><QuickQuizGame /></PageWrapper>} />
 
               <Route path="/bai-8" element={<PageWrapper><Bai8Home /></PageWrapper>} />
               <Route path="/bai-8/phan-1" element={<PageWrapper><Chapter1 /></PageWrapper>} />

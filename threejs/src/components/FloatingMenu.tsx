@@ -121,7 +121,7 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
       indicatorClass: "bg-gradient-to-t from-emerald-500 to-emerald-500/20 dark:from-emerald-300 dark:to-emerald-300/20"
     },
     {
-      name: "Base", path: "/bai-9/phan-1", icon: Atom,
+      name: "Khái niệm", path: "/bai-9/phan-1", icon: Atom,
       textClass: "text-emerald-600 dark:text-emerald-300",
       iconClass: "text-emerald-600 dark:text-emerald-300",
       bgClass: "bg-emerald-500/10 dark:bg-emerald-300/10",

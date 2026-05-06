@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, FlaskConical, Layers, ListChecks, Shapes } from "lucide-react";
+import { ArrowRight, FlaskConical, Gamepad2, ListChecks, Shapes, Timer } from "lucide-react";
 import { AnimatedAtom3D, AnimatedBeaker, AnimatedFlask } from "../components/AnimatedIcons";
 
 const lessons = [
@@ -109,19 +109,90 @@ export function Appendix() {
           ))}
         </div>
 
-        <div className="max-w-5xl mx-auto mt-12 grid sm:grid-cols-3 gap-4">
-          <div className="glass-panel rounded-2xl px-5 py-4 flex items-center gap-3">
-            <BookOpen className="w-5 h-5 text-sky-400" />
-            <p className="text-sm font-semibold text-[var(--text)]">Màn đầu vào là phụ lục</p>
-          </div>
-          <div className="glass-panel rounded-2xl px-5 py-4 flex items-center gap-3">
-            <FlaskConical className="w-5 h-5 text-emerald-400" />
-            <p className="text-sm font-semibold text-[var(--text)]">Bài 9 giữ đầy đủ thí nghiệm</p>
-          </div>
-          <div className="glass-panel rounded-2xl px-5 py-4 flex items-center gap-3">
-            <Layers className="w-5 h-5 text-amber-400" />
-            <p className="text-sm font-semibold text-[var(--text)]">Mỗi bài có route riêng</p>
-          </div>
+        <div className="max-w-6xl mx-auto mt-8 grid lg:grid-cols-3 gap-7">
+          <Link
+            to="/game"
+            className="group block rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-5"
+            style={{ borderColor: "rgba(168, 85, 247, 0.28)" }}
+          >
+            <div className="p-7 h-full flex flex-col sm:flex-row sm:items-center gap-6 bg-gradient-to-r from-purple-500/10 via-sky-500/6 to-amber-500/10">
+              <div className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 border border-purple-400/30 bg-purple-500/10">
+                <Gamepad2 className="w-11 h-11 text-purple-300 chem-icon-glow" />
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-bold uppercase tracking-widest text-purple-300 mb-2">
+                  Game tổng ôn
+                </p>
+                <h2 className="text-3xl font-extrabold text-[var(--text)] mb-3 group-hover:text-[var(--accent)] transition-colors">
+                  Kéo-thả phân loại chất
+                </h2>
+                <p className="text-sm text-[var(--muted)] leading-relaxed mb-5">
+                  Phân loại công thức vào nhóm Acid, Base, Oxide và Muối để ôn lại Chương 2.
+                </p>
+                <div className="flex items-center gap-2 text-sm font-bold text-purple-300">
+                  Chơi ngay
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            to="/reaction-game"
+            className="group block rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-5"
+            style={{ borderColor: "rgba(34, 197, 94, 0.28)" }}
+          >
+            <div className="p-7 h-full flex flex-col sm:flex-row sm:items-center gap-6 bg-gradient-to-r from-emerald-500/10 via-sky-500/6 to-red-500/10">
+              <div className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 border border-emerald-400/30 bg-emerald-500/10">
+                <FlaskConical className="w-11 h-11 text-emerald-300 chem-icon-glow" />
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-bold uppercase tracking-widest text-emerald-300 mb-2">
+                  Game phản ứng
+                </p>
+                <h2 className="text-3xl font-extrabold text-[var(--text)] mb-3 group-hover:text-[var(--accent)] transition-colors">
+                  Ghép sản phẩm phản ứng
+                </h2>
+                <p className="text-sm text-[var(--muted)] leading-relaxed mb-5">
+                  Chọn sản phẩm hoặc hiện tượng đúng, sau đó xem video và mô hình 3D của phản ứng.
+                </p>
+                <div className="flex items-center gap-2 text-sm font-bold text-emerald-300">
+                  Chơi ngay
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            to="/quick-quiz"
+            className="group block rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-5"
+            style={{ borderColor: "rgba(245, 158, 11, 0.28)" }}
+          >
+            <div className="p-7 h-full flex flex-col sm:flex-row lg:flex-col xl:flex-row sm:items-center gap-6 bg-gradient-to-r from-amber-500/10 via-sky-500/6 to-purple-500/10">
+              <div className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 border border-amber-400/30 bg-amber-500/10">
+                <Timer className="w-11 h-11 text-amber-300 chem-icon-glow" />
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-bold uppercase tracking-widest text-amber-300 mb-2">
+                  Game tốc độ
+                </p>
+                <h2 className="text-3xl font-extrabold text-[var(--text)] mb-3 group-hover:text-[var(--accent)] transition-colors">
+                  Đố nhanh 60 giây
+                </h2>
+                <p className="text-sm text-[var(--muted)] leading-relaxed mb-5">
+                  Trả lời trắc nghiệm thật nhanh: đúng cộng điểm, sai bị trừ thời gian.
+                </p>
+                <div className="flex items-center gap-2 text-sm font-bold text-amber-300">
+                  Chơi ngay
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
 
         <div className="max-w-md mx-auto mt-16 animate-fade-in-up stagger-5 relative group">

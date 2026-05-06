@@ -9,24 +9,31 @@ type Props = {
   className?: string;
 };
 
-function ionFromObjectName(name: string): string | null {
-  const n = name.trim();
+function atomLabelFromObjectName(name: string, modelUrl: string): string | null {
+  const normalizedName = name.trim().toLowerCase();
+  const normalizedUrl = modelUrl.toLowerCase();
 
-  if (/cl/i.test(n)) return "Cl⁻";
-
-  const first = n[0]?.toUpperCase();
-  switch (first) {
-    case "H":
-      return "H⁺";
-    case "O":
-      return "O²⁻";
-    case "N":
-      return "N⁵⁺";
-    case "S":
-      return "S⁶⁺";
-    default:
-      return null;
+  if (!normalizedName || normalizedName.startsWith("bond") || normalizedName.startsWith("label")) {
+    return null;
   }
+
+  const isHydroxideModel =
+    normalizedUrl.includes("naoh") ||
+    normalizedUrl.includes("ba_oh") ||
+    normalizedUrl.includes("feoh") ||
+    normalizedUrl.includes("fe_oh");
+
+  if (normalizedName.startsWith("na")) return "Na⁺";
+  if (normalizedName.startsWith("ba")) return "Ba²⁺";
+  if (normalizedName.startsWith("fe")) return "Fe²⁺";
+  if (normalizedName.startsWith("cl")) return "Cl⁻";
+  if (isHydroxideModel && (normalizedName === "o" || normalizedName === "h")) return "OH⁻";
+  if (normalizedName === "h") return "H⁺";
+  if (normalizedName === "o") return "O²⁻";
+  if (normalizedName === "n") return "N⁵⁺";
+  if (normalizedName === "s") return "S⁶⁺";
+
+  return null;
 }
 
 function stripBlenderLabels(object3d: THREE.Object3D) {
@@ -207,7 +214,7 @@ export function MoleculeViewer({ url, className }: Props) {
       const hits = raycaster.intersectObject(modelRoot, true);
       const hit = hits.find((h: any) => (h.object as any)?.isMesh);
       const name = hit?.object?.name || "";
-      const ion = name ? ionFromObjectName(name) : null;
+      const ion = name ? atomLabelFromObjectName(name, url) : null;
 
       if (!ion) {
         tooltipVisible = false;
@@ -337,7 +344,6 @@ export function MoleculeViewer({ url, className }: Props) {
         ref={hostRef}
         className="w-full h-full cursor-pointer"
         onDoubleClick={() => setIsFullscreen(!isFullscreen)}
-        title="Double click to expand / Nháy đúp để Phóng to"
       />
 
       {!isLoading && (
