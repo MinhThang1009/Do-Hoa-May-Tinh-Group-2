@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { Atom, FlaskConical, Beaker, BookOpen, Home, Factory } from "lucide-react";
+import { Atom, FlaskConical, Beaker, BookOpen, Home, Factory, Droplets, Layers, Repeat } from "lucide-react";
 
 export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady?: boolean, isIdle?: boolean }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,6 +40,7 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
   const isLesson8 = location.pathname.startsWith("/bai-8") || location.pathname.startsWith("/phan-");
   const isLesson9 = location.pathname.startsWith("/bai-9");
   const isBai10 = location.pathname.startsWith("/bai-10");
+  const isBai11 = location.pathname.startsWith("/bai-11");
 
   const lesson8NavItems = [
     {
@@ -146,7 +147,58 @@ export function FloatingMenu({ isAppReady = true, isIdle = false }: { isAppReady
     },
   ];
 
-  const navItems = isBai10 ? bai10NavItems : isLesson9 ? lesson9NavItems : isLesson8 ? lesson8NavItems : [];
+  const bai11NavItems = [
+    {
+      name: "Trang chủ", path: "/bai-11", icon: Home,
+      textClass: "text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500 dark:from-[#f97316] dark:to-[#f59e0b]",
+      iconClass: "",
+      bgClass: "bg-gradient-to-r from-orange-500/10 to-amber-500/10 dark:from-[#f97316]/10 dark:to-[#f59e0b]/10",
+      borderClass: "border-orange-500/30 dark:border-orange-500/30",
+      indicatorClass: "bg-gradient-to-r from-orange-500 to-amber-500 dark:from-[#f97316] dark:to-[#f59e0b]"
+    },
+    {
+      name: "Khái niệm", path: "/bai-11/khai-niem", icon: Atom,
+      textClass: "text-cyan-600 dark:text-[#06b6d4]",
+      iconClass: "text-cyan-600 dark:text-[#06b6d4]",
+      bgClass: "bg-cyan-500/10 dark:bg-[#06b6d4]/10",
+      borderClass: "border-cyan-500/30 dark:border-[#06b6d4]/30",
+      indicatorClass: "bg-gradient-to-t from-cyan-500 to-cyan-500/20 dark:from-[#06b6d4] dark:to-[#06b6d4]/20"
+    },
+    {
+      name: "Tính tan", path: "/bai-11/tinh-tan", icon: Droplets,
+      textClass: "text-blue-600 dark:text-[#3b82f6]",
+      iconClass: "text-blue-600 dark:text-[#3b82f6]",
+      bgClass: "bg-blue-500/10 dark:bg-[#3b82f6]/10",
+      borderClass: "border-blue-500/30 dark:border-[#3b82f6]/30",
+      indicatorClass: "bg-gradient-to-t from-blue-500 to-blue-500/20 dark:from-[#3b82f6] dark:to-[#3b82f6]/20"
+    },
+    {
+      name: "Tính chất", path: "/bai-11/tinh-chat", icon: FlaskConical,
+      textClass: "text-purple-600 dark:text-[#8b5cf6]",
+      iconClass: "text-purple-600 dark:text-[#8b5cf6]",
+      bgClass: "bg-purple-500/10 dark:bg-[#8b5cf6]/10",
+      borderClass: "border-purple-500/30 dark:border-[#8b5cf6]/30",
+      indicatorClass: "bg-gradient-to-t from-purple-500 to-purple-500/20 dark:from-[#8b5cf6] dark:to-[#8b5cf6]/20"
+    },
+    {
+      name: "Điều chế", path: "/bai-11/dieu-che", icon: Layers,
+      textClass: "text-emerald-600 dark:text-[#10b981]",
+      iconClass: "text-emerald-600 dark:text-[#10b981]",
+      bgClass: "bg-emerald-500/10 dark:bg-[#10b981]/10",
+      borderClass: "border-emerald-500/30 dark:border-[#10b981]/30",
+      indicatorClass: "bg-gradient-to-t from-emerald-500 to-emerald-500/20 dark:from-[#10b981] dark:to-[#10b981]/20"
+    },
+    {
+      name: "Quan hệ", path: "/bai-11/moi-quan-he", icon: Repeat,
+      textClass: "text-orange-600 dark:text-[#ea580c]",
+      iconClass: "text-orange-600 dark:text-[#ea580c]",
+      bgClass: "bg-orange-500/10 dark:bg-[#ea580c]/10",
+      borderClass: "border-orange-500/30 dark:border-[#ea580c]/30",
+      indicatorClass: "bg-gradient-to-t from-orange-500 to-orange-500/20 dark:from-[#ea580c] dark:to-[#ea580c]/20"
+    },
+  ];
+
+  const navItems = isBai11 ? bai11NavItems : isBai10 ? bai10NavItems : isLesson9 ? lesson9NavItems : isLesson8 ? lesson8NavItems : [];
 
   if (navItems.length === 0) return null;
 

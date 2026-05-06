@@ -1,62 +1,43 @@
-import { Flame, Droplets, FlaskConical, Scale, ShieldAlert, Sparkles } from "lucide-react";
+import { CheckCircle2, Droplets, FlaskConical, PlayCircle, Scale, ShieldAlert, Sparkles, TestTubes } from "lucide-react";
 import { AnimatedBeaker } from "../../components/AnimatedIcons";
 import { SplitTextTitle } from "../../components/SplitTextTitle";
 
-const properties = [
+const experiments = [
   {
-    title: "1. Oxide acid",
+    order: "1",
+    title: "CO₂ + Ca(OH)₂",
+    subtitle: "1. Oxide acid tác dụng với dung dịch base",
+    videoUrl: "/videos/4_tCa(OH)2+CO2.mp4",
+    molecularVideoUrl: "/videos/molecular/4_phantu.mp4",
+    color: "#8b5cf6", // Violet
+    rgb: "139, 92, 246",
+    equation: (
+      <>
+        CO₂ + Ca(OH)₂ → CaCO₃<span className="text-violet-400">↓</span> + H₂O
+        <br />
+        <span className="mt-1 inline-block">CaCO₃ + CO₂ + H₂O → Ca(HCO₃)₂</span>
+      </>
+    ),
+    observation: "Sục khí CO₂ vào dung dịch nước vôi trong (Ca(OH)₂), thấy xuất hiện kết tủa trắng (vẩn đục). Tiếp tục sục thêm khí CO₂ thì kết tủa tan dần, dung dịch trong trở lại.",
+    conclusion: "Nhiều oxide acid tác dụng với base tạo thành muối và nước.",
     icon: <Droplets className="w-6 h-6" />,
-    accentRgb: "139, 92, 246", // Violet
-    content: (
-      <>
-        <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Nhiều oxide acid tác dụng với <strong className="text-[var(--text)]">nước</strong> tạo thành dung dịch acid.
-          Ngoài ra, oxide acid tác dụng với <strong className="text-[var(--text)]">base</strong> tạo thành{" "}
-          <strong className="text-[var(--text)]">muối</strong> và{" "}
-          <strong className="text-[var(--text)]">nước</strong>.
-        </p>
-        <div className="flex flex-col items-start gap-2">
-          <div className="rounded-xl px-4 py-3 border border-[rgba(139,92,246,0.20)] bg-[rgba(139,92,246,0.04)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              CO₂ + Ca(OH)₂ → CaCO₃<span className="text-violet-400">↓</span> + H₂O
-            </p>
-          </div>
-          <div className="rounded-xl px-4 py-3 border border-[rgba(139,92,246,0.15)] bg-[rgba(139,92,246,0.03)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              SO₂ + 2NaOH → Na₂SO₃ + H₂O
-            </p>
-          </div>
-        </div>
-      </>
-    ),
   },
   {
-    title: "2. Oxide base",
+    order: "2",
+    title: "Fe₂O₃ + HCl",
+    subtitle: "2. Oxide base tác dụng với dung dịch acid",
+    videoUrl: "/videos/5_fe2o3_hcl.mp4",
+    molecularVideoUrl: "/videos/molecular/5_phantu.mp4",
+    color: "#10b981", // Emerald
+    rgb: "16, 185, 129",
+    equation: "Fe₂O₃ + 6HCl → 2FeCl₃ + 3H₂O",
+    observation: "Bột Fe₂O₃ (màu đỏ nâu) tan dần trong dung dịch HCl tạo thành dung dịch có màu vàng nâu.",
+    conclusion: "Hầu hết oxide base tác dụng với acid tạo thành muối và nước.",
     icon: <FlaskConical className="w-6 h-6" />,
-    accentRgb: "16, 185, 129", // Emerald
-    content: (
-      <>
-        <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Một số oxide base tác dụng với <strong className="text-[var(--text)]">nước</strong> tạo thành dung dịch base.
-          Hầu hết oxide base tác dụng với <strong className="text-[var(--text)]">acid</strong> tạo thành{" "}
-          <strong className="text-[var(--text)]">muối</strong> và{" "}
-          <strong className="text-[var(--text)]">nước</strong>.
-        </p>
-        <div className="flex flex-col items-start gap-2">
-          <div className="rounded-xl px-4 py-3 border border-[rgba(16,185,129,0.20)] bg-[rgba(16,185,129,0.04)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              Fe₂O₃ + 6HCl → 2FeCl₃ + 3H₂O
-            </p>
-          </div>
-          <div className="rounded-xl px-4 py-3 border border-[rgba(16,185,129,0.15)] bg-[rgba(16,185,129,0.03)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              CaO + H₂SO₄ → CaSO₄ + H₂O
-            </p>
-          </div>
-        </div>
-      </>
-    ),
   },
+];
+
+const otherProperties = [
   {
     title: "3. Oxide lưỡng tính",
     icon: <Scale className="w-6 h-6" />,
@@ -69,10 +50,10 @@ const properties = [
         </p>
         <div className="flex flex-col items-start gap-2">
           <div className="rounded-xl px-4 py-3 border border-[rgba(245,158,11,0.20)] bg-[rgba(245,158,11,0.04)] inline-block w-auto">
-             <span className="text-sm text-[var(--muted)] block mb-1">Ví dụ:</span>
-             <p className="chem-equation text-base font-bold text-[var(--text)]">
-               Al₂O₃, ZnO...
-             </p>
+            <span className="text-sm text-[var(--muted)] block mb-1">Ví dụ:</span>
+            <p className="chem-equation text-base font-bold text-[var(--text)]">
+              Al₂O₃, ZnO...
+            </p>
           </div>
         </div>
       </>
@@ -85,15 +66,15 @@ const properties = [
     content: (
       <>
         <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Còn được gọi là <strong className="text-[var(--text)]">oxide không tạo muối</strong>. 
+          Còn được gọi là <strong className="text-[var(--text)]">oxide không tạo muối</strong>.
           Đây là những oxide <strong className="text-[#ef4444]">không tác dụng</strong> với acid, base, nước.
         </p>
         <div className="flex flex-col items-start gap-2">
           <div className="rounded-xl px-4 py-3 border border-[rgba(100,116,139,0.20)] bg-[rgba(100,116,139,0.04)] inline-block w-auto">
-             <span className="text-sm text-[var(--muted)] block mb-1">Ví dụ:</span>
-             <p className="chem-equation text-base font-bold text-[var(--text)]">
-               CO, NO...
-             </p>
+            <span className="text-sm text-[var(--muted)] block mb-1">Ví dụ:</span>
+            <p className="chem-equation text-base font-bold text-[var(--text)]">
+              CO, NO...
+            </p>
           </div>
         </div>
       </>
@@ -116,16 +97,113 @@ export function TinhChat() {
           </div>
           <SplitTextTitle text="Phần 2: Tính chất hóa học" className="text-5xl font-extrabold mb-3 text-[var(--text)]" highlightWords={["hóa", "học"]} highlightColor="#8b5cf6" />
           <p className="max-w-3xl mx-auto mt-4 text-lg text-[var(--muted)] leading-relaxed">
-            Dựa vào tính chất hóa học, oxide được chia thành 4 loại chính. Nắm vững phân loại này giúp hiểu rõ
-            cách oxide phản ứng với các chất khác nhau.
+            Quan sát hai thí nghiệm minh họa cho tính chất của Oxide acid và Oxide base, từ đó tìm hiểu cách
+            oxide phản ứng với các chất khác nhau.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto flex flex-col gap-8">
-          {properties.map((prop, index) => (
+        {/* Video Experiments Section */}
+        <div className="max-w-6xl mx-auto flex flex-col gap-10 mb-14">
+          {experiments.map((experiment, index) => (
+            <section
+              key={experiment.title}
+              className={`rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-${index + 1}`}
+              style={{ borderColor: `rgba(${experiment.rgb}, 0.24)` }}
+            >
+              <div
+                className="flex flex-col"
+                style={{ background: `linear-gradient(135deg, rgba(${experiment.rgb}, 0.06), transparent 60%)` }}
+              >
+                {/* Videos Row */}
+                <div className="flex flex-col lg:flex-row border-b" style={{ borderColor: `rgba(${experiment.rgb}, 0.16)` }}>
+                  {/* Real Video */}
+                  <div
+                    className="relative w-full lg:w-1/2 border-b lg:border-b-0 lg:border-r"
+                    style={{ borderColor: `rgba(${experiment.rgb}, 0.16)` }}
+                  >
+                    <div className="aspect-video bg-black/20 overflow-hidden">
+                      <video
+                        className="w-full h-full object-cover"
+                        controls
+                        preload="metadata"
+                        playsInline
+                        src={experiment.videoUrl}
+                      />
+                    </div>
+                    <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-white/15">
+                      <PlayCircle className="w-4 h-4" />
+                      <span className="text-xs font-bold uppercase tracking-wider">Thí nghiệm {experiment.order}</span>
+                    </div>
+                  </div>
+
+                  {/* Molecular Video */}
+                  <div className="relative w-full lg:w-1/2">
+                    <div className="aspect-video bg-black/20 overflow-hidden">
+                      <video
+                        className="w-full h-full object-cover"
+                        controls
+                        preload="metadata"
+                        playsInline
+                        src={experiment.molecularVideoUrl}
+                      />
+                    </div>
+                    <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-cyan-400/30">
+                      <PlayCircle className="w-4 h-4 text-cyan-400" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">Phản ứng phân tử</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content Row */}
+                <div className="w-full p-7 lg:p-10 flex flex-col lg:flex-row items-start gap-8">
+                  <div className="w-full lg:w-1/2">
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                      style={{
+                        color: experiment.color,
+                        background: `rgba(${experiment.rgb}, 0.10)`,
+                        border: `1px solid rgba(${experiment.rgb}, 0.22)`,
+                      }}
+                    >
+                      {experiment.icon}
+                    </div>
+                    <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: experiment.color }}>
+                      {experiment.subtitle}
+                    </p>
+                    <h2 className="text-3xl font-extrabold text-[var(--text)] mb-4">{experiment.title}</h2>
+                    <div
+                      className="rounded-xl px-4 py-3 border inline-block"
+                      style={{
+                        borderColor: `rgba(${experiment.rgb}, 0.20)`,
+                        background: `rgba(${experiment.rgb}, 0.06)`,
+                      }}
+                    >
+                      <p className="chem-equation text-lg font-bold text-[var(--text)]">{experiment.equation}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="w-full lg:w-1/2 space-y-5 lg:mt-6">
+                    <div className="flex items-start gap-3">
+                      <TestTubes className="w-5 h-5 mt-0.5 shrink-0" style={{ color: experiment.color }} />
+                      <p className="text-base text-[var(--muted)] leading-relaxed">{experiment.observation}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0 text-emerald-400" />
+                      <p className="text-base text-[var(--muted)] leading-relaxed">{experiment.conclusion}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          ))}
+        </div>
+
+        {/* Other Properties Section */}
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+          {otherProperties.map((prop, index) => (
             <div
               key={index}
-              className={`group rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-${index + 1}`}
+              className={`group rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-${index + 3}`}
               style={{ borderColor: `rgba(${prop.accentRgb}, 0.18)` }}
             >
               <div

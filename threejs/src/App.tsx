@@ -18,6 +18,14 @@ import { KhaiNiem } from "./pages/bai10/KhaiNiem";
 import { TinhChat } from "./pages/bai10/TinhChat";
 import { ThongDung } from "./pages/bai10/ThongDung";
 import { ComingSoonLesson } from "./pages/ComingSoonLesson";
+
+// Bài 11
+import { Bai11Home } from "./pages/bai11/Bai11Home";
+import { KhaiNiem as Lesson11KhaiNiem } from "./pages/bai11/KhaiNiem";
+import { TinhTan } from "./pages/bai11/TinhTan";
+import { TinhChat as Lesson11TinhChat } from "./pages/bai11/TinhChat";
+import { DieuChe } from "./pages/bai11/DieuChe";
+import { MoiQuanHe } from "./pages/bai11/MoiQuanHe";
 import { ChemistryBackground } from "./components/ChemistryBackground";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeToggle } from "./components/ThemeToggle";
@@ -62,7 +70,8 @@ export default function App() {
   const showAppendixBack =
     location.pathname.startsWith("/bai-8") ||
     location.pathname.startsWith("/bai-9") ||
-    location.pathname.startsWith("/bai-10");
+    location.pathname.startsWith("/bai-10") ||
+    location.pathname.startsWith("/bai-11");
 
   const handleSplashComplete = useCallback(() => {
     setAppReady(true);
@@ -184,7 +193,12 @@ export default function App() {
               <Route path="/bai-10/thong-dung" element={<PageWrapper><ThongDung /></PageWrapper>} />
 
               {/* Bài 11: Muối */}
-              <Route path="/bai-11" element={<PageWrapper><ComingSoonLesson lessonNumber="Bài 11" title="Muối" color="#f59e0b" /></PageWrapper>} />
+              <Route path="/bai-11" element={<PageWrapper><Bai11Home /></PageWrapper>} />
+              <Route path="/bai-11/khai-niem" element={<PageWrapper><Lesson11KhaiNiem /></PageWrapper>} />
+              <Route path="/bai-11/tinh-tan" element={<PageWrapper><TinhTan /></PageWrapper>} />
+              <Route path="/bai-11/tinh-chat" element={<PageWrapper><Lesson11TinhChat /></PageWrapper>} />
+              <Route path="/bai-11/dieu-che" element={<PageWrapper><DieuChe /></PageWrapper>} />
+              <Route path="/bai-11/moi-quan-he" element={<PageWrapper><MoiQuanHe /></PageWrapper>} />
 
               <Route path="/phan-1" element={<Navigate to="/bai-8/phan-1" replace />} />
               <Route path="/phan-2" element={<Navigate to="/bai-8/phan-2" replace />} />

@@ -36,7 +36,7 @@ const lessons = [
   {
     number: "Bài 11",
     title: "Muối",
-    description: "Phụ lục đã có mục chọn; nội dung chi tiết sẽ được bổ sung khi có bài học.",
+    description: "Khái niệm, tính tan, tính chất hóa học, điều chế muối và mối quan hệ của các hợp chất vô cơ.",
     path: "/bai-11",
     color: "#f59e0b",
     rgb: "245, 158, 11",
