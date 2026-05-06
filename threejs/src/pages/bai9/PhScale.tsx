@@ -70,7 +70,7 @@ export function PhScale() {
             highlightColor="#f59e0b"
           />
           <p className="max-w-3xl mx-auto mt-4 text-lg text-[var(--muted)] leading-relaxed">
-            Thang pH gồm các giá trị từ 1 đến 14, dùng để đánh giá độ acid - base của dung dịch.
+            Thang pH gồm các giá trị từ 1 đến 14, dùng để đánh giá độ acid - bazơ của dung dịch.
             Acid có pH nhỏ hơn 7, trung tính bằng 7 và kiềm lớn hơn 7.
           </p>
         </div>
@@ -211,7 +211,7 @@ export function PhScale() {
             <h3 className="text-xl font-extrabold text-[var(--text)] mb-3">Liên hệ Bài 9</h3>
             <p className="text-sm text-[var(--muted)] leading-relaxed">
               NaOH là dung dịch kiềm nên pH lớn hơn 7 và làm quỳ tím chuyển xanh.
-              Khi phản ứng với HCl, dung dịch tiến gần môi trường trung tính nếu lượng acid và base vừa đủ.
+              Khi phản ứng với HCl, dung dịch tiến gần môi trường trung tính nếu lượng acid và bazơ vừa đủ.
             </p>
           </div>
         </div>
@@ -228,7 +228,7 @@ export function PhScale() {
               <h3 className="text-xl font-extrabold text-[var(--text)] mb-3">Ghi nhớ nhanh</h3>
               <p className="text-[var(--muted)] leading-relaxed">
                 pH nhỏ hơn 7 là acid, pH bằng 7 là trung tính, pH lớn hơn 7 là kiềm.
-                Thang pH giúp so sánh độ mạnh yếu của các acid hoặc base có cùng nồng độ.
+                Thang pH giúp so sánh độ mạnh yếu của các acid hoặc bazơ có cùng nồng độ.
               </p>
             </div>
           </div>

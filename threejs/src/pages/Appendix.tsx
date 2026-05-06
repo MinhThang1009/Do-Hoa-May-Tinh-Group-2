@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, FlaskConical, Gamepad2, ListChecks, Shapes, Timer } from "lucide-react";
+import { ArrowRight, Gamepad2, ListChecks, Shapes } from "lucide-react";
 import { AnimatedAtom3D, AnimatedBeaker, AnimatedFlask } from "../components/AnimatedIcons";
 
 const lessons = [
@@ -15,8 +15,8 @@ const lessons = [
   },
   {
     number: "Bài 9",
-    title: "Base. Thang pH",
-    description: "Base, NaOH với quỳ tím, phản ứng trung hòa NaOH + HCl và thang pH.",
+    title: "Bazơ. Thang pH",
+    description: "Bazơ, NaOH với quỳ tím, phản ứng trung hòa NaOH + HCl và thang pH.",
     path: "/bai-9",
     color: "#22c55e",
     rgb: "34, 197, 94",
@@ -119,13 +119,13 @@ export function Appendix() {
           ))}
         </div>
 
-        <div className="max-w-6xl mx-auto mt-8 grid lg:grid-cols-3 gap-7">
+        <div className="max-w-6xl mx-auto mt-8">
           <Link
-            to="/game"
+            to="/games"
             className="group block rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-5"
             style={{ borderColor: "rgba(168, 85, 247, 0.28)" }}
           >
-            <div className="p-7 h-full flex flex-col sm:flex-row sm:items-center gap-6 bg-gradient-to-r from-purple-500/10 via-sky-500/6 to-amber-500/10">
+            <div className="p-7 h-full flex flex-col md:flex-row md:items-center gap-6 bg-gradient-to-r from-purple-500/10 via-sky-500/6 to-amber-500/10">
               <div className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 border border-purple-400/30 bg-purple-500/10">
                 <Gamepad2 className="w-11 h-11 text-purple-300 chem-icon-glow" />
               </div>
@@ -135,69 +135,13 @@ export function Appendix() {
                   Game tổng ôn
                 </p>
                 <h2 className="text-3xl font-extrabold text-[var(--text)] mb-3 group-hover:text-[var(--accent)] transition-colors">
-                  Kéo-thả phân loại chất
+                  Khu trò chơi Chương 2
                 </h2>
                 <p className="text-sm text-[var(--muted)] leading-relaxed mb-5">
-                  Phân loại công thức vào nhóm Acid, Base, Oxide và Muối để ôn lại Chương 2.
+                  Mở màn chọn 4 game: phân loại chất, ghép phản ứng, đố nhanh 60 giây và phòng thí nghiệm mini.
                 </p>
                 <div className="flex items-center gap-2 text-sm font-bold text-purple-300">
-                  Chơi ngay
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            to="/reaction-game"
-            className="group block rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-5"
-            style={{ borderColor: "rgba(34, 197, 94, 0.28)" }}
-          >
-            <div className="p-7 h-full flex flex-col sm:flex-row sm:items-center gap-6 bg-gradient-to-r from-emerald-500/10 via-sky-500/6 to-red-500/10">
-              <div className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 border border-emerald-400/30 bg-emerald-500/10">
-                <FlaskConical className="w-11 h-11 text-emerald-300 chem-icon-glow" />
-              </div>
-
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-bold uppercase tracking-widest text-emerald-300 mb-2">
-                  Game phản ứng
-                </p>
-                <h2 className="text-3xl font-extrabold text-[var(--text)] mb-3 group-hover:text-[var(--accent)] transition-colors">
-                  Ghép sản phẩm phản ứng
-                </h2>
-                <p className="text-sm text-[var(--muted)] leading-relaxed mb-5">
-                  Chọn sản phẩm hoặc hiện tượng đúng, sau đó xem video và mô hình 3D của phản ứng.
-                </p>
-                <div className="flex items-center gap-2 text-sm font-bold text-emerald-300">
-                  Chơi ngay
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            to="/quick-quiz"
-            className="group block rounded-2xl overflow-hidden glass-panel card-hover-lift chem-shimmer-border animated-border-card animate-fade-in-up stagger-5"
-            style={{ borderColor: "rgba(245, 158, 11, 0.28)" }}
-          >
-            <div className="p-7 h-full flex flex-col sm:flex-row lg:flex-col xl:flex-row sm:items-center gap-6 bg-gradient-to-r from-amber-500/10 via-sky-500/6 to-purple-500/10">
-              <div className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 border border-amber-400/30 bg-amber-500/10">
-                <Timer className="w-11 h-11 text-amber-300 chem-icon-glow" />
-              </div>
-
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-bold uppercase tracking-widest text-amber-300 mb-2">
-                  Game tốc độ
-                </p>
-                <h2 className="text-3xl font-extrabold text-[var(--text)] mb-3 group-hover:text-[var(--accent)] transition-colors">
-                  Đố nhanh 60 giây
-                </h2>
-                <p className="text-sm text-[var(--muted)] leading-relaxed mb-5">
-                  Trả lời trắc nghiệm thật nhanh: đúng cộng điểm, sai bị trừ thời gian.
-                </p>
-                <div className="flex items-center gap-2 text-sm font-bold text-amber-300">
-                  Chơi ngay
+                  Mở game
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </div>

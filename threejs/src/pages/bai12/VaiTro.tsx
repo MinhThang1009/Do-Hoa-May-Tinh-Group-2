@@ -32,16 +32,6 @@ const daLuong = [
 export function VaiTro() {
   return (
     <div className="min-h-screen page-enter pb-24">
-      {/* Navigation Breadcrumb */}
-      <div className="container mx-auto px-4 pt-6 animate-fade-in-up">
-        <Link 
-          to="/bai-12"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-[var(--muted)] hover:text-[var(--text)] transition-colors chem-shimmer-border"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span className="text-sm font-semibold">Bài 12: Phân bón hóa học</span>
-        </Link>
-      </div>
 
       <div className="container mx-auto px-4 mt-8">
         <header className="text-center mb-16 relative">

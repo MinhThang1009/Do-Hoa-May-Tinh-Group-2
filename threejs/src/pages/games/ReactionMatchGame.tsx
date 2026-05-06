@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, CheckCircle2, FlaskConical, PlayCircle, RotateCcw, Trophy, XCircle } from "lucide-react";
-import { MoleculeViewer } from "../components/MoleculeViewer";
-import { SplitTextTitle } from "../components/SplitTextTitle";
+import { MoleculeViewer } from "../../components/MoleculeViewer";
+import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 type Choice = {
   id: string;
@@ -39,7 +39,7 @@ const challenges: ReactionChallenge[] = [
       { id: "na2o-cl2", text: "Na2O + Cl2" },
       { id: "no-reaction", text: "Không phản ứng" },
     ],
-    explanation: "H+ của acid kết hợp với OH- của base tạo nước; Na+ và Cl- tạo muối NaCl.",
+    explanation: "H+ của acid kết hợp với OH- của bazơ tạo nước; Na+ và Cl- tạo muối NaCl.",
     videoUrl: "/videos/molecular/3_NaOH_HCl.mp4",
     models: [
       { label: "Chất tham gia", formula: "NaOH", url: "/models/NaOH.glb", color: "#22c55e", rgb: "34, 197, 94" },
@@ -49,7 +49,7 @@ const challenges: ReactionChallenge[] = [
   },
   {
     id: "naoh-litmus",
-    title: "Base với quỳ tím",
+    title: "Bazơ với quỳ tím",
     reactants: "NaOH + quỳ tím",
     prompt: "Hiện tượng nào xảy ra?",
     correctChoiceId: "blue-litmus",
@@ -59,10 +59,10 @@ const challenges: ReactionChallenge[] = [
       { id: "gas", text: "Có khí không màu thoát ra" },
       { id: "precipitate", text: "Xuất hiện kết tủa trắng" },
     ],
-    explanation: "Dung dịch NaOH là base mạnh, tạo môi trường kiềm nên làm quỳ tím chuyển xanh.",
+    explanation: "Dung dịch NaOH là bazơ mạnh, tạo môi trường kiềm nên làm quỳ tím chuyển xanh.",
     videoUrl: "/videos/2_NaOH_quytim.mp4",
     models: [
-      { label: "Base", formula: "NaOH", url: "/models/NaOH.glb", color: "#22c55e", rgb: "34, 197, 94" },
+      { label: "Bazơ", formula: "NaOH", url: "/models/NaOH.glb", color: "#22c55e", rgb: "34, 197, 94" },
     ],
   },
   {
@@ -85,20 +85,166 @@ const challenges: ReactionChallenge[] = [
   },
   {
     id: "oxide-acid",
-    title: "Oxide base với acid",
+    title: "Oxide bazơ với acid",
     reactants: "Fe2O3 + HCl",
     prompt: "Sản phẩm thuộc dạng nào?",
     correctChoiceId: "salt-water",
     choices: [
-      { id: "acid-base", text: "Acid + base" },
+      { id: "acid-base", text: "Acid + bazơ" },
       { id: "salt-water", text: "Muối + nước" },
       { id: "oxide-water", text: "Oxide + nước" },
       { id: "metal-hydrogen", text: "Kim loại + hydrogen" },
     ],
-    explanation: "Oxide base tác dụng với acid tạo muối và nước.",
+    explanation: "Oxide bazơ tác dụng với acid tạo muối và nước.",
+    videoUrl: "/videos/5_fe2o3_hcl.mp4",
     models: [
-      { label: "Oxide", formula: "Fe2O3", url: "/models/Fe2O3.glb", color: "#f97316", rgb: "249, 115, 22" },
       { label: "Acid", formula: "HCl", url: "/models/HCl.glb", color: "#ef4444", rgb: "239, 68, 68" },
+    ],
+  },
+  {
+    id: "mg-hcl",
+    title: "Acid tác dụng với kim loại",
+    reactants: "Mg + HCl",
+    prompt: "Chọn sản phẩm đúng của phản ứng.",
+    correctChoiceId: "mgcl2-h2",
+    choices: [
+      { id: "mgcl2-h2", text: "MgCl2 + H2" },
+      { id: "mgo-hcl", text: "MgO + HCl" },
+      { id: "mgoh2-cl2", text: "Mg(OH)2 + Cl2" },
+      { id: "no-reaction", text: "Không phản ứng" },
+    ],
+    explanation: "Acid tác dụng với kim loại hoạt động tạo muối và khí hydrogen.",
+    videoUrl: "/videos/molecular/1_Mg+HCl.mp4",
+    models: [
+      { label: "Acid", formula: "HCl", url: "/models/HCl.glb", color: "#ef4444", rgb: "239, 68, 68" },
+    ],
+  },
+  {
+    id: "co2-caoh2",
+    title: "Oxide acid với dung dịch bazơ",
+    reactants: "CO2 + Ca(OH)2",
+    prompt: "Hiện tượng/sản phẩm chính ban đầu là gì?",
+    correctChoiceId: "caco3-water",
+    choices: [
+      { id: "caco3-water", text: "CaCO3↓ + H2O" },
+      { id: "cao-h2co3", text: "CaO + H2CO3" },
+      { id: "ca-h2-o2", text: "Ca + H2 + O2" },
+      { id: "blue-litmus", text: "Quỳ tím chuyển xanh" },
+    ],
+    explanation: "CO2 làm nước vôi trong vẩn đục do tạo kết tủa CaCO3 màu trắng.",
+    videoUrl: "/videos/4_tCa(OH)2+CO2.mp4",
+    models: [
+      { label: "Oxide acid", formula: "CO2", url: "/models/CO2.glb", color: "#8b5cf6", rgb: "139, 92, 246" },
+    ],
+  },
+  {
+    id: "fe-cuso4",
+    title: "Muối tác dụng với kim loại",
+    reactants: "Fe + CuSO4",
+    prompt: "Chọn sản phẩm đúng của phản ứng.",
+    correctChoiceId: "feso4-cu",
+    choices: [
+      { id: "feso4-cu", text: "FeSO4 + Cu" },
+      { id: "fecl2-cu", text: "FeCl2 + Cu" },
+      { id: "cuo-fes", text: "CuO + FeS" },
+      { id: "no-reaction", text: "Không phản ứng" },
+    ],
+    explanation: "Fe hoạt động hóa học mạnh hơn Cu nên đẩy Cu ra khỏi dung dịch CuSO4, tạo FeSO4 và Cu.",
+    videoUrl: "/videos/molecular/6_CuSO4+Fe.mp4",
+    models: [
+      { label: "Muối ban đầu", formula: "CuSO4", url: "/models/CuSO4.glb", color: "#38bdf8", rgb: "56, 189, 248" },
+      { label: "Muối mới", formula: "FeSO4", url: "/models/FeSO4.glb", color: "#22c55e", rgb: "34, 197, 94" },
+    ],
+  },
+  {
+    id: "bacl2-h2so4",
+    title: "Muối tác dụng với acid",
+    reactants: "BaCl2 + H2SO4",
+    prompt: "Chọn sản phẩm đúng của phản ứng.",
+    correctChoiceId: "baso4-hcl",
+    choices: [
+      { id: "baso4-hcl", text: "BaSO4↓ + 2HCl" },
+      { id: "bacl-hso4", text: "BaCl + HSO4" },
+      { id: "baoh2-cl2", text: "Ba(OH)2 + Cl2" },
+      { id: "no-reaction", text: "Không phản ứng" },
+    ],
+    explanation: "BaSO4 là chất kết tủa trắng, vì vậy phản ứng trao đổi xảy ra.",
+    videoUrl: "/videos/7_BaCl2+H2SO4.mp4",
+    models: [
+      { label: "Acid", formula: "H2SO4", url: "/models/H2SO4.glb", color: "#ef4444", rgb: "239, 68, 68" },
+    ],
+  },
+  {
+    id: "cuso4-naoh",
+    title: "Muối tác dụng với bazơ",
+    reactants: "CuSO4 + NaOH",
+    prompt: "Sản phẩm nào có kết tủa xanh?",
+    correctChoiceId: "cuoh2-na2so4",
+    choices: [
+      { id: "cuoh2-na2so4", text: "Cu(OH)2↓ + Na2SO4" },
+      { id: "cuo-na2s", text: "CuO + Na2S" },
+      { id: "nacl-cuso4", text: "NaCl + CuSO4" },
+      { id: "h2-cu-na", text: "H2 + Cu + Na" },
+    ],
+    explanation: "Dung dịch muối CuSO4 tác dụng với NaOH tạo kết tủa Cu(OH)2 màu xanh.",
+    videoUrl: "/videos/molecular/9_CuSO4+NaOH.mp4",
+    models: [
+      { label: "Muối", formula: "CuSO4", url: "/models/CuSO4.glb", color: "#38bdf8", rgb: "56, 189, 248" },
+      { label: "Bazơ", formula: "NaOH", url: "/models/NaOH.glb", color: "#22c55e", rgb: "34, 197, 94" },
+    ],
+  },
+  {
+    id: "na2so4-bacl2",
+    title: "Hai muối tác dụng với nhau",
+    reactants: "Na2SO4 + BaCl2",
+    prompt: "Chọn sản phẩm đúng của phản ứng trao đổi.",
+    correctChoiceId: "baso4-nacl",
+    choices: [
+      { id: "baso4-nacl", text: "BaSO4↓ + 2NaCl" },
+      { id: "nacl-baso3", text: "NaCl + BaSO3" },
+      { id: "baoh2-na2cl", text: "Ba(OH)2 + Na2Cl" },
+      { id: "no-reaction", text: "Không phản ứng" },
+    ],
+    explanation: "Hai dung dịch muối phản ứng khi tạo chất kết tủa. BaSO4 là kết tủa trắng.",
+    videoUrl: "/videos/molecular/8_Na2SO4+BaCl2.mp4",
+    models: [
+      { label: "Sản phẩm tan", formula: "NaCl", url: "/models/NaCl.glb", color: "#38bdf8", rgb: "56, 189, 248" },
+    ],
+  },
+  {
+    id: "h2so4-naoh",
+    title: "Acid tác dụng với bazơ",
+    reactants: "H2SO4 + NaOH",
+    prompt: "Chọn dạng sản phẩm của phản ứng trung hòa.",
+    correctChoiceId: "salt-water",
+    choices: [
+      { id: "salt-water", text: "Muối + nước" },
+      { id: "acid-oxide", text: "Acid + oxide" },
+      { id: "metal-hydrogen", text: "Kim loại + hydrogen" },
+      { id: "salt-gas", text: "Muối + khí CO2" },
+    ],
+    explanation: "Acid tác dụng với bazơ là phản ứng trung hòa, sản phẩm là muối và nước.",
+    models: [
+      { label: "Acid", formula: "H2SO4", url: "/models/H2SO4.glb", color: "#ef4444", rgb: "239, 68, 68" },
+      { label: "Bazơ", formula: "NaOH", url: "/models/NaOH.glb", color: "#22c55e", rgb: "34, 197, 94" },
+    ],
+  },
+  {
+    id: "hcl-naco3",
+    title: "Acid tác dụng với muối carbonate",
+    reactants: "HCl + Na2CO3",
+    prompt: "Khí nào thoát ra trong phản ứng?",
+    correctChoiceId: "co2",
+    choices: [
+      { id: "h2", text: "H2" },
+      { id: "co2", text: "CO2" },
+      { id: "o2", text: "O2" },
+      { id: "cl2", text: "Cl2" },
+    ],
+    explanation: "Acid tác dụng với muối carbonate tạo muối mới, nước và khí CO2.",
+    models: [
+      { label: "Acid", formula: "HCl", url: "/models/HCl.glb", color: "#ef4444", rgb: "239, 68, 68" },
+      { label: "Khí thoát ra", formula: "CO2", url: "/models/CO2.glb", color: "#8b5cf6", rgb: "139, 92, 246" },
     ],
   },
 ];

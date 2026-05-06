@@ -5,13 +5,13 @@ import { AnimatedAtom3D } from "../../components/AnimatedIcons";
 
 const methods = [
   {
-    title: "1. Dung dịch acid tác dụng với base",
+    title: "1. Dung dịch acid tác dụng với bazơ",
     equation: "HCl + NaOH → NaCl + H₂O",
     color: "#3b82f6",
     rgb: "59, 130, 246"
   },
   {
-    title: "2. Dung dịch acid tác dụng với oxide base",
+    title: "2. Dung dịch acid tác dụng với oxide bazơ",
     equation: "2HNO₃ + CuO → Cu(NO₃)₂ + H₂O",
     color: "#10b981",
     rgb: "16, 185, 129"
@@ -23,7 +23,7 @@ const methods = [
     rgb: "245, 158, 11"
   },
   {
-    title: "4. Oxide acid tác dụng với dung dịch base",
+    title: "4. Oxide acid tác dụng với dung dịch bazơ",
     equation: "CO₂ + 2NaOH → Na₂CO₃ + H₂O",
     color: "#8b5cf6",
     rgb: "139, 92, 246"

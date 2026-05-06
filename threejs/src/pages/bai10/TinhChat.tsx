@@ -6,9 +6,9 @@ const experiments = [
   {
     order: "1",
     title: "CO₂ + Ca(OH)₂",
-    subtitle: "1. Oxide acid tác dụng với dung dịch base",
+    subtitle: "1. Oxide acid tác dụng với dung dịch bazơ",
     videoUrl: "/videos/4_tCa(OH)2+CO2.mp4",
-    molecularVideoUrl: "/videos/molecular/4_phantu.mp4",
+    molecularVideoUrl: "/videos/molecular/4_Ca(OH)2+CO2.mp4",
     color: "#8b5cf6", // Violet
     rgb: "139, 92, 246",
     equation: (
@@ -19,20 +19,20 @@ const experiments = [
       </>
     ),
     observation: "Sục khí CO₂ vào dung dịch nước vôi trong (Ca(OH)₂), thấy xuất hiện kết tủa trắng (vẩn đục). Tiếp tục sục thêm khí CO₂ thì kết tủa tan dần, dung dịch trong trở lại.",
-    conclusion: "Nhiều oxide acid tác dụng với base tạo thành muối và nước.",
+    conclusion: "Nhiều oxide acid tác dụng với bazơ tạo thành muối và nước.",
     icon: <Droplets className="w-6 h-6" />,
   },
   {
     order: "2",
     title: "Fe₂O₃ + HCl",
-    subtitle: "2. Oxide base tác dụng với dung dịch acid",
+    subtitle: "2. oxide bazơ tác dụng với dung dịch acid",
     videoUrl: "/videos/5_fe2o3_hcl.mp4",
-    molecularVideoUrl: "/videos/molecular/5_phantu.mp4",
+    molecularVideoUrl: "/videos/molecular/5_Fe2O3+HCl.mp4",
     color: "#10b981", // Emerald
     rgb: "16, 185, 129",
     equation: "Fe₂O₃ + 6HCl → 2FeCl₃ + 3H₂O",
     observation: "Bột Fe₂O₃ (màu đỏ nâu) tan dần trong dung dịch HCl tạo thành dung dịch có màu vàng nâu.",
-    conclusion: "Hầu hết oxide base tác dụng với acid tạo thành muối và nước.",
+    conclusion: "Hầu hết oxide bazơ tác dụng với acid tạo thành muối và nước.",
     icon: <FlaskConical className="w-6 h-6" />,
   },
 ];
@@ -46,7 +46,7 @@ const otherProperties = [
       <>
         <p className="text-[var(--muted)] leading-relaxed mb-4">
           Là những oxide có thể tác dụng được với cả <strong className="text-[var(--text)]">dung dịch acid</strong> và{" "}
-          <strong className="text-[var(--text)]">dung dịch base</strong> tạo thành muối và nước.
+          <strong className="text-[var(--text)]">dung dịch bazơ</strong> tạo thành muối và nước.
         </p>
         <div className="flex flex-col items-start gap-2">
           <div className="rounded-xl px-4 py-3 border border-[rgba(245,158,11,0.20)] bg-[rgba(245,158,11,0.04)] inline-block w-auto">
@@ -67,7 +67,7 @@ const otherProperties = [
       <>
         <p className="text-[var(--muted)] leading-relaxed mb-4">
           Còn được gọi là <strong className="text-[var(--text)]">oxide không tạo muối</strong>.
-          Đây là những oxide <strong className="text-[#ef4444]">không tác dụng</strong> với acid, base, nước.
+          Đây là những oxide <strong className="text-[#ef4444]">không tác dụng</strong> với acid, bazơ, nước.
         </p>
         <div className="flex flex-col items-start gap-2">
           <div className="rounded-xl px-4 py-3 border border-[rgba(100,116,139,0.20)] bg-[rgba(100,116,139,0.04)] inline-block w-auto">
@@ -97,7 +97,7 @@ export function TinhChat() {
           </div>
           <SplitTextTitle text="Phần 2: Tính chất hóa học" className="text-5xl font-extrabold mb-3 text-[var(--text)]" highlightWords={["hóa", "học"]} highlightColor="#8b5cf6" />
           <p className="max-w-3xl mx-auto mt-4 text-lg text-[var(--muted)] leading-relaxed">
-            Quan sát hai thí nghiệm minh họa cho tính chất của Oxide acid và Oxide base, từ đó tìm hiểu cách
+            Quan sát hai thí nghiệm minh họa cho tính chất của Oxide acid và oxide bazơ, từ đó tìm hiểu cách
             oxide phản ứng với các chất khác nhau.
           </p>
         </div>

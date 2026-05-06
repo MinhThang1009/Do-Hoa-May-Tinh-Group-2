@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { CheckCircle2, Clock3, Play, RotateCcw, Timer, Trophy, XCircle, Zap } from "lucide-react";
-import { SplitTextTitle } from "../components/SplitTextTitle";
+import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 type QuizQuestion = {
   id: string;
@@ -30,7 +30,7 @@ const questions: QuizQuestion[] = [
     question: "Dung dịch NaOH làm quỳ tím chuyển màu gì?",
     choices: ["Đỏ", "Xanh", "Tím đậm", "Không đổi màu"],
     answer: "Xanh",
-    explanation: "NaOH là base mạnh nên làm quỳ tím chuyển xanh.",
+    explanation: "NaOH là bazơ mạnh nên làm quỳ tím chuyển xanh.",
   },
   {
     id: "neutralization-product",
@@ -38,15 +38,15 @@ const questions: QuizQuestion[] = [
     question: "NaOH + HCl tạo ra sản phẩm nào?",
     choices: ["NaCl + H2O", "Na2O + Cl2", "NaH + HClO", "NaOH2 + Cl"],
     answer: "NaCl + H2O",
-    explanation: "Base tác dụng với acid tạo muối và nước.",
+    explanation: "Bazơ tác dụng với acid tạo muối và nước.",
   },
   {
     id: "ph-base",
     lesson: "Bài 9",
-    question: "Dung dịch base thường có pH như thế nào?",
+    question: "Dung dịch bazơ thường có pH như thế nào?",
     choices: ["pH < 7", "pH = 7", "pH > 7", "pH luôn bằng 1"],
     answer: "pH > 7",
-    explanation: "Dung dịch base có pH lớn hơn 7.",
+    explanation: "Dung dịch bazơ có pH lớn hơn 7.",
   },
   {
     id: "ph-neutral",
@@ -68,7 +68,7 @@ const questions: QuizQuestion[] = [
     id: "co2-type",
     lesson: "Bài 10",
     question: "CO2 thuộc nhóm chất nào?",
-    choices: ["Acid", "Base", "Oxide", "Muối"],
+    choices: ["Acid", "Bazơ", "Oxide", "Muối"],
     answer: "Oxide",
     explanation: "CO2 là oxide của carbon.",
   },
@@ -76,15 +76,15 @@ const questions: QuizQuestion[] = [
     id: "naoh-type",
     lesson: "Bài 9",
     question: "NaOH thuộc nhóm chất nào?",
-    choices: ["Acid", "Base", "Oxide", "Muối"],
-    answer: "Base",
-    explanation: "NaOH có nhóm hydroxide OH nên thuộc base.",
+    choices: ["Acid", "Bazơ", "Oxide", "Muối"],
+    answer: "Bazơ",
+    explanation: "NaOH có nhóm hydroxide OH nên thuộc bazơ.",
   },
   {
     id: "nacl-type",
     lesson: "Bài 11",
     question: "NaCl thuộc nhóm chất nào?",
-    choices: ["Acid", "Base", "Oxide", "Muối"],
+    choices: ["Acid", "Bazơ", "Oxide", "Muối"],
     answer: "Muối",
     explanation: "NaCl là muối sodium chloride.",
   },
@@ -99,18 +99,18 @@ const questions: QuizQuestion[] = [
   {
     id: "base-common-group",
     lesson: "Bài 9",
-    question: "Base thường có nhóm nào trong phân tử?",
+    question: "Bazơ thường có nhóm nào trong phân tử?",
     choices: ["SO4", "OH", "Cl", "CO3"],
     answer: "OH",
-    explanation: "Base thường có nguyên tử kim loại liên kết với nhóm hydroxide OH.",
+    explanation: "Bazơ thường có nguyên tử kim loại liên kết với nhóm hydroxide OH.",
   },
   {
     id: "oxide-acid-product",
     lesson: "Bài 10",
-    question: "Oxide base tác dụng với acid thường tạo ra...",
-    choices: ["Muối và nước", "Base và oxygen", "Acid và hydrogen", "Chỉ tạo nước"],
+    question: "Oxide bazơ tác dụng với acid thường tạo ra...",
+    choices: ["Muối và nước", "Bazơ và oxygen", "Acid và hydrogen", "Chỉ tạo nước"],
     answer: "Muối và nước",
-    explanation: "Oxide base tác dụng với acid tạo muối và nước.",
+    explanation: "Oxide bazơ tác dụng với acid tạo muối và nước.",
   },
 ];
 
@@ -129,7 +129,7 @@ export function QuickQuizGame() {
   const resultMessage = useMemo(() => {
     if (score >= 90) return "Rất chắc kiến thức Chương 2";
     if (score >= 50) return "Nắm được ý chính, nên luyện thêm phản ứng";
-    return "Nên ôn lại khái niệm acid, base, oxide và muối";
+    return "Nên ôn lại khái niệm acid, bazơ, oxide và muối";
   }, [score]);
 
   useEffect(() => {
@@ -236,7 +236,7 @@ export function QuickQuizGame() {
                   <Play className="w-14 h-14 text-amber-400 mb-5" />
                   <h2 className="text-2xl font-extrabold text-[var(--text)] mb-3">Sẵn sàng ôn nhanh</h2>
                   <p className="max-w-md text-[var(--muted)] leading-relaxed mb-6">
-                    Nội dung câu hỏi xoay quanh Bài 8 đến Bài 11: acid, base, thang pH, oxide và muối.
+                    Nội dung câu hỏi xoay quanh Bài 8 đến Bài 11: acid, bazơ, thang pH, oxide và muối.
                   </p>
                   <button
                     type="button"
@@ -336,7 +336,7 @@ export function QuickQuizGame() {
               <div className="rounded-2xl border border-sky-400/25 bg-sky-500/10 p-5">
                 <p className="text-sm font-bold text-sky-300 mb-2">Mẹo nhanh</p>
                 <p className="text-sm text-[var(--muted)] leading-relaxed">
-                  Acid làm quỳ tím đỏ; base làm quỳ tím xanh; base có pH lớn hơn 7; oxide có oxygen;
+                  Acid làm quỳ tím đỏ; bazơ làm quỳ tím xanh; bazơ có pH lớn hơn 7; oxide có oxygen;
                   muối thường gồm kim loại và gốc acid.
                 </p>
               </div>

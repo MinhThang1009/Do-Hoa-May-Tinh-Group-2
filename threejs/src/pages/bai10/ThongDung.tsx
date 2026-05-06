@@ -15,9 +15,9 @@ const oxides = [
     description:
       "Là chất rắn màu trắng, nóng chảy ở nhiệt độ rất cao (1923°C). Phản ứng mãnh liệt với nước tạo thành dung dịch Barium hydroxide (Ba(OH)₂).",
     properties: [
-      "Oxide base mạnh điển hình",
+      "Oxide bazơ mạnh điển hình",
       "Chất rắn màu trắng, hút ẩm",
-      "Tác dụng mạnh với nước tạo dung dịch base",
+      "Tác dụng mạnh với nước tạo dung dịch bazơ",
       "Hấp thụ CO₂ trong không khí",
     ],
     applications: [
@@ -37,7 +37,7 @@ const oxides = [
     description:
       "Là chất rắn màu trắng, rất cứng, không tan trong nước. Trong tự nhiên tồn tại dưới dạng quặng bauxite hoặc đá quý như sa phia, hồng ngọc.",
     properties: [
-      "Oxide lưỡng tính (tác dụng với acid và base mạnh)",
+      "Oxide lưỡng tính (tác dụng với acid và bazơ mạnh)",
       "Nhiệt độ nóng chảy rất cao (2072°C)",
       "Rất cứng, bền vững về mặt hóa học",
       "Không phản ứng với nước",
@@ -75,10 +75,10 @@ const oxides = [
 
 const comparisonRows = [
   { label: "Công thức", values: ["BaO", "Al₂O₃", "CO₂"] },
-  { label: "Phân loại", values: ["Oxide base", "Oxide lưỡng tính", "Oxide acid"] },
+  { label: "Phân loại", values: ["Oxide bazơ", "Oxide lưỡng tính", "Oxide acid"] },
   { label: "Trạng thái", values: ["Rắn (trắng)", "Rắn (trắng)", "Khí (không mùi)"] },
-  { label: "Tác dụng với H₂O", values: ["Tạo dung dịch base", "Không phản ứng", "Tạo dung dịch acid yếu"] },
-  { label: "Tác dụng với Acid/Base", values: ["Tác dụng với Acid", "Tác dụng với cả hai", "Tác dụng với Base"] },
+  { label: "Tác dụng với H₂O", values: ["Tạo dung dịch bazơ", "Không phản ứng", "Tạo dung dịch acid yếu"] },
+  { label: "Tác dụng với Acid/Bazơ", values: ["Tác dụng với Acid", "Tác dụng với cả hai", "Tác dụng với Bazơ"] },
 ];
 
 export function ThongDung() {
@@ -96,7 +96,7 @@ export function ThongDung() {
           </div>
           <SplitTextTitle text="Phần 3: Các Oxide thông dụng" className="text-5xl font-extrabold mb-3 text-[var(--text)]" highlightWords={["Oxide"]} highlightColor="#f97316" />
           <p className="max-w-3xl mx-auto mt-4 text-lg text-[var(--muted)] leading-relaxed">
-            Ba oxide tiêu biểu với những tính chất đặc trưng khác nhau: BaO (oxide base), Al₂O₃ (oxide lưỡng tính) và CO₂ (oxide acid).
+            Ba oxide tiêu biểu với những tính chất đặc trưng khác nhau: BaO (Oxide bazơ), Al₂O₃ (oxide lưỡng tính) và CO₂ (oxide acid).
             Khám phá mô hình phân tử 3D tương tác của từng oxide.
           </p>
         </div>
@@ -244,7 +244,7 @@ export function ThongDung() {
               <ul className="space-y-2.5 text-[var(--muted)] leading-relaxed">
                 <li className="flex items-start gap-2.5">
                   <span className="mt-1.5 w-2 h-2 rounded-full shrink-0 bg-red-400" />
-                  Khi làm việc với các Oxide base mạnh như <strong className="text-[var(--text)]">BaO</strong>, phải đeo <strong className="text-[var(--text)]">kính và găng tay</strong> vì chúng có tính ăn mòn cao và khi phản ứng với nước tỏa nhiều nhiệt dễ gây bỏng.
+                  Khi làm việc với các oxide bazơ mạnh như <strong className="text-[var(--text)]">BaO</strong>, phải đeo <strong className="text-[var(--text)]">kính và găng tay</strong> vì chúng có tính ăn mòn cao và khi phản ứng với nước tỏa nhiều nhiệt dễ gây bỏng.
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="mt-1.5 w-2 h-2 rounded-full shrink-0 bg-red-400" />

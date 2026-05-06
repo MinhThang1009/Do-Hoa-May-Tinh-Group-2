@@ -4,9 +4,9 @@ import { AnimatedAtom3D, AnimatedBeaker, AnimatedFlask } from "../../components/
 
 const chapters = [
   {
-    title: "Phần 1: Khái niệm Base",
+    title: "Phần 1: Khái niệm bazơ",
     path: "/bai-9/phan-1",
-    description: "Quan sát mô hình NaOH, Ba(OH)2 và FeOH để nhận ra nhóm hydroxide -OH trong base.",
+    description: "Quan sát mô hình NaOH, Ba(OH)2 và FeOH để nhận ra nhóm hydroxide -OH trong bazơ.",
     icon: <AnimatedAtom3D color="#22c55e" />,
     accentColor: "rgba(34, 197, 94, 0.9)",
     borderColor: "rgba(34, 197, 94, 0.24)",
@@ -30,7 +30,7 @@ const chapters = [
 ];
 
 const lessonGoals = [
-  { icon: <Atom className="w-4 h-4" />, text: "Base tan trong nước tạo ion OH-" },
+  { icon: <Atom className="w-4 h-4" />, text: "Bazơ tan trong nước tạo ion OH-" },
   { icon: <TestTubes className="w-4 h-4" />, text: "NaOH làm quỳ tím chuyển xanh" },
   { icon: <FlaskConical className="w-4 h-4" />, text: "NaOH + HCl tạo muối và nước" },
   { icon: <Gauge className="w-4 h-4" />, text: "pH > 7 biểu thị môi trường kiềm" },
@@ -48,7 +48,7 @@ export function Bai9Home() {
           </div>
 
           <h1 className="text-5xl md:text-6xl font-extrabold mb-5 gradient-text leading-tight">
-            Bài 9: Base. Thang pH
+            Bài 9: Bazơ. Thang pH
           </h1>
 
           <div className="flex flex-wrap justify-center gap-4 mb-10 animate-fade-in-up stagger-3">
@@ -63,8 +63,8 @@ export function Bai9Home() {
           </div>
 
           <p className="max-w-3xl mx-auto text-lg text-[var(--muted)] leading-relaxed">
-            Bài học tập trung vào khái niệm base, tính chất của dung dịch NaOH và cách đọc thang pH
-            để đánh giá độ acid - base của dung dịch.
+            Bài học tập trung vào khái niệm bazơ, tính chất của dung dịch NaOH và cách đọc thang pH
+            để đánh giá độ acid - bazơ của dung dịch.
           </p>
 
           <div className="absolute top-0 right-1/4 hidden md:block w-32 h-32 opacity-25 pointer-events-none mix-blend-screen" style={{ animation: "floatY 6s ease-in-out infinite" }}>

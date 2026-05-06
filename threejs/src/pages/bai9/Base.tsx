@@ -11,7 +11,7 @@ const bases = [
     modelUrl: "/models/NaOH.glb",
     color: "#22c55e",
     rgb: "34, 197, 94",
-    desc: "Base tan trong nước, tạo ion Na+ và OH-. Dung dịch NaOH là dung dịch kiềm mạnh.",
+    desc: "Bazơ tan trong nước, tạo ion Na+ và OH-. Dung dịch NaOH là dung dịch kiềm mạnh.",
   },
   {
     name: "Ba(OH)2",
@@ -29,7 +29,7 @@ const bases = [
     modelUrl: "/models/FeOH.glb",
     color: "#f59e0b",
     rgb: "245, 158, 11",
-    desc: "Mô hình minh họa nhóm hydroxide trong base kim loại. Nhiều hydroxide kim loại ít tan trong nước.",
+    desc: "Mô hình minh họa nhóm hydroxide trong bazơ kim loại. Nhiều hydroxide kim loại ít tan trong nước.",
   },
 ];
 
@@ -37,17 +37,17 @@ const rules = [
   {
     icon: <Layers className="w-5 h-5" />,
     title: "Dạng công thức",
-    text: "Base thường gồm nguyên tử kim loại liên kết với một hay nhiều nhóm hydroxide -OH.",
+    text: "Bazơ thường gồm nguyên tử kim loại liên kết với một hay nhiều nhóm hydroxide -OH.",
   },
   {
     icon: <Droplets className="w-5 h-5" />,
     title: "Khi tan trong nước",
-    text: "Dung dịch base tạo ra ion OH-. Đây là đặc điểm chung cần nhớ của base tan.",
+    text: "Dung dịch bazơ tạo ra ion OH-. Đây là đặc điểm chung cần nhớ của bazơ tan.",
   },
   {
     icon: <Microscope className="w-5 h-5" />,
     title: "Cách gọi tên",
-    text: "Tên base được gọi theo cấu trúc: tên kim loại kèm hóa trị nếu cần + hydroxide.",
+    text: "Tên bazơ được gọi theo cấu trúc: tên kim loại kèm hóa trị nếu cần + hydroxide.",
   },
 ];
 
@@ -64,14 +64,14 @@ export function Base() {
             </div>
           </div>
           <SplitTextTitle
-            text="Phần 1: Khái niệm Base"
+            text="Phần 1: Khái niệm bazơ"
             className="text-4xl md:text-5xl font-extrabold mb-3 text-[var(--text)]"
-            highlightWords={["Base"]}
+            highlightWords={["Bazơ"]}
             highlightColor="#22c55e"
           />
           <p className="max-w-3xl mx-auto mt-4 text-lg text-[var(--muted)] leading-relaxed">
-            Base là hợp chất có nguyên tử kim loại liên kết với nhóm hydroxide. Khi tan trong nước,
-            base tạo ra ion OH- làm dung dịch có tính kiềm.
+            Bazơ là hợp chất có nguyên tử kim loại liên kết với nhóm hydroxide. Khi tan trong nước,
+            bazơ tạo ra ion OH- làm dung dịch có tính kiềm.
           </p>
         </div>
 
@@ -142,8 +142,8 @@ export function Base() {
             <div>
               <h3 className="text-2xl font-extrabold text-[var(--text)] mb-3">Định nghĩa cần nhớ</h3>
               <p className="text-lg text-[var(--muted)] leading-relaxed">
-                Base là những hợp chất trong phân tử có nguyên tử kim loại liên kết với nhóm hydroxide.
-                Khi tan trong nước, base tạo ra ion <strong className="text-emerald-400">OH-</strong>.
+                Bazơ là những hợp chất trong phân tử có nguyên tử kim loại liên kết với nhóm hydroxide.
+                Khi tan trong nước, bazơ tạo ra ion <strong className="text-emerald-400">OH-</strong>.
               </p>
               <div className="mt-4 inline-block px-5 py-3 rounded-xl border border-[rgba(34,197,94,0.22)] bg-[rgba(34,197,94,0.06)]">
                 <p className="chem-equation text-xl font-bold text-emerald-400">

@@ -94,13 +94,13 @@ const properties = [
     ),
   },
   {
-    title: "Acid tác dụng với base (Trung hòa)",
+    title: "Acid tác dụng với bazơ (Trung hòa)",
     icon: <Scale className="w-6 h-6" />,
     accentRgb: "16, 185, 129",
     content: (
       <>
         <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Acid + base → <strong className="text-[var(--text)]">muối</strong> +{" "}
+          Acid + bazơ → <strong className="text-[var(--text)]">muối</strong> +{" "}
           <strong className="text-[var(--text)]">nước</strong>. Đây là phản ứng{" "}
           <em className="text-[var(--accent-2)] font-semibold">trung hòa</em>.
         </p>
@@ -120,13 +120,13 @@ const properties = [
     ),
   },
   {
-    title: "Acid tác dụng với oxide base",
+    title: "Acid tác dụng với oxide bazơ",
     icon: <TestTubes className="w-6 h-6" />,
     accentRgb: "168, 85, 247",
     content: (
       <>
         <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Acid + oxide base → <strong className="text-[var(--text)]">muối</strong> +{" "}
+          Acid + Oxide bazơ → <strong className="text-[var(--text)]">muối</strong> +{" "}
           <strong className="text-[var(--text)]">nước</strong>.
         </p>
         <div className="flex flex-col items-start gap-2">
