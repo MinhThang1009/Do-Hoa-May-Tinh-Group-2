@@ -64,13 +64,13 @@ export function TinhChat() {
 
         <div className="max-w-6xl mx-auto space-y-12">
           {properties.map((prop, idx) => (
-            <div 
+            <div
               key={idx}
               className="glass-panel rounded-3xl overflow-hidden border card-hover-lift"
               style={{ borderColor: `rgba(${prop.rgb}, 0.2)` }}
             >
               <div className="flex flex-col" style={{ background: `linear-gradient(135deg, rgba(${prop.rgb}, 0.06), transparent 60%)` }}>
-                
+
                 {/* Videos Row */}
                 <div className="flex flex-col lg:flex-row border-b" style={{ borderColor: `rgba(${prop.rgb}, 0.16)` }}>
                   {/* Real Video */}
@@ -112,11 +112,11 @@ export function TinhChat() {
                 <div className="w-full p-7 lg:p-10 flex flex-col lg:flex-row items-start gap-8">
                   <div className="w-full lg:w-1/2">
                     <h2 className="text-2xl md:text-3xl font-extrabold text-[var(--text)] mb-4">{prop.title}</h2>
-                    <div 
+                    <div
                       className="rounded-xl px-5 py-4 border inline-block"
-                      style={{ 
-                        borderColor: `rgba(${prop.rgb}, 0.3)`, 
-                        backgroundColor: `rgba(${prop.rgb}, 0.08)` 
+                      style={{
+                        borderColor: `rgba(${prop.rgb}, 0.3)`,
+                        backgroundColor: `rgba(${prop.rgb}, 0.08)`
                       }}
                     >
                       <span className="text-xs font-semibold uppercase tracking-wider block mb-2 opacity-70" style={{ color: prop.color }}>Phương trình hóa học</span>
@@ -125,7 +125,7 @@ export function TinhChat() {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="w-full lg:w-1/2 lg:mt-2">
                     <div className="flex items-start gap-3">
                       <Beaker className="w-5 h-5 mt-1 shrink-0" style={{ color: prop.color }} />

@@ -31,6 +31,13 @@ import { TinhTan } from "./pages/bai11/TinhTan";
 import { TinhChat as Lesson11TinhChat } from "./pages/bai11/TinhChat";
 import { DieuChe } from "./pages/bai11/DieuChe";
 import { MoiQuanHe } from "./pages/bai11/MoiQuanHe";
+
+// Bài 12
+import { Bai12Home } from "./pages/bai12/Bai12Home";
+import { VaiTro } from "./pages/bai12/VaiTro";
+import { PhanBon } from "./pages/bai12/PhanBon";
+import { CachSuDung } from "./pages/bai12/CachSuDung";
+
 import { ChemistryBackground } from "./components/ChemistryBackground";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeToggle } from "./components/ThemeToggle";
@@ -92,7 +99,11 @@ export default function App() {
     location.pathname.startsWith("/bai-9") ||
     location.pathname.startsWith("/bai-10") ||
     location.pathname.startsWith("/bai-11") ||
-    location.pathname.startsWith("/games") ||
+    location.pathname.startsWith("/bai-12") ||
+    location.pathname.startsWith("/game") ||
+    location.pathname.startsWith("/reaction-game") ||
+    location.pathname.startsWith("/quick-quiz");
+  location.pathname.startsWith("/games") ||
     isLegacyGameRoute;
   const isGameDetailPage = location.pathname.startsWith("/games/") || isLegacyGameRoute;
   const backButtonTarget = isGameDetailPage ? "/games" : "/";
@@ -412,6 +423,40 @@ export default function App() {
                 element={
                   <PageWrapper>
                     <MoiQuanHe />
+                  </PageWrapper>
+                }
+              />
+
+              {/* Bài 12: Phân bón hóa học */}
+              <Route
+                path="/bai-12"
+                element={
+                  <PageWrapper>
+                    <Bai12Home />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-12/vai-tro"
+                element={
+                  <PageWrapper>
+                    <VaiTro />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-12/phan-bon"
+                element={
+                  <PageWrapper>
+                    <PhanBon />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-12/cach-su-dung"
+                element={
+                  <PageWrapper>
+                    <CachSuDung />
                   </PageWrapper>
                 }
               />

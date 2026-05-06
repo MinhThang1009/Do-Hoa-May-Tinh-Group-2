@@ -43,6 +43,16 @@ const lessons = [
     icon: <AnimatedAtom3D color="#f59e0b" />,
     action: "Mở bài 11",
   },
+  {
+    number: "Bài 12",
+    title: "Phân bón hóa học",
+    description: "Vai trò của phân bón đối với cây trồng, các loại phân bón thông thường và cách sử dụng hiệu quả.",
+    path: "/bai-12",
+    color: "#a855f7",
+    rgb: "168, 85, 247",
+    icon: <AnimatedFlask color="#a855f7" />,
+    action: "Mở bài 12",
+  },
 ];
 
 export function Appendix() {
