@@ -24,7 +24,7 @@ const acidChapters = [
   {
     title: "Phần 3: Một số Acid thông dụng",
     path: "/bai-8/phan-3",
-    description: "Tìm hiểu chi tiết về HCl, HNO₃ và H₂SO₄ cùng mô hình phân tử 3D tương tác.",
+    description: "Tìm hiểu HCl, HNO₃, H₂SO₄ và bổ sung CH₃COOH trong đời sống.",
     icon: <AnimatedBeaker color="#5eead4" />,
     gradient: "from-emerald-400/20 to-teal-500/20",
     accentColor: "rgba(94, 234, 212, 0.85)",
@@ -115,30 +115,6 @@ export function Bai8Home() {
         </div>
 
 
-        <div className="max-w-md mx-auto mt-20 animate-fade-in-up stagger-5 relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent)] via-[var(--accent-purple)] to-[var(--accent-2)] rounded-2xl opacity-30 group-hover:opacity-60 blur-md transition duration-1000 group-hover:duration-200 animate-gradient-slow" />
-
-          <div className="relative rounded-2xl glass-panel py-5 px-8 flex flex-col items-center justify-center overflow-hidden chem-shimmer-border animated-border-card">
-
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.15)] to-transparent -translate-x-[150%] skew-x-[-20deg] group-hover:animate-[shimmer_2s_infinite_ease-in-out]" />
-
-            <h3 className="text-2xl font-black tracking-[0.2em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] via-[var(--accent-purple)] to-[var(--accent-2)] animate-[gradientShift_4s_ease-in-out_infinite] bg-[length:300%_300%] mb-1.5 dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              Đồ họa máy tính
-            </h3>
-
-            <div className="flex items-center gap-4 text-[var(--muted)]">
-              <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[var(--accent-purple)] opacity-60"></span>
-
-              <span className="text-lg font-bold tracking-widest text-[var(--text)] relative">
-                NHÓM 2
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[var(--accent-purple)] opacity-20 blur-xl pointer-events-none rounded-full" />
-              </span>
-
-              <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[var(--accent-purple)] opacity-60"></span>
-            </div>
-
-          </div>
-        </div>
       </div>
     </div>
   );

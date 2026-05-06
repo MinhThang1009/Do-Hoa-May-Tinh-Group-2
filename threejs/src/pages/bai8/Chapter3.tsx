@@ -82,6 +82,28 @@ const comparisonRows = [
   { label: "Gốc acid", values: ["Cl⁻", "NO₃⁻", "SO₄²⁻"] },
 ];
 
+const aceticAcid = {
+  name: "CH₃COOH",
+  fullName: "Acetic Acid",
+  vietnameseName: "Acid Acetic",
+  color: "#8b5cf6",
+  rgb: "139, 92, 246",
+  description:
+    "Acetic acid là chất lỏng không màu, có vị chua. Trong giấm ăn thường có acetic acid với nồng độ khoảng 2-5%.",
+  properties: [
+    "Chất lỏng không màu, có vị chua đặc trưng",
+    "Là acid yếu so với HCl, HNO₃ và H₂SO₄",
+    "Có trong giấm ăn với nồng độ thấp",
+    "Có thể phản ứng với cặn đá vôi CaCO₃",
+  ],
+  applications: [
+    "Chế biến thực phẩm",
+    "Sản xuất dược phẩm",
+    "Sản xuất sơn và polymer",
+    "Làm sạch cặn đá vôi trong một số dụng cụ gia đình",
+  ],
+};
+
 export function Chapter3() {
   return (
     <div className="min-h-screen page-enter relative overflow-hidden pb-24">
@@ -229,6 +251,73 @@ export function Chapter3() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <div
+          className="max-w-5xl mx-auto mt-14 rounded-2xl overflow-hidden glass-panel card-hover-lift animate-fade-in-up chem-shimmer-border animated-border-card"
+          style={{ borderColor: `rgba(${aceticAcid.rgb}, 0.22)` }}
+        >
+          <div
+            className="p-7 border-b"
+            style={{
+              borderBottomColor: `rgba(${aceticAcid.rgb}, 0.12)`,
+              background: `linear-gradient(135deg, rgba(${aceticAcid.rgb}, 0.06), transparent 62%)`,
+            }}
+          >
+            <span
+              className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4 border"
+              style={{
+                color: aceticAcid.color,
+                borderColor: `rgba(${aceticAcid.rgb}, 0.25)`,
+                background: `rgba(${aceticAcid.rgb}, 0.06)`,
+              }}
+            >
+              Bổ sung từ SGK
+            </span>
+            <div className="flex flex-col sm:flex-row sm:items-end gap-2 mb-3">
+              <h2 className="chem-equation text-4xl font-extrabold" style={{ color: aceticAcid.color }}>
+                {aceticAcid.name}
+              </h2>
+              <div className="sm:mb-1">
+                <span className="text-lg font-semibold text-[var(--text)]">{aceticAcid.vietnameseName}</span>
+                <span className="text-sm text-[var(--muted-2)] italic ml-2">({aceticAcid.fullName})</span>
+              </div>
+            </div>
+            <p className="text-sm text-[var(--muted)] leading-relaxed max-w-3xl">
+              {aceticAcid.description}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-0">
+            <div className="p-6 md:border-r" style={{ borderColor: `rgba(${aceticAcid.rgb}, 0.10)` }}>
+              <h3 className="text-sm font-bold text-[var(--text)] mb-3 flex items-center gap-2 uppercase tracking-wider">
+                <Microscope className="w-4 h-4" style={{ color: aceticAcid.color }} />
+                Tính chất
+              </h3>
+              <ul className="space-y-2.5">
+                {aceticAcid.properties.map((prop) => (
+                  <li key={prop} className="flex items-start gap-2.5 text-sm text-[var(--muted)]">
+                    <span className="mt-1.5 w-2 h-2 rounded-full shrink-0" style={{ background: aceticAcid.color }} />
+                    {prop}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="p-6 border-t md:border-t-0" style={{ borderColor: `rgba(${aceticAcid.rgb}, 0.10)` }}>
+              <h3 className="text-sm font-bold text-[var(--text)] mb-3 flex items-center gap-2 uppercase tracking-wider">
+                <Factory className="w-4 h-4" style={{ color: aceticAcid.color }} />
+                Ứng dụng
+              </h3>
+              <ul className="space-y-2.5">
+                {aceticAcid.applications.map((app) => (
+                  <li key={app} className="flex items-start gap-2.5 text-sm text-[var(--muted)]">
+                    <span className="mt-1.5 w-2 h-2 rounded-full shrink-0" style={{ background: aceticAcid.color }} />
+                    {app}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 

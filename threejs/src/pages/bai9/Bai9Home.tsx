@@ -133,21 +133,6 @@ export function Bai9Home() {
           ))}
         </div>
 
-        <div className="max-w-md mx-auto mt-20 animate-fade-in-up stagger-5 relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-400 via-sky-400 to-amber-400 rounded-2xl opacity-30 group-hover:opacity-60 blur-md transition duration-1000 group-hover:duration-200 animate-gradient-slow" />
-          <div className="relative rounded-2xl glass-panel py-5 px-8 flex flex-col items-center justify-center overflow-hidden chem-shimmer-border animated-border-card">
-            <h3 className="text-2xl font-black tracking-[0.2em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-sky-400 to-amber-400 animate-[gradientShift_4s_ease-in-out_infinite] bg-[length:300%_300%] mb-1.5 dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              Đồ họa máy tính
-            </h3>
-            <div className="flex items-center gap-4 text-[var(--muted)]">
-              <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-sky-400 opacity-60" />
-              <span className="text-lg font-bold tracking-widest text-[var(--text)] relative">
-                NHÓM 2
-              </span>
-              <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-emerald-400 opacity-60" />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

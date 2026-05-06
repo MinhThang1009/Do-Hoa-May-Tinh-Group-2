@@ -124,6 +124,23 @@ export function Appendix() {
           </div>
         </div>
 
+        <div className="max-w-md mx-auto mt-16 animate-fade-in-up stagger-5 relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent)] via-[var(--accent-purple)] to-[var(--accent-2)] rounded-2xl opacity-30 group-hover:opacity-60 blur-md transition duration-1000 group-hover:duration-200 animate-gradient-slow" />
+          <div className="relative rounded-2xl glass-panel py-5 px-8 flex flex-col items-center justify-center overflow-hidden chem-shimmer-border animated-border-card">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.15)] to-transparent -translate-x-[150%] skew-x-[-20deg] group-hover:animate-[shimmer_2s_infinite_ease-in-out]" />
+            <h3 className="text-2xl font-black tracking-[0.2em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] via-[var(--accent-purple)] to-[var(--accent-2)] animate-[gradientShift_4s_ease-in-out_infinite] bg-[length:300%_300%] mb-1.5 dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              Đồ họa máy tính
+            </h3>
+            <div className="flex items-center gap-4 text-[var(--muted)]">
+              <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[var(--accent-purple)] opacity-60" />
+              <span className="text-lg font-bold tracking-widest text-[var(--text)] relative">
+                NHÓM 2
+              </span>
+              <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[var(--accent-purple)] opacity-60" />
+            </div>
+          </div>
+        </div>
+
         <div className="absolute top-24 right-[12%] hidden lg:block w-28 h-28 opacity-20 pointer-events-none mix-blend-screen" style={{ animation: "floatY 7s ease-in-out infinite" }}>
           <Shapes className="w-full h-full text-sky-300" />
         </div>

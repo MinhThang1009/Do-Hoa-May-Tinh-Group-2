@@ -2,6 +2,29 @@ import { ArrowLeft, FlaskConical, TestTubes, Atom, Droplets, Flame, ShieldAlert,
 import { AnimatedFlask } from "../../components/AnimatedIcons";
 import { SplitTextTitle } from "../../components/SplitTextTitle";
 
+function VideoBox({ src, label }: { src: string; label: string }) {
+  return (
+    <div className="flex flex-col w-full">
+      <video
+        src={src}
+        controls
+        muted
+        loop
+        playsInline
+        className="rounded-xl w-full max-w-[800px] mx-auto shadow-md border border-[var(--border)] bg-black/20"
+        style={{ aspectRatio: "16/9", display: "block" }}
+      />
+      <div className="mt-3 flex items-center gap-3 w-full max-w-[800px] mx-auto">
+        <div className="flex-1 h-px bg-[var(--border)]" />
+        <span className="text-xs font-bold uppercase tracking-widest text-[var(--muted)] shrink-0">
+          {label}
+        </span>
+        <div className="flex-1 h-px bg-[var(--border)]" />
+      </div>
+    </div>
+  );
+}
+
 const properties = [
   {
     title: "Acid làm đổi màu chất chỉ thị",
@@ -28,6 +51,9 @@ const properties = [
             <span className="text-xs text-[var(--muted-2)] font-medium">Chuyển đỏ</span>
           </div>
         </div>
+        <div className="mt-5">
+          <VideoBox src="/videos/0_HCl_quytim.mp4" label="Phòng thí nghiệm ảo" />
+        </div>
       </>
     ),
   },
@@ -38,12 +64,18 @@ const properties = [
     content: (
       <>
         <p className="text-[var(--muted)] leading-relaxed mb-4">
-          Acid tác dụng với nhiều kim loại (trước H trong dãy hoạt động) tạo{" "}
+          Dung dịch acid phản ứng với nhiều kim loại như{" "}
+          <strong className="text-[var(--text)]">Mg, Zn, Fe,...</strong>; nguyên tử H trong acid bị thay thế, tạo{" "}
           <strong className="text-[var(--text)]">muối</strong> và giải phóng{" "}
           <strong className="text-[var(--text)]">H₂↑</strong>.
         </p>
         <div className="flex flex-col items-start gap-2">
           <div className="rounded-xl px-4 py-3 border border-[rgba(59,130,246,0.20)] bg-[rgba(59,130,246,0.04)]">
+            <p className="chem-equation text-base font-bold text-[var(--text)]">
+              Mg + H₂SO₄ → MgSO₄ + H₂<span className="text-blue-400">↑</span>
+            </p>
+          </div>
+          <div className="rounded-xl px-4 py-3 border border-[rgba(59,130,246,0.18)] bg-[rgba(59,130,246,0.035)]">
             <p className="chem-equation text-base font-bold text-[var(--text)]">
               Zn + 2HCl → ZnCl₂ + H₂<span className="text-blue-400">↑</span>
             </p>
@@ -53,6 +85,10 @@ const properties = [
               Fe + H₂SO₄(loãng) → FeSO₄ + H₂<span className="text-blue-400">↑</span>
             </p>
           </div>
+        </div>
+        <div className="mt-5 flex flex-col gap-5">
+          <VideoBox src="/videos/thi-nghiem-4.mp4" label="Phòng thí nghiệm ảo" />
+          <VideoBox src="/videos/1_phantu.mp4" label="Phản ứng phân tử" />
         </div>
       </>
     ),
