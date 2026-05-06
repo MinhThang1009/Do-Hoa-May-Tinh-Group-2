@@ -1,7 +1,7 @@
 import { CheckCircle2, Droplets, FlaskConical, PlayCircle, Scale, ShieldAlert, TestTubes } from "lucide-react";
-import { AnimatedFlask } from "../components/AnimatedIcons";
-import { MoleculeViewer } from "../components/MoleculeViewer";
-import { SplitTextTitle } from "../components/SplitTextTitle";
+import { AnimatedFlask } from "../../components/AnimatedIcons";
+import { MoleculeViewer } from "../../components/MoleculeViewer";
+import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 const experiments = [
   {
@@ -113,7 +113,7 @@ const molecularReactionVideos = [
   },
 ];
 
-export function Chapter2() {
+export function Reactions() {
   return (
     <div className="min-h-screen page-enter relative overflow-hidden pb-24">
       <div className="container mx-auto px-4 py-12 relative z-10">

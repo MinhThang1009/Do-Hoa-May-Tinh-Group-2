@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
-import { AnimatedAtom3D, AnimatedFlask, AnimatedBeaker } from "../components/AnimatedIcons";
+import { AnimatedAtom3D, AnimatedFlask, AnimatedBeaker } from "../../components/AnimatedIcons";
 
 const acidChapters = [
   {
@@ -33,7 +33,7 @@ const acidChapters = [
 ];
 
 
-export function Home() {
+export function Bai8Home() {
   return (
     <div className="min-h-screen page-enter">
       <div className="container mx-auto px-4 py-16">

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, BookOpen } from "lucide-react";
-import { MoleculeViewer } from "../components/MoleculeViewer";
-import { AnimatedAtom3D } from "../components/AnimatedIcons";
-import { SplitTextTitle } from "../components/SplitTextTitle";
+import { MoleculeViewer } from "../../components/MoleculeViewer";
+import { AnimatedAtom3D } from "../../components/AnimatedIcons";
+import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 const acids = [
   {

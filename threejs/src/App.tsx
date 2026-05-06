@@ -4,19 +4,19 @@ import { AnimatePresence, motion } from "framer-motion";
 import Lenis from "lenis";
 import { ArrowLeft, ListChecks } from "lucide-react";
 
-import { Home } from "./pages/Home";
 import { Appendix } from "./pages/Appendix";
-import { Chapter1 } from "./pages/Chapter1";
-import { Chapter2 } from "./pages/Chapter2";
-import { Chapter3 } from "./pages/Chapter3";
+import { Bai8Home } from "./pages/bai8/Bai8Home";
+import { Chapter1 } from "./pages/bai8/Chapter1";
+import { Chapter2 } from "./pages/bai8/Chapter2";
+import { Chapter3 } from "./pages/bai8/Chapter3";
+import { Bai9Home } from "./pages/bai9/Bai9Home";
+import { Base as Lesson9Base } from "./pages/bai9/Base";
+import { Reactions as Lesson9Reactions } from "./pages/bai9/Reactions";
+import { PhScale as Lesson9PhScale } from "./pages/bai9/PhScale";
 import { Bai10Home } from "./pages/bai10/Bai10Home";
 import { KhaiNiem } from "./pages/bai10/KhaiNiem";
 import { TinhChat } from "./pages/bai10/TinhChat";
 import { ThongDung } from "./pages/bai10/ThongDung";
-import { Home as Lesson9Home } from "./pages/Lesson9Home";
-import { Chapter1 as Lesson9Base } from "./pages/Lesson9Base";
-import { Chapter2 as Lesson9Reactions } from "./pages/Lesson9Reactions";
-import { Chapter3 as Lesson9PhScale } from "./pages/Lesson9PhScale";
 import { ComingSoonLesson } from "./pages/ComingSoonLesson";
 import { ChemistryBackground } from "./components/ChemistryBackground";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -60,7 +60,9 @@ export default function App() {
 
   const [isIdle, setIsIdle] = useState(false);
   const showAppendixBack =
-    location.pathname.startsWith("/bai-8") || location.pathname.startsWith("/bai-9");
+    location.pathname.startsWith("/bai-8") ||
+    location.pathname.startsWith("/bai-9") ||
+    location.pathname.startsWith("/bai-10");
 
   const handleSplashComplete = useCallback(() => {
     setAppReady(true);
@@ -165,12 +167,12 @@ export default function App() {
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<PageWrapper><Appendix /></PageWrapper>} />
 
-              <Route path="/bai-8" element={<PageWrapper><Home /></PageWrapper>} />
+              <Route path="/bai-8" element={<PageWrapper><Bai8Home /></PageWrapper>} />
               <Route path="/bai-8/phan-1" element={<PageWrapper><Chapter1 /></PageWrapper>} />
               <Route path="/bai-8/phan-2" element={<PageWrapper><Chapter2 /></PageWrapper>} />
               <Route path="/bai-8/phan-3" element={<PageWrapper><Chapter3 /></PageWrapper>} />
 
-              <Route path="/bai-9" element={<PageWrapper><Lesson9Home /></PageWrapper>} />
+              <Route path="/bai-9" element={<PageWrapper><Bai9Home /></PageWrapper>} />
               <Route path="/bai-9/phan-1" element={<PageWrapper><Lesson9Base /></PageWrapper>} />
               <Route path="/bai-9/phan-2" element={<PageWrapper><Lesson9Reactions /></PageWrapper>} />
               <Route path="/bai-9/phan-3" element={<PageWrapper><Lesson9PhScale /></PageWrapper>} />

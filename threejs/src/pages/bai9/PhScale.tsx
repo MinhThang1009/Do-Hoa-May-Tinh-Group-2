@@ -1,6 +1,6 @@
 import { Gauge, Info, Leaf, ShieldCheck, TestTube2 } from "lucide-react";
-import { AnimatedBeaker } from "../components/AnimatedIcons";
-import { SplitTextTitle } from "../components/SplitTextTitle";
+import { AnimatedBeaker } from "../../components/AnimatedIcons";
+import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 const phZones = [
   {
@@ -51,7 +51,7 @@ const dailyExamples = [
   { value: 12, name: "Nước xà phòng", note: "Có tính kiềm" },
 ];
 
-export function Chapter3() {
+export function PhScale() {
   return (
     <div className="min-h-screen page-enter relative overflow-hidden pb-24">
       <div className="container mx-auto px-4 py-12 relative z-10">

@@ -1,7 +1,7 @@
 import { BookOpen, Droplets, Layers, Microscope } from "lucide-react";
-import { MoleculeViewer } from "../components/MoleculeViewer";
-import { AnimatedAtom3D } from "../components/AnimatedIcons";
-import { SplitTextTitle } from "../components/SplitTextTitle";
+import { MoleculeViewer } from "../../components/MoleculeViewer";
+import { AnimatedAtom3D } from "../../components/AnimatedIcons";
+import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 const bases = [
   {
@@ -51,7 +51,7 @@ const rules = [
   },
 ];
 
-export function Chapter1() {
+export function Base() {
   return (
     <div className="min-h-screen page-enter relative overflow-hidden pb-24">
       <div className="container mx-auto px-4 py-12 relative z-10">

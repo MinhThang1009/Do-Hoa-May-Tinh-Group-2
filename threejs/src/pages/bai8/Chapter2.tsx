@@ -1,6 +1,6 @@
 import { ArrowLeft, FlaskConical, TestTubes, Atom, Droplets, Flame, ShieldAlert, Zap, Scale } from "lucide-react";
-import { AnimatedFlask } from "../components/AnimatedIcons";
-import { SplitTextTitle } from "../components/SplitTextTitle";
+import { AnimatedFlask } from "../../components/AnimatedIcons";
+import { SplitTextTitle } from "../../components/SplitTextTitle";
 
 const properties = [
   {

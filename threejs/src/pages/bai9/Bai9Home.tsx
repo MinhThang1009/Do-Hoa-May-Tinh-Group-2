@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Atom, BookOpen, FlaskConical, Gauge, TestTubes } from "lucide-react";
-import { AnimatedAtom3D, AnimatedBeaker, AnimatedFlask } from "../components/AnimatedIcons";
+import { AnimatedAtom3D, AnimatedBeaker, AnimatedFlask } from "../../components/AnimatedIcons";
 
 const chapters = [
   {
@@ -36,7 +36,7 @@ const lessonGoals = [
   { icon: <Gauge className="w-4 h-4" />, text: "pH > 7 biểu thị môi trường kiềm" },
 ];
 
-export function Home() {
+export function Bai9Home() {
   return (
     <div className="min-h-screen page-enter">
       <div className="container mx-auto px-4 py-16">
