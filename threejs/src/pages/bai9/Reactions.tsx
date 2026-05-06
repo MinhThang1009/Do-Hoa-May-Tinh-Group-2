@@ -105,8 +105,7 @@ export function Reactions() {
                     <AutoPlayVideo
                       className="w-full h-full object-cover"
                       playMode="hover"
-                      controls
-                      preload="metadata"
+                                            preload="metadata"
                       src={experiment.videoUrl}
                     />
                   </div>
@@ -177,8 +176,7 @@ export function Reactions() {
                   <AutoPlayVideo
                     className="w-full h-full object-cover"
                     playMode="hover"
-                    controls
-                    preload="metadata"
+                                        preload="metadata"
                     src="/videos/molecular/3_NaOH_HCl.mp4"
                   />
                   <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/45 text-white backdrop-blur-md border border-white/15">

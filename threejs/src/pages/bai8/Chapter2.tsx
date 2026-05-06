@@ -9,8 +9,7 @@ function VideoBox({ src, label }: { src: string; label: string }) {
       <AutoPlayVideo
         src={src}
         playMode="hover"
-        controls
-        muted
+                muted
         loop
         className="rounded-xl w-full max-w-[800px] mx-auto shadow-md border border-[var(--border)] bg-black/20"
         style={{ aspectRatio: "16/9", display: "block" }}
@@ -76,20 +75,10 @@ const properties = [
               Mg + H₂SO₄ → MgSO₄ + H₂<span className="text-blue-400">↑</span>
             </p>
           </div>
-          <div className="rounded-xl px-4 py-3 border border-[rgba(59,130,246,0.18)] bg-[rgba(59,130,246,0.035)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              Zn + 2HCl → ZnCl₂ + H₂<span className="text-blue-400">↑</span>
-            </p>
-          </div>
-          <div className="rounded-xl px-4 py-3 border border-[rgba(59,130,246,0.15)] bg-[rgba(59,130,246,0.03)]">
-            <p className="chem-equation text-base font-bold text-[var(--text)]">
-              Fe + H₂SO₄(loãng) → FeSO₄ + H₂<span className="text-blue-400">↑</span>
-            </p>
-          </div>
         </div>
         <div className="mt-5 flex flex-col gap-5">
-          <VideoBox src="/videos/thi-nghiem-4.mp4" label="Phòng thí nghiệm ảo" />
-          <VideoBox src="/videos/1_phantu.mp4" label="Phản ứng phân tử" />
+          <VideoBox src="/videos/thi-nghiem-1.mp4" label="Thí nghiệm 1" />
+          <VideoBox src="/videos/molecular/1_Mg+HCl.mp4" label="Phản ứng phân tử" />
         </div>
       </>
     ),
@@ -203,8 +192,7 @@ export function Chapter2() {
                 <AutoPlayVideo
                   className="w-full h-full object-cover"
                   playMode="hover"
-                  controls
-                  preload="metadata"
+                                    preload="metadata"
                   src="/videos/0_HCl_quytim.mp4"
                 />
               </div>

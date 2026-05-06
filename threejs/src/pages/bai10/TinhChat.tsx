@@ -126,8 +126,7 @@ export function TinhChat() {
                       <AutoPlayVideo
                         className="w-full h-full object-cover"
                         playMode="hover"
-                        controls
-                        preload="metadata"
+                                                preload="metadata"
                         src={experiment.videoUrl}
                       />
                     </div>
@@ -143,8 +142,7 @@ export function TinhChat() {
                       <AutoPlayVideo
                         className="w-full h-full object-cover"
                         playMode="hover"
-                        controls
-                        preload="metadata"
+                                                preload="metadata"
                         src={experiment.molecularVideoUrl}
                       />
                     </div>

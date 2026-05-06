@@ -17,7 +17,7 @@ export function AutoPlayVideo({
   className,
   style,
   playMode = "viewport",
-  controls = true,
+  controls,
   loop = true,
   muted = true,
   preload = "metadata",
@@ -72,7 +72,7 @@ export function AutoPlayVideo({
       onMouseLeave={playMode === "hover" ? pause : undefined}
       onFocus={playMode === "hover" ? play : undefined}
       onBlur={playMode === "hover" ? pause : undefined}
-      controls={controls}
+      controls={controls ?? playMode !== "hover"}
       loop={loop}
       muted={muted}
       preload={preload}
