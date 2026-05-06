@@ -21,6 +21,14 @@ import { ComingSoonLesson } from "./pages/ComingSoonLesson";
 import { ClassificationGame } from "./pages/ClassificationGame";
 import { ReactionMatchGame } from "./pages/ReactionMatchGame";
 import { QuickQuizGame } from "./pages/QuickQuizGame";
+
+// Bài 11
+import { Bai11Home } from "./pages/bai11/Bai11Home";
+import { KhaiNiem as Lesson11KhaiNiem } from "./pages/bai11/KhaiNiem";
+import { TinhTan } from "./pages/bai11/TinhTan";
+import { TinhChat as Lesson11TinhChat } from "./pages/bai11/TinhChat";
+import { DieuChe } from "./pages/bai11/DieuChe";
+import { MoiQuanHe } from "./pages/bai11/MoiQuanHe";
 import { ChemistryBackground } from "./components/ChemistryBackground";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeToggle } from "./components/ThemeToggle";
@@ -66,6 +74,7 @@ export default function App() {
     location.pathname.startsWith("/bai-8") ||
     location.pathname.startsWith("/bai-9") ||
     location.pathname.startsWith("/bai-10") ||
+    location.pathname.startsWith("/bai-11") ||
     location.pathname.startsWith("/game") ||
     location.pathname.startsWith("/reaction-game") ||
     location.pathname.startsWith("/quick-quiz");
@@ -75,7 +84,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    // Pre-warm: Khởi động Canvas 2D trước khi Splash kết thúc 800ms. 
+    // Pre-warm: Khởi động Canvas 2D trước khi Splash kết thúc 800ms.
     // Tránh việc Vẽ đồ họa và Chạy CSS Blur Fade-out diễn ra cùng 1 Frame gây rớt FPS (Khựng ngắc).
     const timer = setTimeout(() => setBgReady(true), 1400);
     return () => clearTimeout(timer);
@@ -92,7 +101,7 @@ export default function App() {
 
       const target = e?.target as HTMLElement;
       // Tránh đếm giờ nhàn rỗi tự động ẩn nếu chuột đang di trong Vùng Giao diện (HUD)
-      if (target && target.closest('.ui-control')) {
+      if (target && target.closest(".ui-control")) {
         return;
       }
 
@@ -165,39 +174,213 @@ export default function App() {
       {appReady && <BackToAppendixButton isVisible={showAppendixBack} />}
       <FloatingMenu isAppReady={appReady} isIdle={isIdle} />
 
-      <div style={{ position: "relative", zIndex: 1, pointerEvents: appReady ? "auto" : "none" }}>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          pointerEvents: appReady ? "auto" : "none",
+        }}
+      >
         <ChemistryBackground isPaused={!bgReady} />
         <ScrollToTop />
         <AnimatePresence mode="wait">
           {appReady && (
             <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<PageWrapper><Appendix /></PageWrapper>} />
-              <Route path="/game" element={<PageWrapper><ClassificationGame /></PageWrapper>} />
-              <Route path="/reaction-game" element={<PageWrapper><ReactionMatchGame /></PageWrapper>} />
-              <Route path="/quick-quiz" element={<PageWrapper><QuickQuizGame /></PageWrapper>} />
+              <Route
+                path="/"
+                element={
+                  <PageWrapper>
+                    <Appendix />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/game"
+                element={
+                  <PageWrapper>
+                    <ClassificationGame />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/reaction-game"
+                element={
+                  <PageWrapper>
+                    <ReactionMatchGame />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/quick-quiz"
+                element={
+                  <PageWrapper>
+                    <QuickQuizGame />
+                  </PageWrapper>
+                }
+              />
 
-              <Route path="/bai-8" element={<PageWrapper><Bai8Home /></PageWrapper>} />
-              <Route path="/bai-8/phan-1" element={<PageWrapper><Chapter1 /></PageWrapper>} />
-              <Route path="/bai-8/phan-2" element={<PageWrapper><Chapter2 /></PageWrapper>} />
-              <Route path="/bai-8/phan-3" element={<PageWrapper><Chapter3 /></PageWrapper>} />
+              <Route
+                path="/bai-8"
+                element={
+                  <PageWrapper>
+                    <Bai8Home />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-8/phan-1"
+                element={
+                  <PageWrapper>
+                    <Chapter1 />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-8/phan-2"
+                element={
+                  <PageWrapper>
+                    <Chapter2 />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-8/phan-3"
+                element={
+                  <PageWrapper>
+                    <Chapter3 />
+                  </PageWrapper>
+                }
+              />
 
-              <Route path="/bai-9" element={<PageWrapper><Bai9Home /></PageWrapper>} />
-              <Route path="/bai-9/phan-1" element={<PageWrapper><Lesson9Base /></PageWrapper>} />
-              <Route path="/bai-9/phan-2" element={<PageWrapper><Lesson9Reactions /></PageWrapper>} />
-              <Route path="/bai-9/phan-3" element={<PageWrapper><Lesson9PhScale /></PageWrapper>} />
+              <Route
+                path="/bai-9"
+                element={
+                  <PageWrapper>
+                    <Bai9Home />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-9/phan-1"
+                element={
+                  <PageWrapper>
+                    <Lesson9Base />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-9/phan-2"
+                element={
+                  <PageWrapper>
+                    <Lesson9Reactions />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-9/phan-3"
+                element={
+                  <PageWrapper>
+                    <Lesson9PhScale />
+                  </PageWrapper>
+                }
+              />
 
               {/* Bài 10: Oxide */}
-              <Route path="/bai-10" element={<PageWrapper><Bai10Home /></PageWrapper>} />
-              <Route path="/bai-10/khai-niem" element={<PageWrapper><KhaiNiem /></PageWrapper>} />
-              <Route path="/bai-10/tinh-chat" element={<PageWrapper><TinhChat /></PageWrapper>} />
-              <Route path="/bai-10/thong-dung" element={<PageWrapper><ThongDung /></PageWrapper>} />
+              <Route
+                path="/bai-10"
+                element={
+                  <PageWrapper>
+                    <Bai10Home />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-10/khai-niem"
+                element={
+                  <PageWrapper>
+                    <KhaiNiem />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-10/tinh-chat"
+                element={
+                  <PageWrapper>
+                    <TinhChat />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-10/thong-dung"
+                element={
+                  <PageWrapper>
+                    <ThongDung />
+                  </PageWrapper>
+                }
+              />
 
               {/* Bài 11: Muối */}
-              <Route path="/bai-11" element={<PageWrapper><ComingSoonLesson lessonNumber="Bài 11" title="Muối" color="#f59e0b" /></PageWrapper>} />
+              <Route
+                path="/bai-11"
+                element={
+                  <PageWrapper>
+                    <Bai11Home />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-11/khai-niem"
+                element={
+                  <PageWrapper>
+                    <Lesson11KhaiNiem />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-11/tinh-tan"
+                element={
+                  <PageWrapper>
+                    <TinhTan />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-11/tinh-chat"
+                element={
+                  <PageWrapper>
+                    <Lesson11TinhChat />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-11/dieu-che"
+                element={
+                  <PageWrapper>
+                    <DieuChe />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/bai-11/moi-quan-he"
+                element={
+                  <PageWrapper>
+                    <MoiQuanHe />
+                  </PageWrapper>
+                }
+              />
 
-              <Route path="/phan-1" element={<Navigate to="/bai-8/phan-1" replace />} />
-              <Route path="/phan-2" element={<Navigate to="/bai-8/phan-2" replace />} />
-              <Route path="/phan-3" element={<Navigate to="/bai-8/phan-3" replace />} />
+              <Route
+                path="/phan-1"
+                element={<Navigate to="/bai-8/phan-1" replace />}
+              />
+              <Route
+                path="/phan-2"
+                element={<Navigate to="/bai-8/phan-2" replace />}
+              />
+              <Route
+                path="/phan-3"
+                element={<Navigate to="/bai-8/phan-3" replace />}
+              />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           )}
